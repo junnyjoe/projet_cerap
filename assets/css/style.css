@@ -775,7 +775,7 @@ nav {
 .btn-revue-outline:hover { border-color: var(--white); }
 
 /* ── SECTION SHARED ── */
-section { padding: 72px 2rem; }
+section { padding: 48px 2rem; }
 .section-inner { max-width: 1200px; margin: 0 auto; }
 .section-header { margin-bottom: 2.5rem; }
 .section-kicker {
@@ -1066,7 +1066,7 @@ section { padding: 72px 2rem; }
 
 /* ── LIGNE EDITORIALE (Premium) ── */
 .editorial-hero { 
-  padding: 120px 2rem 80px; 
+  padding: 60px 2rem 40px; 
   background: var(--white);
   position: relative;
   overflow: hidden;
@@ -1132,7 +1132,7 @@ section { padding: 72px 2rem; }
 .engagement-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--deep); }
 .engagement-card p { font-size: 14.5px; line-height: 1.7; color: var(--warm-gray); }
 
-.collections-section { padding: 100px 2rem; }
+.collections-section { padding: 40px 2rem; }
 .editorial-categories { 
   display: grid; 
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); 
