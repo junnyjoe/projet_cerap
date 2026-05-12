@@ -423,7 +423,7 @@ async function saveBook() {
     renderTopSellers();
   } catch (error) {
     console.error('Erreur Supabase saveBook:', error);
-    alert('Erreur lors de la sauvegarde. (Vérifiez votre clé Supabase)');
+    alert('Erreur lors de la sauvegarde : ' + (error.message || 'Erreur inconnue'));
     
     // Fallback local pour démo
     if (id) {
