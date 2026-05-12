@@ -2224,8 +2224,8 @@ footer { background: var(--ink); padding: 48px 2rem 24px; }
   animation: float-slow 6s ease-in-out infinite;
 }
 .hero-ed-float-icon { font-size: 14px; }
-.hero-ed-float-1 { top: 10px; right: -20px; animation-delay: 0s; }
-.hero-ed-float-2 { bottom: 60px; left: -30px; animation-delay: -3s; }
+.hero-ed-float-1 { top: -16px; left: 50%; transform: translateX(-50%); animation-delay: 0s; }
+.hero-ed-float-2 { bottom: -16px; left: 50%; transform: translateX(-50%); animation-delay: -3s; }
 
 @keyframes float-slow {
   0%, 100% { transform: translateY(0); }
