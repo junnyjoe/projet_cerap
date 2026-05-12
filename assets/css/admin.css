@@ -122,6 +122,7 @@ h1, h2, h3, h4, h5 {
   flex: 1;
   padding: 16px 0;
   overflow-y: auto;
+  background: var(--deep);
 }
 .sidebar-section-label {
   font-size: 10px;
