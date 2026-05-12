@@ -9,17 +9,25 @@ let books = [];
 async function loadBooks() {
   if (!document.getElementById('booksGrid')) return;
   try {
-    const storedBooks = localStorage.getItem('cerap_books');
-    if (storedBooks) {
-      books = JSON.parse(storedBooks);
+    // Tentative Supabase
+    const { data, error } = await supabase.from('books').select('*').order('created_at', { ascending: false });
+    
+    if (error) throw error;
+
+    if (data && data.length > 0) {
+      books = data;
     } else {
+      // Fallback JSON local si Supabase est vide
       const response = await fetch('./data/books.json');
       books = await response.json();
-      localStorage.setItem('cerap_books', JSON.stringify(books));
     }
+    
     renderBooks('all');
   } catch (error) {
-    console.error('Erreur lors du chargement des livres:', error);
+    console.warn('Supabase non configuré ou erreur, passage au local JSON:', error);
+    const response = await fetch('./data/books.json');
+    books = await response.json();
+    renderBooks('all');
   }
 }
 
@@ -254,11 +262,37 @@ window.confirmPayment = confirmPayment;
 window.showBookDetails = showBookDetails;
 window.closeModal = closeModal;
 
-function handleFormSubmit(e) {
+async function handleFormSubmit(e) {
   e.preventDefault();
-  const success = document.getElementById('formSuccess');
-  if (success) success.style.display = 'block';
-  e.target.reset();
+  const form = e.target;
+  const formData = {
+    first_name: form.querySelector('input[placeholder="Kofi"]')?.value || '',
+    last_name: form.querySelector('input[placeholder="Asante"]')?.value || '',
+    email: form.querySelector('input[type="email"]')?.value || '',
+    subject: form.querySelector('select')?.value || 'Contact',
+    message: form.querySelector('textarea')?.value || ''
+  };
+
+  try {
+    const { error } = await supabase.from('contacts').insert([formData]);
+    if (error) throw error;
+    
+    const success = document.getElementById('formSuccess');
+    if (success) {
+      success.style.display = 'block';
+      success.textContent = '✓ Message envoyé ! Nous vous répondrons dans les 48h.';
+    }
+    form.reset();
+  } catch (error) {
+    console.error('Erreur Supabase contact:', error);
+    // Simuler le succès pour l'UX si on est en local sans clé
+    const success = document.getElementById('formSuccess');
+    if (success) {
+      success.style.display = 'block';
+      success.textContent = '(Simulation) Message reçu ! (Connectez Supabase pour le voir en admin)';
+    }
+    form.reset();
+  }
 }
 
 // Nav mobile (clavier + fermeture à la sélection)

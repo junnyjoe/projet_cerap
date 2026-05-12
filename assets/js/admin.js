@@ -29,28 +29,48 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function loadData() {
   try {
-    // Check localStorage first
-    const storedBooks = localStorage.getItem('cerap_books');
-    const storedContacts = localStorage.getItem('cerap_contacts');
+    // 1. Fetch Books
+    const { data: bData, error: bError } = await supabase.from('books').select('*').order('created_at', { ascending: false });
+    if (bError) throw bError;
+    
+    // 2. Fetch Contacts
+    const { data: cData, error: cError } = await supabase.from('contacts').select('*').order('created_at', { ascending: false });
+    if (cError) throw cError;
 
+    // 3. Fetch Sales (Simulated or from JSON)
+    const sRes = await fetch('./data/sales.json');
+    salesData = await sRes.json();
+
+    if (bData && bData.length > 0) {
+      booksData = bData;
+    } else {
+      // Migration: Load from JSON and could potentially auto-insert to Supabase
+      const bRes = await fetch('./data/books.json');
+      booksData = await bRes.json();
+    }
+
+    if (cData && cData.length > 0) {
+      contactsData = cData;
+    } else {
+      const cRes = await fetch('./data/contacts.json');
+      contactsData = await cRes.json();
+    }
+
+  } catch (e) {
+    console.warn('Supabase load fallback to JSON:', e);
     const [bRes, sRes, cRes] = await Promise.all([
       fetch('./data/books.json'),
       fetch('./data/sales.json'),
       fetch('./data/contacts.json')
     ]);
-
-    booksData = storedBooks ? JSON.parse(storedBooks) : await bRes.json();
+    booksData = await bRes.json();
     salesData = await sRes.json();
-    contactsData = storedContacts ? JSON.parse(storedContacts) : await cRes.json();
-
-    // Initial sync if first time
-    if (!storedBooks) syncStorage();
-  } catch (e) {
-    console.warn('Data load fallback:', e);
+    contactsData = await cRes.json();
   }
 }
 
 function syncStorage() {
+  // Optionnel maintenant avec Supabase, on peut garder pour le cache offline
   localStorage.setItem('cerap_books', JSON.stringify(booksData));
   localStorage.setItem('cerap_contacts', JSON.stringify(contactsData));
 }
@@ -291,7 +311,7 @@ function handleCoverChange(event) {
 }
 
 /* Update saveBook to include cover image */
-function saveBook() {
+async function saveBook() {
   const id = document.getElementById('bookFormId').value;
   const title = document.getElementById('bookFormTitle').value;
   const author = document.getElementById('bookFormAuthor').value;
@@ -304,24 +324,52 @@ function saveBook() {
 
   if (!title || !author) return alert('Titre et auteur requis.');
 
-  if (id) {
-    const book = booksData.find(b => b.id === parseInt(id));
-    if (book) {
-      Object.assign(book, { title, author, category, price, stock, date, description });
-      if (coverData) book.cover = coverData;
-    }
-  } else {
-    const newId = Math.max(...booksData.map(b => b.id)) + 1;
-    const abbr = title.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 3);
-    const cover = coverData || `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='48'><rect width='36' height='48' fill='%23002147'/><text x='50%' y='55%' fill='%23fff' font-size='14' font-family='Arial' text-anchor='middle'>${abbr}</text></svg>`;
-    booksData.push({ id: newId, title, author, category, price, stock, sold: 0, status: 'disponible', date: date || new Date().toISOString().split('T')[0], cover, description, color: '#002147' });
-  }
+  const bookPayload = {
+    title,
+    author,
+    category,
+    price,
+    stock,
+    date: date || new Date().toISOString().split('T')[0],
+    description,
+    cover: coverData || (id ? undefined : `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='48'><rect width='36' height='48' fill='%23002147'/><text x='50%' y='55%' fill='%23fff' font-size='14' font-family='Arial' text-anchor='middle'>BK</text></svg>`)
+  };
 
-  closeModal('bookModal');
-  syncStorage();
-  renderBooks();
-  renderDashboardTopSellers();
-  renderTopSellers();
+  try {
+    let result;
+    if (id) {
+      // Update
+      result = await supabase.from('books').update(bookPayload).eq('id', id);
+    } else {
+      // Insert
+      result = await supabase.from('books').insert([bookPayload]);
+    }
+
+    if (result.error) throw result.error;
+
+    // Refresh local data
+    await loadData();
+    
+    closeModal('bookModal');
+    renderBooks();
+    renderDashboardTopSellers();
+    renderTopSellers();
+  } catch (error) {
+    console.error('Erreur Supabase saveBook:', error);
+    alert('Erreur lors de la sauvegarde. (Vérifiez votre clé Supabase)');
+    
+    // Fallback local pour démo
+    if (id) {
+      const book = booksData.find(b => b.id === parseInt(id));
+      if (book) Object.assign(book, bookPayload);
+    } else {
+      const newId = Math.max(0, ...booksData.map(b => b.id)) + 1;
+      booksData.push({ id: newId, ...bookPayload, sold: 0, status: 'disponible', color: '#002147' });
+    }
+    closeModal('bookModal');
+    syncStorage();
+    renderBooks();
+  }
 }
 
 /* Update editBook to populate cover preview */
@@ -433,13 +481,24 @@ function renderTopSellers() {
   `).join('');
 }
 
-function deleteBook(id) {
+async function deleteBook(id) {
   const book = booksData.find(b => b.id === id);
   if (!book) return;
   if (!confirm(`Supprimer "${book.title}" ?`)) return;
-  booksData = booksData.filter(b => b.id !== id);
-  syncStorage();
-  renderBooks();
+  
+  try {
+    const { error } = await supabase.from('books').delete().eq('id', id);
+    if (error) throw error;
+    
+    await loadData();
+    renderBooks();
+  } catch (error) {
+    console.error('Erreur Supabase deleteBook:', error);
+    // Fallback local
+    booksData = booksData.filter(b => b.id !== id);
+    syncStorage();
+    renderBooks();
+  }
 }
 
 // ── SALES PAGE ──
@@ -546,7 +605,12 @@ function renderMessages(filter = '') {
   let msgs = contactsData;
   if (filter) {
     const q = filter.toLowerCase();
-    msgs = contactsData.filter(m => m.firstName.toLowerCase().includes(q) || m.lastName.toLowerCase().includes(q) || m.email.toLowerCase().includes(q) || m.subject.toLowerCase().includes(q));
+    msgs = contactsData.filter(m => 
+      (m.first_name || '').toLowerCase().includes(q) || 
+      (m.last_name || '').toLowerCase().includes(q) || 
+      (m.email || '').toLowerCase().includes(q) || 
+      (m.subject || '').toLowerCase().includes(q)
+    );
   }
 
   const unread = contactsData.filter(c => !c.read).length;
@@ -556,11 +620,11 @@ function renderMessages(filter = '') {
   tbody.innerHTML = msgs.map(m => `
     <tr class="msg-row ${m.read ? '' : 'unread'}" onclick="viewMessage(${m.id})">
       <td>${m.read ? '📖' : '📩'}</td>
-      <td><strong>${m.firstName} ${m.lastName}</strong></td>
+      <td><strong>${m.first_name || ''} ${m.last_name || ''}</strong></td>
       <td>${m.email}</td>
       <td>${m.subject}</td>
       <td class="msg-preview">${m.message}</td>
-      <td>${new Date(m.date).toLocaleDateString('fr-FR')}</td>
+      <td>${new Date(m.created_at || m.date).toLocaleDateString('fr-FR')}</td>
       <td><span class="status-badge ${m.read ? 'lu' : 'non_lu'}">${m.read ? 'Lu' : 'Non lu'}</span></td>
       <td>
         <div class="table-action-btns">
@@ -572,15 +636,20 @@ function renderMessages(filter = '') {
   `).join('');
 }
 
-function viewMessage(id) {
+async function viewMessage(id) {
   const m = contactsData.find(c => c.id === id);
   if (!m) return;
-  m.read = true;
+  
+  try {
+    const { error } = await supabase.from('contacts').update({ read: true }).eq('id', id);
+    if (error) throw error;
+    m.read = true;
+  } catch (e) { console.error('Supabase viewMessage error:', e); m.read = true; }
 
-  document.getElementById('msgDetailName').textContent = m.firstName + ' ' + m.lastName;
+  document.getElementById('msgDetailName').textContent = m.first_name + ' ' + m.last_name;
   document.getElementById('msgDetailEmail').textContent = m.email;
   document.getElementById('msgDetailSubject').textContent = m.subject;
-  document.getElementById('msgDetailDate').textContent = new Date(m.date).toLocaleString('fr-FR');
+  document.getElementById('msgDetailDate').textContent = new Date(m.created_at).toLocaleString('fr-FR');
   document.getElementById('msgDetailBody').textContent = m.message;
   document.getElementById('msgModal').classList.add('open');
 
@@ -589,17 +658,34 @@ function viewMessage(id) {
   syncStorage();
 }
 
-function toggleRead(id) {
+async function toggleRead(id) {
   const m = contactsData.find(c => c.id === id);
-  if (m) m.read = !m.read;
+  if (!m) return;
+  const newState = !m.read;
+
+  try {
+    const { error } = await supabase.from('contacts').update({ read: newState }).eq('id', id);
+    if (error) throw error;
+    m.read = newState;
+  } catch (e) { console.error('Supabase toggleRead error:', e); m.read = newState; }
+
   renderMessages();
   updateUnreadBadge();
   syncStorage();
 }
 
-function deleteMessage(id) {
+async function deleteMessage(id) {
   if (!confirm('Supprimer ce message ?')) return;
-  contactsData = contactsData.filter(c => c.id !== id);
+  
+  try {
+    const { error } = await supabase.from('contacts').delete().eq('id', id);
+    if (error) throw error;
+    contactsData = contactsData.filter(c => c.id !== id);
+  } catch (e) { 
+    console.error('Supabase deleteMessage error:', e);
+    contactsData = contactsData.filter(c => c.id !== id);
+  }
+  
   renderMessages();
   updateUnreadBadge();
   syncStorage();
@@ -632,12 +718,16 @@ function handleGlobalSearch(query) {
   }
 }
 
+window.logout = logout;
+window.saveBook = saveBook;
+window.editBook = editBook;
+window.deleteBook = deleteBook;
+window.toggleRead = toggleRead;
+window.viewMessage = viewMessage;
+window.deleteMessage = deleteMessage;
 window.handleGlobalSearch = handleGlobalSearch;
-
-// ── MODAL UTILS ──
-function closeModal(id) {
-  document.getElementById(id)?.classList.remove('open');
-}
+window.navigateTo = navigateTo;
+window.closeModal = closeModal;
 
 // Escape key closes modals
 document.addEventListener('keydown', e => {
