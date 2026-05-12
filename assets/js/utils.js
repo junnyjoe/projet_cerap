@@ -89,6 +89,37 @@ const Utils = {
       loader.classList.add('fade-out');
       setTimeout(() => loader.remove(), 600);
     }
+  },
+
+  /**
+   * Affiche une notification toast temporaire
+   * @param {string} message - Message à afficher
+   */
+  showToast: function(message) {
+    let container = document.querySelector('.toast-container');
+    if (!container) {
+      container = document.createElement('div');
+      container.className = 'toast-container';
+      document.body.appendChild(container);
+    }
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `
+      <div class="toast-icon">✓</div>
+      <div class="toast-message">${message}</div>
+    `;
+
+    container.appendChild(toast);
+
+    // Force reflow
+    void toast.offsetWidth;
+    toast.classList.add('show');
+
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 400);
+    }, 3000);
   }
 };
 

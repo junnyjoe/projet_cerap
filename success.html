@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commande Réussie — CERAP Éditions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Atkinson+Hyperlegible:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <style>
+    :root {
+      --success: #10b981;
+    }
+    
+    .success-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .success-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 3rem;
+      max-width: 540px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--success);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      margin: 0 auto 2rem;
+      box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+      animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+
+    .success-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 2.5rem;
+      color: var(--deep);
+      margin-bottom: 1rem;
+    }
+
+    .success-text {
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    .order-summary {
+      background: var(--bg-soft);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+      text-align: left;
+    }
+
+    .order-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .order-total {
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--deep);
+    }
+
+    .success-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--deep);
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-soft);
+      border-color: var(--gold);
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="site-bg">
+    <div class="bg-blob bg-blob-1"></div>
+    <div class="bg-blob bg-blob-2"></div>
+  </div>
+
+  <main class="success-page">
+    <div class="success-card">
+      <div class="success-icon">✓</div>
+      <h1 class="success-title">Merci pour votre commande !</h1>
+      <p class="success-text">
+        Votre paiement a été validé avec succès. Vous recevrez un e-mail de confirmation avec vos détails de livraison sous peu.
+      </p>
+
+      <div class="order-summary" id="orderSummary">
+        <div class="order-row">
+          <span>Numéro de commande</span>
+          <strong id="orderId">#CP-842910</strong>
+        </div>
+        <div class="order-row">
+          <span>Date</span>
+          <strong id="orderDate">12 Mai 2026</strong>
+        </div>
+        <div class="order-total">
+          <span>Total réglé</span>
+          <span id="orderTotal">0 F CFA</span>
+        </div>
+      </div>
+
+      <div class="success-actions">
+        <a href="./librairie.html" class="btn-primary" style="justify-content:center">Retour à la boutique</a>
+        <a href="#" onclick="window.print();return false;" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          Imprimer le reçu
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Recuperation des infos depuis l'URL ou localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      // Nettoyage du panier car la commande est réussie
+      localStorage.removeItem('cerap_cart');
+      
+      // Simulation des données de commande
+      const params = new URLSearchParams(window.location.search);
+      const total = params.get('total') || '0 F CFA';
+      document.getElementById('orderTotal').textContent = total;
+      
+      const date = new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+      document.getElementById('orderDate').textContent = date;
+      
+      const transId = params.get('id');
+      document.getElementById('orderId').textContent = transId ? '#CP-' + transId : '#CP-' + (Math.floor(Math.random() * 900000) + 100000);
+
+      // Animation confettis simple
+      for(let i=0; i<30; i++) {
+        createConfetti();
+      }
+    });
+
+    function createConfetti() {
+      const c = document.createElement('div');
+      c.className = 'confetti';
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.top = -10 + 'px';
+      c.style.backgroundColor = ['#d4af37', '#002147', '#10b981'][Math.floor(Math.random()*3)];
+      c.style.transform = `rotate(${Math.random() * 360}deg)`;
+      document.body.appendChild(c);
+
+      const duration = Math.random() * 3 + 2;
+      c.animate([
+        { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
+        { transform: `translate(${Math.random() * 100 - 50}px, 100vh) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+      ], {
+        duration: duration * 1000,
+        easing: 'cubic-bezier(0, 0, 0.2, 1)'
+      }).onfinish = () => c.remove();
+    }
+  </script>
+</body>
+</html>

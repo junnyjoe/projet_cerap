@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CERAP Éditions — Maison d'édition académique africaine</title>
 
+  <meta name="description" content="CERAP Éditions — Maison d'édition académique jésuite à Abidjan. Découvrez notre librairie d'ouvrages universitaires et la Revue Débats." />
+  <meta name="keywords" content="Librairie Côte d'Ivoire, Éditions CERAP, Livres académiques Afrique, Revue Débats, Université Jésuite Abidjan" />
+  
+   <meta property="og:image" content="./assets/images/logo-uja.png" />
+   <meta name="twitter:card" content="summary_large_image" />
+   <meta name="twitter:title" content="CERAP Éditions — Savoirs Universels, Voix Africaines" />
+   <meta name="twitter:description" content="Découvrez le catalogue des Éditions du CERAP : histoire, droit, spiritualité et sciences sociales." />
+   <meta name="twitter:image" content="./assets/images/logo-uja.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Atkinson+Hyperlegible:wght@400;700&display=swap"
@@ -124,27 +133,27 @@
             </div>
 
             <div class="hero-book-info">
-              <span class="hero-book-cat">Histoire</span>
-              <div class="hero-book-title">Le Sanvi — Tome I</div>
+              <span class="hero-book-cat">Droit</span>
+              <div class="hero-book-title">Introduction historique au droit ivoirien</div>
               <p class="hero-book-desc">
-                Une étude historique approfondie sur le royaume Sanvi, son organisation et son héritage dans l'histoire de la Côte d'Ivoire.
+                Une perspective historique fondamentale sur l'évolution du système juridique en Côte d'Ivoire par Séraphin NÉNÉ BI.
               </p>
 
-              <div class="hero-book-price">20 000 <small>F CFA</small></div>
+              <div class="hero-book-price">9 500 <small>F CFA</small></div>
 
               <div class="hero-book-actions">
                 <a
                   href="#"
                   class="btn-book btn-book-primary"
-                  onclick="addToCart('Le Sanvi T1','20 000 F CFA','cover-histoire');return false;"
+                  onclick="addToCart(6, 'Introduction historique au droit ivoirien','9 500 F CFA','cover-droit');return false;"
                 >Ajouter au panier</a>
-                <a href="#" class="btn-book btn-book-outline" onclick="showBookDetails(1);return false;">Détails</a>
+                <a href="#" class="btn-book btn-book-outline" onclick="showBookDetails(6);return false;">Détails</a>
               </div>
             </div>
           </div>
 
           <div class="hero-mini-books" aria-label="Sélection rapide">
-            <div class="hero-mini-book" onclick="addToCart('Droit Constitutionnel','12 000 F CFA','cover-droit')" role="button" tabindex="0">
+            <div class="hero-mini-book" onclick="addToCart(2, 'Droit Constitutionnel','12 000 F CFA','cover-droit')" role="button" tabindex="0">
               <div class="hero-mini-cover cover-droit">DC</div>
               <div>
                 <div class="hero-mini-book-title">Droit Constitutionnel Licence 1</div>
@@ -152,7 +161,7 @@
               </div>
             </div>
 
-            <div class="hero-mini-book" onclick="addToCart('Actes du Colloque T1','7 500 F CFA','cover-dialogue')" role="button" tabindex="0">
+            <div class="hero-mini-book" onclick="addToCart(3, 'Actes du Colloque T1','7 500 F CFA','cover-dialogue')" role="button" tabindex="0">
               <div class="hero-mini-cover cover-dialogue">AC</div>
               <div>
                 <div class="hero-mini-book-title">Actes du Colloque International T1</div>
@@ -160,7 +169,7 @@
               </div>
             </div>
 
-            <div class="hero-mini-book" onclick="addToCart('Ethnies &amp; Crises Politiques','5 000 F CFA','cover-droit')" role="button" tabindex="0">
+            <div class="hero-mini-book" onclick="addToCart(4, 'Ethnies &amp; Crises Politiques','5 000 F CFA','cover-droit')" role="button" tabindex="0">
               <div class="hero-mini-cover cover-histoire">EP</div>
               <div>
                 <div class="hero-mini-book-title">Ethnies et Crises Politiques en Guinée</div>
@@ -168,7 +177,7 @@
               </div>
             </div>
 
-            <div class="hero-mini-book" onclick="addToCart('Revue Débats — n° courant','2 500 F CFA','cover-revue')" role="button" tabindex="0">
+            <div class="hero-mini-book" onclick="addToCart(5, 'Revue Débats — n° courant','2 500 F CFA','cover-revue')" role="button" tabindex="0">
               <div class="hero-mini-cover cover-revue">DB</div>
               <div>
                 <div class="hero-mini-book-title">Revue Débats — n° courant</div>
@@ -394,7 +403,8 @@
 
   <!-- JS -->
   <!-- SUPABASE -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- CinetPay SDK -->
+  <script src="https://checkout.cinetpay.com/sdk/v1/cinetpay.js"></script>
   <script src="./assets/js/supabase-config.js"></script>
   <script src="./assets/js/utils.js"></script>
   <script src="./assets/js/script.js"></script>

@@ -221,7 +221,7 @@ h1, h2, h3, h4, h5 {
 .topbar-search {
   background: var(--light-gray);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 8px 14px;
   font-size: 13px;
   width: 240px;
@@ -261,7 +261,7 @@ h1, h2, h3, h4, h5 {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-radius: 14px;
+  border-radius: 24px;
   padding: 24px;
   box-shadow: var(--card-shadow);
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -290,7 +290,7 @@ h1, h2, h3, h4, h5 {
 .stat-icon {
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -325,7 +325,7 @@ h1, h2, h3, h4, h5 {
   align-items: center;
   gap: 4px;
   padding: 2px 8px;
-  border-radius: 6px;
+  border-radius: 10px;
 }
 .stat-change.up { background: #e8f5ec; color: var(--green); }
 .stat-change.down { background: #fde8e9; color: var(--terracotta); }
@@ -339,7 +339,7 @@ h1, h2, h3, h4, h5 {
 }
 .chart-card {
   background: var(--white);
-  border-radius: 14px;
+  border-radius: 24px;
   padding: 24px;
   box-shadow: var(--card-shadow);
   border: 1px solid var(--border);
@@ -360,7 +360,7 @@ h1, h2, h3, h4, h5 {
   display: flex;
   gap: 4px;
   background: var(--light-gray);
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 3px;
 }
 .chart-tab {
@@ -369,7 +369,7 @@ h1, h2, h3, h4, h5 {
   font-weight: 700;
   border: none;
   background: none;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
   color: var(--warm-gray);
   font-family: 'Atkinson Hyperlegible', sans-serif;
@@ -384,7 +384,7 @@ h1, h2, h3, h4, h5 {
 /* ── ADMIN TABLE ── */
 .table-card {
   background: var(--white);
-  border-radius: 14px;
+  border-radius: 24px;
   box-shadow: var(--card-shadow);
   border: 1px solid var(--border);
   overflow: hidden;
@@ -409,7 +409,7 @@ h1, h2, h3, h4, h5 {
 .table-search {
   padding: 7px 12px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 16px;
   font-size: 13px;
   font-family: 'Atkinson Hyperlegible', sans-serif;
   background: var(--light-gray);
@@ -422,7 +422,7 @@ h1, h2, h3, h4, h5 {
   font-size: 13px;
   font-weight: 700;
   border: none;
-  border-radius: 8px;
+  border-radius: 16px;
   cursor: pointer;
   font-family: 'Atkinson Hyperlegible', sans-serif;
   display: inline-flex;
@@ -508,7 +508,7 @@ h1, h2, h3, h4, h5 {
   align-items: center;
   gap: 4px;
   padding: 4px 10px;
-  border-radius: 6px;
+  border-radius: 10px;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -528,7 +528,7 @@ h1, h2, h3, h4, h5 {
   width: 30px;
   height: 30px;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 10px;
   background: var(--white);
   cursor: pointer;
   display: flex;
@@ -626,7 +626,7 @@ h1, h2, h3, h4, h5 {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 16px;
+  border-radius: 24px;
   width: 560px;
   max-width: 95vw;
   max-height: 90vh;
@@ -691,7 +691,7 @@ h1, h2, h3, h4, h5 {
   width: 100%;
   padding: 10px 14px;
   border: 1.5px solid var(--border);
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 14px;
   font-family: 'Atkinson Hyperlegible', sans-serif;
   background: var(--white);

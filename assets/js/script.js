@@ -48,6 +48,42 @@ async function loadBooks() {
 }
 
 let cart = [];
+
+/**
+ * Sauvegarde le panier dans le localStorage
+ */
+function saveCart() {
+  try {
+    localStorage.setItem('cerap_cart', JSON.stringify(cart));
+  } catch (e) {
+    console.warn('Impossible de sauvegarder le panier:', e);
+  }
+}
+
+/**
+ * Initialise le panier au chargement de chaque page
+ * Récupère les données depuis le localStorage et met à jour le badge
+ */
+function initCart() {
+  try {
+    const saved = localStorage.getItem('cerap_cart');
+    if (saved) {
+      cart = JSON.parse(saved);
+    }
+  } catch (e) {
+    console.warn('Erreur de lecture du panier:', e);
+    cart = [];
+  }
+  // Met à jour le badge flottant
+  const countEl = document.getElementById('cartCount');
+  if (countEl) {
+    countEl.textContent = cart.length;
+  }
+  // Met à jour le rendu du panier si le panneau existe
+  if (document.getElementById('cartItems')) {
+    renderCart();
+  }
+}
 let currentFilter = 'all';
 
 /**
@@ -66,7 +102,7 @@ function renderBooks(filter) {
     return `
     <div class="book-card js-reveal" data-reveal onclick="showBookDetails(${b.id})">
       <div class="book-cover" style="background:${b.cover && b.cover.startsWith('data:image') ? 'transparent' : `linear-gradient(145deg,${b.color || '#002147'} 0%,${b.color || '#002147'}99 100%)`}">
-        ${b.cover && b.cover.startsWith('data:image') ? `<img src="${b.cover}" alt="Cover" style="width:100%;height:100%;object-fit:cover;"/>` : `<div class="book-cover-title">${b.title}</div>`}
+        ${b.cover && b.cover.startsWith('data:image') ? `<img src="${b.cover}" alt="Couverture de ${safeTitle}" style="width:100%;height:100%;object-fit:cover;" loading="lazy"/>` : `<div class="book-cover-title">${b.title}</div>`}
       </div>
       <div class="book-body">
         <span class="book-cat-tag">${b.category}</span>
@@ -77,7 +113,7 @@ function renderBooks(filter) {
         </div>
         <div class="book-card-actions" style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px;">
            <button class="book-add-btn" style="margin-top:0" onclick="event.stopPropagation(); showBookDetails(${b.id})">Détails</button>
-           <button class="book-add-btn" style="margin-top:0; background:var(--gold); color:var(--deep)" onclick="event.stopPropagation(); addToCart('${safeTitle}', '${formattedPrice}', '${safeCover}')">+ Panier</button>
+           <button class="book-add-btn" style="margin-top:0; background:var(--gold); color:var(--deep)" onclick="event.stopPropagation(); addToCart(${b.id}, '${safeTitle}', '${formattedPrice}', '${safeCover}')">+ Panier</button>
         </div>
       </div>
     </div>
@@ -100,14 +136,14 @@ function filterBooks(cat, btn) {
   renderBooks(cat);
 }
 
-/**
- * Ajoute un livre au panier
+ * @param {number} id - ID du livre
  * @param {string} title - Titre du livre
  * @param {string} price - Prix formaté
  * @param {string} abbr - Abréviation (pour l'icône)
  */
-function addToCart(title, price, abbr) {
-  cart.push({ title, price, abbr });
+function addToCart(id, title, price, abbr) {
+  cart.push({ id, title, price, abbr });
+  saveCart();
   const countEl = document.getElementById('cartCount');
   countEl.textContent = cart.length;
   // Bump animation
@@ -116,11 +152,13 @@ function addToCart(title, price, abbr) {
   countEl.classList.add('bump');
 
   renderCart();
+  Utils.showToast('Article ajouté au panier');
   toggleCart(true);
 }
 
 function removeFromCart(i) {
   cart.splice(i, 1);
+  saveCart();
   document.getElementById('cartCount').textContent = cart.length;
   renderCart();
   if (cart.length === 0) toggleCart(false);
@@ -226,13 +264,77 @@ function selectPayMethod(method, el) {
   }
 }
 
+/**
+ * Déclenche le paiement réel via CinetPay
+ */
 function confirmPayment() {
-  const total = document.getElementById('checkoutTotal').textContent;
-  alert('Paiement de ' + total + ' réussi !\n\nMerci de votre confiance. Vous recevrez un email de confirmation sous peu.');
-  cart = [];
-  document.getElementById('cartCount').textContent = '0';
-  renderCart();
-  closeModal('checkoutModal');
+  const totalStr = document.getElementById('checkoutTotal').textContent;
+  const total = parseInt(totalStr.replace(/[^0-9]/g, ''), 10);
+  
+  if (isNaN(total) || total <= 0) return;
+
+  // 1. Préparation des données (Simulation d'ID transaction)
+  const transId = Math.floor(Math.random() * 100000000).toString();
+  
+  // 2. Vérification de la présence du SDK
+  if (typeof CinetPay === 'undefined') {
+    console.error("SDK CinetPay introuvable. Assurez-vous d'être en ligne.");
+    alert("Le système de paiement est momentanément indisponible (SDK non chargé).");
+    return;
+  }
+
+  // 3. Configuration (À REMPLACER PAR VOS CLÉS RÉELLES)
+  // IMPORTANT: Ces clés devraient idéalement être gérées via un backend pour la sécurité
+  CinetPay.setConfig({
+    apikey: 'YOUR_API_KEY', // Remplacer par votre API KEY
+    site_id: 'YOUR_SITE_ID', // Remplacer par votre SITE ID
+    notify_url: window.location.origin + '/notify' // URL de notification (IPN)
+  });
+
+  // 4. Lancement du paiement
+  try {
+    CinetPay.getCheckout({
+      transaction_id: transId,
+      amount: total,
+      currency: 'XOF',
+      channels: 'ALL',
+      description: 'Achat d\'ouvrages — CERAP Éditions',
+      customer_name: "Client",
+      customer_surname: "CERAP",
+      customer_email: "client@cerap-inades.org",
+      customer_phone_number: "0700000000",
+      customer_address: "Cocody, Abidjan",
+      customer_city: "Abidjan",
+      customer_country: "CI",
+      customer_state: "CI",
+      customer_zip_code: "00225"
+    });
+
+    // 5. Attente de la réponse
+    CinetPay.waitResponse(async function(data) {
+      if (data.status === "ACCEPTED") {
+        // Succès : Enregistrement dans Supabase avant redirection
+        await saveOrderToSupabase(transId, total, totalStr);
+        window.location.href = `./success.html?total=${encodeURIComponent(totalStr)}&id=${transId}`;
+      } else {
+        alert("Le paiement a échoué ou a été annulé. Veuillez réessayer.");
+      }
+    });
+
+    CinetPay.onError(async function(data) {
+      console.error("Erreur CinetPay:", data);
+      // Simulation pour la démo si les clés sont "YOUR_API_KEY"
+      if (CinetPay._config.apikey === 'YOUR_API_KEY') {
+        if (confirm("(Mode Démo) Voulez-vous simuler un paiement réussi ?")) {
+          await saveOrderToSupabase(transId, total, totalStr);
+          window.location.href = `./success.html?total=${encodeURIComponent(totalStr)}&id=${transId}`;
+        }
+      }
+    });
+
+  } catch (err) {
+    console.error("Erreur lors de l'initialisation CinetPay:", err);
+  }
 }
 
 function showBookDetails(id) {
@@ -262,7 +364,7 @@ function showBookDetails(id) {
   
   const addBtn = document.getElementById('modalAddToCartBtn');
   addBtn.onclick = () => {
-    addToCart(b.title, formattedPrice, b.cover);
+    addToCart(b.id, b.title, formattedPrice, b.cover);
     closeModal('bookDetailsModal');
   };
   
@@ -271,6 +373,29 @@ function showBookDetails(id) {
 
 function closeModal(id) {
   document.getElementById(id)?.classList.remove('open');
+}
+
+/**
+ * Enregistre la commande dans Supabase
+ */
+async function saveOrderToSupabase(transId, total, totalStr) {
+  const orderData = {
+    transaction_id: transId,
+    total_amount: total,
+    items: cart,
+    customer_name: "Client Démo", // En prod, à lier à un formulaire
+    customer_email: "client@cerap.org",
+    status: 'en_cours'
+  };
+
+  try {
+    const { error } = await supabase.from('orders').insert([orderData]);
+    if (error) throw error;
+    console.log("Commande enregistrée avec succès.");
+  } catch (err) {
+    console.error("Erreur Supabase (orders):", err);
+    // On continue quand même pour la démo, mais on log l'erreur
+  }
 }
 
 window.selectPayMethod = selectPayMethod;
@@ -356,6 +481,9 @@ function initRevueOptions() {
 document.addEventListener('DOMContentLoaded', async () => {
   // Show loader immediately
   Utils.showPageLoader();
+
+  // Restaurer le panier depuis le localStorage
+  initCart();
 
   // init catalogue
   await loadBooks();
