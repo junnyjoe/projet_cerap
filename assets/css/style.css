@@ -2504,23 +2504,25 @@ footer {
 
 
 
+
 /* ── ADVANCED LIBRAIRIE LAYOUT ── */
 :root {
-  --cerap-blue: var(--navy); /* Switch to navy for better visibility */
-  --cerap-blue-light: #f4f7fa;
+  --cerap-blue: var(--navy);
+  --cerap-blue-light: rgba(255, 255, 255, 0.05);
 }
 
 .lib-cat-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 1.5rem;
-  margin-bottom: 4rem;
+  margin-bottom: 0;
+  padding: 60px 0;
 }
 
 .lib-cat-item {
-  background: white;
+  background: rgba(255, 255, 255, 0.1);
   padding: 20px;
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   gap: 15px;
@@ -2531,14 +2533,14 @@ footer {
 
 .lib-cat-item:hover {
   border-color: var(--gold);
-  background: var(--cerap-blue-light);
+  background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
 .lib-cat-icon {
   font-size: 24px;
-  color: var(--navy);
-  background: rgba(7, 21, 45, 0.05);
+  color: var(--gold);
+  background: rgba(255, 255, 255, 0.05);
   width: 50px;
   height: 50px;
   display: flex;
@@ -2550,24 +2552,24 @@ footer {
 .lib-cat-info strong {
   display: block;
   font-size: 14px;
-  color: var(--navy);
+  color: white;
   font-weight: 700;
 }
 
 .lib-cat-info span {
-  font-size: 12px;
-  color: var(--gold);
+  font-size: 11px;
+  color: var(--gold-light);
   font-weight: 600;
 }
 
 .lib-search-bar {
-  background: var(--cerap-blue-light);
-  padding: 30px;
-  border: 1px solid rgba(7, 21, 45, 0.1);
-  margin-bottom: 3rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 4rem;
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 1.5rem;
+  gap: 2rem;
   align-items: center;
 }
 
@@ -2576,29 +2578,29 @@ footer {
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid rgba(7, 21, 45, 0.1);
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   width: 100%;
 }
 
 .lib-alpha-btn {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
   font-weight: 700;
-  color: var(--navy);
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   border-radius: 2px;
   transition: all 0.2s;
 }
 
 .lib-alpha-btn:hover, .lib-alpha-btn.active {
-  background: var(--navy);
-  color: white;
+  background: var(--gold);
+  color: var(--navy);
 }
 
 .lib-main-layout {
