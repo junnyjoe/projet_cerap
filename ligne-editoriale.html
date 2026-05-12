@@ -88,7 +88,21 @@
     </div>
   </section>
 
-  <section class="engagements-section js-reveal" data-reveal style="background: var(--bg-soft);">
+  <section class="random-selection-section js-reveal" data-reveal style="background: var(--white); padding-top: 0;">
+    <div class="section-inner">
+      <div class="random-selection-header" style="background: var(--deep); color: var(--white); padding: 15px 25px; border-radius: 8px 8px 0 0; display: flex; align-items: center; gap: 12px; margin-bottom: 2rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <h3 style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 1.25rem; font-weight: 400; margin: 0;">Sélection Aléatoire</h3>
+      </div>
+      
+      <div id="randomBooksList" class="random-books-list">
+        <!-- Random books will be injected here -->
+      </div>
+    </div>
+  </section>
     <div class="section-inner">
       <div class="section-header">
         <span class="section-kicker">Nos Engagements</span>
@@ -398,6 +412,42 @@
   <script src="./assets/js/supabase-config.js"></script>
   <script src="./assets/js/utils.js"></script>
   <script src="./assets/js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Attendre que les livres soient chargés (via script.js)
+      // Si books n'est pas encore là, on attend un peu ou on fetch direct
+      if (typeof books === 'undefined' || books.length === 0) {
+        try {
+          const res = await fetch('./data/books.json');
+          window.books = await res.json();
+        } catch(e) { console.error(e); }
+      }
+
+      const container = document.getElementById('randomBooksList');
+      if (!container || !window.books) return;
+
+      // Mélanger et prendre 4 livres
+      const shuffled = [...window.books].sort(() => 0.5 - Math.random());
+      const selected = shuffled.slice(0, 4);
+
+      container.innerHTML = selected.map(b => `
+        <div class="random-book-item js-reveal" data-reveal onclick="showBookDetails(${b.id})">
+          <img src="${b.cover}" alt="${b.title}" class="random-book-cover" onerror="this.src='./assets/images/logo-uja.png'">
+          <div class="random-book-info">
+            <span class="random-book-date">${new Date(b.date).toLocaleDateString('fr-FR')}</span>
+            <a href="javascript:void(0)" class="random-book-title">${b.title}</a>
+            <span class="random-book-author">Auteur : ${b.author}</span>
+            <a href="javascript:void(0)" class="random-book-cat">${b.category}</a>
+          </div>
+        </div>
+      `).join('');
+
+      // Ré-initialiser les reveals pour ces nouveaux éléments
+      if (window.Utils && window.Utils.initScrollReveals) {
+        window.Utils.initScrollReveals('.random-book-item', true);
+      }
+    });
+  </script>
 </body>
 </html>
 
