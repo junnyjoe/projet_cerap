@@ -1,29 +1,28 @@
 /* CERAP Éditions — style.css (production-grade, refactor HTML -> CSS) */
 
 :root {
-  --deep: #002147;
-  --ink: #0a2d5c;
-  --warm-gray: #555555;
-  --light-gray: #f0f2f5;
+  --deep: #1A3A5C;
+  --ink: #1A3A5C;
+  --warm-gray: #6B6058;
+  --light-gray: #F1EBE1;
   --border: #dce1e8;
-  --border-dark: #b0bac5;
+  --border-dark: #9A6C2A;
 
-  --gold: #D48806;
+  --gold: #9A6C2A;
   --gold-light: #E8A317;
-  --gold-bg: #fef8eb;
+  --gold-bg: #FAF7F2;
 
-  --terracotta: #CE3E45;
-  --terracotta-light: #e05a60;
+  --terracotta: #5C1A2A;
+  --terracotta-light: #CE3E45;
 
-  --cream: #f7f9fc;
+  --cream: #FAF7F2;
   --white: #ffffff;
 
-  --green: #1a7a42;
+  --green: #2A5C3F;
   --green-light: #28a85a;
 
-  --card-shadow: 0 4px 20px rgba(0,33,71,0.08);
-  --glass: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(0, 33, 71, 0.05);
+  --shadow: 0 4px 20px rgba(26,58,92,0.08);
+  --card-shadow: 0 8px 30px rgba(0,0,0,0.04);
 }
 
 /* ══ LIGHT ANIMATED BACKGROUND ══ */
@@ -507,7 +506,7 @@ nav {
 
 .btn-primary {
   background: var(--gold);
-  color: var(--deep);
+  color: var(--white);
   padding: 13px 28px;
   font-family: 'Atkinson Hyperlegible', sans-serif;
   font-size: 14px;
@@ -520,29 +519,37 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: background 0.2s, transform 0.15s;
-  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 4px;
 }
-.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-primary:hover { 
+  background: #7d5722; 
+  transform: translateY(-2px); 
+  box-shadow: 0 10px 20px rgba(154,108,42,0.2); 
+}
 
 .btn-secondary {
   background: transparent;
-  color: rgba(255,255,255,0.8);
+  color: var(--gold);
   padding: 12px 28px;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1.5px solid var(--gold);
   cursor: pointer;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: border-color 0.2s, color 0.2s;
-  border-radius: 16px;
+  transition: all 0.2s;
+  border-radius: 4px;
 }
-.btn-secondary:hover { border-color: rgba(255,255,255,0.6); color: var(--white); }
+.btn-secondary:hover { 
+  background: var(--gold-bg); 
+  color: #7d5722;
+  border-color: #7d5722;
+}
 
 .hero-stats {
   display: flex;
