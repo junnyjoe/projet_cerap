@@ -2501,3 +2501,240 @@ footer {
 .section-navy h2 { color: var(--white) !important; }
 .section-navy .section-kicker { color: var(--gold-light); }
 .section-navy .section-subtitle { color: rgba(255,255,255,0.6); }
+
+/* ── ADVANCED LIBRAIRIE LAYOUT ── */
+.lib-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.lib-cat-item {
+  background: white;
+  padding: 20px;
+  border: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+
+.lib-cat-item:hover {
+  border-color: var(--gold);
+  background: var(--cream);
+  transform: translateY(-2px);
+}
+
+.lib-cat-icon {
+  font-size: 24px;
+  color: var(--navy);
+  background: rgba(0,0,0,0.03);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.lib-cat-info strong {
+  display: block;
+  font-size: 14px;
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.lib-cat-info span {
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.lib-search-bar {
+  background: #f8f9fa;
+  padding: 30px;
+  border: 1px solid rgba(0,0,0,0.04);
+  margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.lib-alpha-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  width: 100%;
+}
+
+.lib-alpha-btn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+.lib-alpha-btn:hover, .lib-alpha-btn.active {
+  background: var(--navy);
+  color: white;
+}
+
+.lib-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 4rem;
+}
+
+.lib-sidebar-box {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.08);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.lib-sidebar-header {
+  background: var(--navy);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'EB Garamond', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.lib-sidebar-content {
+  padding: 20px;
+}
+
+.lib-mini-book {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.lib-mini-book:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.lib-mini-cover {
+  width: 60px;
+  height: 80px;
+  background: #eee;
+  flex-shrink: 0;
+}
+
+.lib-mini-info h4 {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  line-height: 1.3;
+  color: #0088CC;
+}
+
+.lib-mini-info p {
+  font-size: 11px;
+  color: var(--warm-gray);
+  margin-bottom: 5px;
+}
+
+.lib-mini-info span {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* List view for books */
+.book-list-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 2rem;
+  padding: 25px;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.06);
+  margin-bottom: 1.5rem;
+  transition: all 0.2s;
+}
+
+.book-list-item:hover {
+  border-color: var(--gold);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.book-list-cover {
+  aspect-ratio: 1/1.4;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-list-details h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: #0055AA;
+}
+
+.book-list-meta {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.book-list-meta strong {
+  color: #0088CC;
+}
+
+.lib-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 4rem;
+}
+
+.page-btn {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  background: white;
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.page-btn:hover, .page-btn.active {
+  background: #0088CC;
+  color: white;
+  border-color: #0088CC;
+}
+
+@media (max-width: 992px) {
+  .lib-main-layout {
+    grid-template-columns: 1fr;
+  }
+}

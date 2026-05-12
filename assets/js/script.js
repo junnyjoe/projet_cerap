@@ -164,6 +164,96 @@ function addToCart(id, title, price, abbr) {
   toggleCart(true);
 }
 
+// --- ADVANCED LIBRAIRIE JS ---
+
+window.filterBySearch = function(val) {
+  const filtered = books.filter(b => 
+    b.title.toLowerCase().includes(val) || 
+    b.author.toLowerCase().includes(val) || 
+    b.category.toLowerCase().includes(val)
+  );
+  renderBooksList(filtered);
+}
+
+window.filterByAlpha = function(letter) {
+  const filtered = (letter === 'all') ? books : books.filter(b => b.title.trim().toUpperCase().startsWith(letter));
+  renderBooksList(filtered);
+}
+
+function renderBooksList(data) {
+  const grid = document.getElementById('booksGrid');
+  if (!grid) return;
+
+  grid.innerHTML = data.map(b => {
+    const safeTitle = b.title.replace(/'/g, "\\'");
+    const formattedPrice = Utils.formatCurrency(b.price);
+    const safeCover = b.cover ? b.cover.replace(/'/g, "\\'") : '';
+    
+    return `
+    <div class="book-list-item js-reveal" data-reveal onclick="showBookDetails(${b.id})">
+      <div class="book-list-cover">
+        ${b.cover ? `<img src="${b.cover}" alt="${safeTitle}" style="max-width:100%; max-height:100%; object-fit:contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));">` : `<div style="font-family:'EB Garamond', serif; font-weight:700; text-align:center; padding:10px; font-size:12px;">${b.title}</div>`}
+      </div>
+      <div class="book-list-details">
+        <span class="book-cat-tag" style="background:var(--navy); color:var(--gold); font-size:9px; margin-bottom:10px;">${b.category}</span>
+        <h3>${b.title}</h3>
+        <div class="book-list-meta">
+          Auteur : <strong>${b.author || 'CERAP Éditions'}</strong><br>
+          Année de publication : ${b.year || '2023'}<br>
+          Thématique : <span style="color:var(--navy); font-weight:600;">${b.category}</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+          <div style="font-weight:800; color:var(--navy); font-size:1.2rem;">${formattedPrice} <small style="font-size:10px; font-weight:400;">XOF</small></div>
+          <div style="display:flex; gap:10px;">
+            <button class="btn-secondary" style="padding:8px 15px; font-size:11px;" onclick="event.stopPropagation(); showBookDetails(${b.id})">Détails</button>
+            <button class="btn-primary" style="padding:8px 15px; font-size:11px;" onclick="event.stopPropagation(); addToCart(${b.id}, '${safeTitle}', '${formattedPrice}', '${safeCover}')">Acheter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    `;
+  }).join('');
+  
+  if (data.length === 0) {
+    grid.innerHTML = '<div style="text-align:center; padding:50px; color:var(--warm-gray);">Aucun résultat trouvé pour votre recherche.</div>';
+  }
+
+  Utils.initScrollReveals('.book-list-item', true);
+}
+
+function renderRandomSelection() {
+  const el = document.getElementById('randomSelection');
+  if (!el || !books.length) return;
+
+  const shuffled = [...books].sort(() => 0.5 - Math.random());
+  const selected = shuffled.slice(0, 4);
+
+  el.innerHTML = selected.map(b => `
+    <div class="lib-mini-book" onclick="showBookDetails(${b.id})" style="cursor:pointer;">
+      <div class="lib-mini-cover" style="background: ${b.color || '#eee'}; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+         ${b.cover ? `<img src="${b.cover}" style="width:100%; height:100%; object-fit:cover;">` : `<span style="font-size:8px; text-align:center;">${b.title}</span>`}
+      </div>
+      <div class="lib-mini-info">
+        <h4>${b.title}</h4>
+        <p>Auteur: ${b.author || 'CERAP'}</p>
+        <span>XOF: ${Utils.formatCurrency(b.price)}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Update loadBooks to call list view if needed
+const originalLoadBooks = loadBooks;
+loadBooks = async function() {
+  await originalLoadBooks();
+  const booksGrid = document.getElementById('booksGrid');
+  // If we are in the lib-main-layout, switch to list view by default
+  if (booksGrid && booksGrid.closest('.lib-main-layout')) {
+    renderBooksList(books);
+    renderRandomSelection();
+  }
+}
+
 function removeFromCart(i) {
   cart.splice(i, 1);
   saveCart();
