@@ -2502,7 +2502,13 @@ footer {
 .section-navy .section-kicker { color: var(--gold-light); }
 .section-navy .section-subtitle { color: rgba(255,255,255,0.6); }
 
+
 /* ── ADVANCED LIBRAIRIE LAYOUT ── */
+:root {
+  --cerap-blue: #0055AA;
+  --cerap-blue-light: #eef4fb;
+}
+
 .lib-cat-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -2523,15 +2529,15 @@ footer {
 }
 
 .lib-cat-item:hover {
-  border-color: var(--gold);
-  background: var(--cream);
+  border-color: var(--cerap-blue);
+  background: var(--cerap-blue-light);
   transform: translateY(-2px);
 }
 
 .lib-cat-icon {
   font-size: 24px;
-  color: var(--navy);
-  background: rgba(0,0,0,0.03);
+  color: var(--cerap-blue);
+  background: rgba(0,85,170,0.05);
   width: 50px;
   height: 50px;
   display: flex;
@@ -2543,7 +2549,7 @@ footer {
 .lib-cat-info strong {
   display: block;
   font-size: 14px;
-  color: var(--navy);
+  color: var(--cerap-blue);
   font-weight: 700;
 }
 
@@ -2554,9 +2560,9 @@ footer {
 }
 
 .lib-search-bar {
-  background: #f8f9fa;
+  background: var(--cerap-blue-light);
   padding: 30px;
-  border: 1px solid rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,85,170,0.1);
   margin-bottom: 3rem;
   display: grid;
   grid-template-columns: 1fr auto;
@@ -2571,7 +2577,7 @@ footer {
   justify-content: center;
   margin-top: 15px;
   padding-top: 15px;
-  border-top: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(0,85,170,0.1);
   width: 100%;
 }
 
@@ -2583,14 +2589,14 @@ footer {
   justify-content: center;
   font-size: 12px;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--cerap-blue);
   text-decoration: none;
   border-radius: 2px;
   transition: all 0.2s;
 }
 
 .lib-alpha-btn:hover, .lib-alpha-btn.active {
-  background: var(--navy);
+  background: var(--cerap-blue);
   color: white;
 }
 
@@ -2608,7 +2614,7 @@ footer {
 }
 
 .lib-sidebar-header {
-  background: var(--navy);
+  background: var(--cerap-blue);
   color: white;
   padding: 15px 20px;
   display: flex;
@@ -2649,7 +2655,7 @@ footer {
   font-weight: 700;
   margin-bottom: 5px;
   line-height: 1.3;
-  color: #0088CC;
+  color: var(--cerap-blue);
 }
 
 .lib-mini-info p {
@@ -2677,8 +2683,8 @@ footer {
 }
 
 .book-list-item:hover {
-  border-color: var(--gold);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border-color: var(--cerap-blue);
+  box-shadow: 0 10px 25px rgba(0,85,170,0.05);
 }
 
 .book-list-cover {
@@ -2692,7 +2698,7 @@ footer {
 .book-list-details h3 {
   font-size: 1.4rem;
   margin-bottom: 0.8rem;
-  color: #0055AA;
+  color: var(--cerap-blue);
 }
 
 .book-list-meta {
@@ -2702,7 +2708,7 @@ footer {
 }
 
 .book-list-meta strong {
-  color: #0088CC;
+  color: var(--cerap-blue);
 }
 
 .lib-pagination {
@@ -2720,7 +2726,7 @@ footer {
   justify-content: center;
   border: 1px solid #ddd;
   background: white;
-  color: var(--navy);
+  color: var(--cerap-blue);
   font-weight: 700;
   font-size: 13px;
   cursor: pointer;
@@ -2728,9 +2734,9 @@ footer {
 }
 
 .page-btn:hover, .page-btn.active {
-  background: #0088CC;
+  background: var(--cerap-blue);
   color: white;
-  border-color: #0088CC;
+  border-color: var(--cerap-blue);
 }
 
 @media (max-width: 992px) {
