@@ -1,0 +1,144 @@
+import os
+
+def rewrite_revue_debats():
+    filepath = r"c:\Users\HP\Desktop\CERAP_UI\revue-debats.html"
+    content = """<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CERAP Éditions — Revue Débats</title>
+  <meta name="description" content="Revue Débats, la revue scientifique du CERAP. Analyses, recherches et réflexions sur les enjeux contemporains africains." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="./index.html">
+        <div class="nav-logo-mark"><img src="./assets/images/logo-uja.png" alt="Logo UJA"></div>
+        <div class="nav-logo-text">
+          <strong>CERAP Éditions</strong>
+          <span>Abidjan · Côte d'Ivoire</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="./index.html">Accueil</a></li>
+        <li><a href="./librairie.html">Librairie</a></li>
+        <li><a href="./ligne-editoriale.html">Ligne Éditoriale</a></li>
+        <li><a href="./revue-debats.html" class="active">Revue Débats</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li><a href="./librairie.html" class="nav-cta">Commander →</a></li>
+      </ul>
+      <button class="nav-menu-btn" data-js="mobile-menu-toggle" aria-label="Menu" aria-controls="mobileNav" aria-expanded="false" type="button">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="./index.html">Accueil</a>
+    <a href="./librairie.html">Librairie</a>
+    <a href="./ligne-editoriale.html">Ligne Éditoriale</a>
+    <a href="./revue-debats.html">Revue Débats</a>
+    <a href="./contact.html">Contact</a>
+  </div>
+
+  <section class="section-navy" style="padding: 100px 2rem 80px;">
+    <div class="section-inner" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center;">
+      <div>
+        <span class="section-kicker" style="color: var(--gold-light);">PUBLICATION SCIENTIFIQUE</span>
+        <h1 style="font-family: 'EB Garamond', serif; font-size: 3.5rem; color: white; line-height: 1.1; margin-bottom: 1.5rem;">Revue <em>Débats</em> — Courrier d'Afrique</h1>
+        <p style="font-size: 1.1rem; opacity: 0.8; line-height: 1.6; margin-bottom: 2.5rem; max-width: 600px;">
+          Depuis 2003, la revue Débats offre un espace de réflexion et de dialogue sur les grandes questions socio-politiques, économiques et culturelles qui traversent l'Afrique contemporaine.
+        </p>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#archives" class="btn-primary" style="background: var(--gold); border: none;">Consulter les numéros →</a>
+          <a href="./contact.html" class="btn-secondary" style="border-color: rgba(255,255,255,0.3); color: white;">S'abonner</a>
+        </div>
+      </div>
+      <div style="position: relative;">
+        <div style="background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1);">
+          <h4 style="color: var(--gold-light); margin-bottom: 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em;">Dernier numéro</h4>
+          <h3 style="font-family: 'EB Garamond', serif; font-size: 1.5rem; color: white; margin-bottom: 15px;">Défis de la Gouvernance en Afrique de l'Ouest</h3>
+          <p style="font-size: 13px; opacity: 0.7; margin-bottom: 20px;">Numéro 154 — Mars 2024. Dossier spécial sur les transitions démocratiques et le rôle de la société civile.</p>
+          <a href="./librairie.html" style="color: var(--gold-light); text-decoration: none; font-weight: 700; font-size: 13px;">Acheter ce numéro →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-white js-reveal" data-reveal>
+    <div class="section-inner">
+      <div class="section-header" style="margin-bottom: 4rem;">
+        <span class="section-kicker">À PROPOS</span>
+        <h2 class="section-title">Une revue de référence</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+        <div style="color: var(--text); line-height: 1.8;">
+          <p style="margin-bottom: 1.5rem;"><strong>Débats — Courrier d'Afrique de l'Ouest</strong> est une revue trimestrielle éditée par le CERAP. Elle rassemble des contributions d'universitaires, de chercheurs et de praticiens pour éclairer les enjeux du continent.</p>
+          <p>Nos thématiques de prédilection incluent la gouvernance, l'éducation, la justice sociale, le développement durable, le dialogue interreligieux et la culture.</p>
+        </div>
+        <div class="collections-grid" style="grid-template-columns: 1fr; gap: 1.5rem;">
+          <div class="collection-card" style="padding: 24px; display: flex; gap: 20px; text-align: left; align-items: center;">
+            <div style="font-size: 2rem;">📈</div>
+            <div>
+              <h4 style="margin-bottom: 5px;">Rigueur Scientifique</h4>
+              <p style="font-size: 12px; margin: 0;">Articles soumis à évaluation.</p>
+            </div>
+          </div>
+          <div class="collection-card" style="padding: 24px; display: flex; gap: 20px; text-align: left; align-items: center;">
+            <div style="font-size: 2rem;">💬</div>
+            <div>
+              <h4 style="margin-bottom: 5px;">Dialogue & Paix</h4>
+              <p style="font-size: 12px; margin: 0;">Espace de débat constructif.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <img src="./assets/images/logo-uja.png" alt="Logo UJA">
+            <strong>CERAP Éditions</strong>
+          </div>
+          <p>Maison d'édition universitaire de l'Université Jésuite d'Afrique.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="./index.html">Accueil</a></li>
+            <li><a href="./librairie.html">Librairie</a></li>
+            <li><a href="./ligne-editoriale.html">Ligne Éditoriale</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>Cocody, Abidjan, Côte d'Ivoire</li>
+            <li>editions@cerap-inades.org</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 CERAP Éditions. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/script.js"></script>
+</body>
+</html>"""
+    with open(filepath, 'w', encoding='utf-8') as f:
+        f.write(content)
+    print(f"Rewrote {filepath}")
+
+rewrite_revue_debats()

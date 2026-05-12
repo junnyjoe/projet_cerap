@@ -1,367 +1,135 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CERAP Éditions — Revue Débats</title>
-  <meta name="description" content="Revue Débats, la revue scientifique du CERAP. Analyses, recherches et réflexions sur les enjeux contemporains africains." />
-  <meta name="keywords" content="Revue Débats, Revue scientifique Afrique, CERAP, Sciences sociales Côte d'Ivoire, Publication académique" />
-  
-  <!-- OpenGraph -->
-  <meta property="og:title" content="Revue Débats — Penser l'Afrique contemporaine" />
-  <meta property="og:description" content="Découvrez les analyses et recherches de la revue Débats du CERAP." />
-  <meta property="og:image" content="./assets/images/logo-uja.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
-<body>
-  <div class="site-bg">
-    <div class="bg-blob bg-blob-1"></div>
-    <div class="bg-blob bg-blob-2"></div>
-  </div>
-
-  <nav>
-    <div class="nav-inner">
-      <a class="nav-logo" href="./index.html">
-        <div class="nav-logo-mark"><img src="./assets/images/logo-uja.png" alt="Logo UJA"></div>
-        <div class="nav-logo-text">
-          <strong>CERAP Éditions</strong>
-          <span>Abidjan · Côte d'Ivoire</span>
-        </div>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="./index.html">Accueil</a></li>
-        <li><a href="./librairie.html">Librairie</a></li>
-        <li><a href="./ligne-editoriale.html">Ligne Éditoriale</a></li>
-        <li><a href="./revue-debats.html" class="active">Revue Débats</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-        <li><a href="./librairie.html" class="nav-cta">Commander →</a></li>
-      </ul>
-
-      <button class="nav-menu-btn" data-js="mobile-menu-toggle" aria-label="Menu" aria-controls="mobileNav" aria-expanded="false" type="button">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="6" x2="19" y2="6"/>
-          <line x1="3" y1="11" x2="19" y2="11"/>
-          <line x1="3" y1="16" x2="19" y2="16"/>
-        </svg>
-      </button>
-    </div>
-  </nav>
-
-  <div class="mobile-nav" id="mobileNav" role="menu" aria-label="Navigation mobile">
-    <a href="./index.html">Accueil</a>
-    <a href="./librairie.html">Librairie</a>
-    <a href="./ligne-editoriale.html">Ligne Éditoriale</a>
-    <a href="./revue-debats.html">Revue Débats</a>
-    <a href="./contact.html">Contact</a>
-  </div>
-
-  <!-- HERO -->
-  <section class="hero" style="min-height:auto; padding: 80px 2rem 60px;">
-    <div class="hero-inner" style="grid-template-columns:1fr;">
-      <div>
-        <div class="hero-label hero-fade-up hero-fade-up-1">
-          <span></span> Publication scientifique
-        </div>
-        <h1 class="hero-fade-up hero-fade-up-2">
-          <span class="hero-title-main">Revue</span> <em>Débats</em>
-        </h1>
-        <p class="hero-fade-up hero-fade-up-3">
-          La revue scientifique du CERAP — Courrier d'Afrique de l'Ouest. 
-          Analyses approfondies, recherches et réflexions sur les grands enjeux contemporains du continent africain.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRÉSENTATION -->
-  <section class="editorial-section js-reveal" data-reveal>
-    <div class="section-inner">
-      <div class="section-header" style="margin-bottom:2rem">
-        <span class="section-kicker">À propos</span>
-        <h2 class="section-title">Une revue de référence</h2>
-      </div>
-
-      <div class="editorial-grid">
-        <div class="editorial-text">
-          <p>
-            <strong>Débats — Courrier d'Afrique de l'Ouest</strong> est une revue trimestrielle éditée par le CERAP. 
-            Depuis sa création, elle offre un espace de réflexion et de dialogue sur les grandes questions 
-            qui traversent l'Afrique contemporaine : gouvernance, éducation, justice sociale, développement durable, 
-            dialogue interreligieux et culture.
-          </p>
-          <p>
-            Chaque numéro rassemble des contributions d'universitaires, de chercheurs et de praticiens 
-            engagés dans la transformation positive du continent. La revue se veut un pont entre le monde 
-            académique et la société civile.
-          </p>
-
-          <div class="editorial-quote">
-            <p>« Penser l'Afrique, par l'Afrique, pour l'Afrique — avec rigueur et espérance. »</p>
-          </div>
-        </div>
-
-        <div>
-          <div class="revue-cover-display" style="max-width:320px; margin: 0 auto;">
-            <div class="revue-cover" style="background: linear-gradient(145deg, var(--deep) 0%, #0a2d5c 100%); padding: 40px 28px; border-radius: 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height: 400px; position:relative;">
-              <div class="revue-cover-header" style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold-light); margin-bottom:12px;">CERAP · Université Jésuite d'Abidjan</div>
-              <div class="revue-cover-name" style="font-family:'EB Garamond',serif; font-size:2.2rem; font-weight:800; color:white; text-align:center; margin-bottom:8px;">Débats</div>
-              <div class="revue-cover-sub" style="font-size:12px; color:rgba(255,255,255,0.6); text-align:center; margin-bottom:24px;">Courrier d'Afrique de l'Ouest</div>
-              <div class="revue-cover-edition" style="font-size:12px; color:var(--gold-light); font-weight:700; text-align:center; border-top:1px solid rgba(212,136,6,0.4); padding-top:12px; width:100%;">N° 42 · Janvier 2026</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- THÉMATIQUES -->
-  <section class="js-reveal" data-reveal style="background: var(--light-gray);">
-    <div class="section-inner">
-      <div class="section-header" style="margin-bottom:2rem">
-        <span class="section-kicker">Domaines</span>
-        <h2 class="section-title">Thématiques couvertes</h2>
-        <p class="section-subtitle">La revue couvre un large spectre de sujets essentiels au développement du continent</p>
-      </div>
-
-      <div class="editorial-categories">
-        <div class="editorial-cat-card">
-          <div class="cat-color-dot" style="background:var(--deep)"></div>
-          <h4>Gouvernance & Politique</h4>
-          <span>Démocratie, institutions, droit constitutionnel</span>
-        </div>
-        <div class="editorial-cat-card">
-          <div class="cat-color-dot" style="background:var(--gold)"></div>
-          <h4>Éducation & Jeunesse</h4>
-          <span>Systèmes éducatifs, formation, insertion</span>
-        </div>
-        <div class="editorial-cat-card">
-          <div class="cat-color-dot" style="background:var(--terracotta)"></div>
-          <h4>Justice & Paix</h4>
-          <span>Réconciliation, droits humains, dialogue</span>
-        </div>
-        <div class="editorial-cat-card">
-          <div class="cat-color-dot" style="background:var(--green)"></div>
-          <h4>Développement Durable</h4>
-          <span>Environnement, économie sociale, innovation</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABONNEMENT -->
-  <section class="js-reveal" data-reveal>
-    <div class="section-inner">
-      <div class="section-header" style="margin-bottom:2rem">
-        <span class="section-kicker">S'abonner</span>
-        <h2 class="section-title">Recevez chaque numéro</h2>
-        <p class="section-subtitle">Choisissez la formule qui vous convient</p>
-      </div>
-
-      <div class="revue-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:1px; background:var(--border-dark); border:1px solid var(--border-dark); max-width:500px; margin:0 auto;">
-        <div class="revue-sub-option selected">
-          <span class="price-num">15 000</span>
-          <span class="price-label">F CFA</span>
-          <span class="price-period">Par numéro</span>
-        </div>
-        <div class="revue-sub-option">
-          <span class="price-num">50 000</span>
-          <span class="price-label">F CFA</span>
-          <span class="price-period">Abonnement annuel</span>
-        </div>
-      </div>
-
-      <div style="text-align:center; margin-top:2rem;">
-        <a href="./contact.html" class="btn-primary" style="display:inline-flex;">
-          Demander un abonnement
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M2 7h10M8 3l4 4-4 4"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div class="nav-logo-mark" style="width:36px;height:36px;font-size:18px;background:var(--gold);color:var(--deep);display:flex;align-items:center;justify-content:center;font-family:'EB Garamond',serif;font-weight:700;">C</div>
-            <span style="font-family:'EB Garamond',serif;font-size:18px;font-weight:700;color:var(--white);">CERAP Éditions</span>
-          </div>
-          <p>Centre de Recherche et d'Action pour la Paix — Université Jésuite d'Abidjan. Promouvoir la pensée africaine depuis 2003.</p>
-        </div>
-
-        <div class="footer-col">
-          <h5>Navigation</h5>
-          <ul class="footer-links">
-            <li><a href="./librairie.html">Librairie</a></li>
-            <li><a href="./ligne-editoriale.html">Ligne éditoriale</a></li>
-            <li><a href="./revue-debats.html">Revue Débats</a></li>
-            <li><a href="./contact.html">Nous contacter</a></li>
-            <li><a href="./login.html" style="opacity:0.6;font-size:11px;margin-top:10px;display:block;">Espace Administration</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>CERAP</h5>
-          <ul class="footer-links">
-            <li><a href="https://cerap-inades.org/index.php/historique-et-presentation" target="_blank" rel="noreferrer">Présentation</a></li>
-            <li><a href="https://cerap-inades.org/index.php/les-jesuites-o" target="_blank" rel="noreferrer">Les Jésuites</a></li>
-            <li><a href="https://cerap-inades.org/index.php/programmes/universitaires/licence" target="_blank" rel="noreferrer">Licences</a></li>
-            <li><a href="https://cerap-inades.org/index.php/programmes/universitaires/master" target="_blank" rel="noreferrer">Masters</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Contact</h5>
-          <ul class="footer-links">
-            <li><a href="tel:+2252722404720">(+225) 27 22 40 47 20</a></li>
-            <li><a href="mailto:editions@cerap-inades.org">editions@cerap-inades.org</a></li>
-            <li><a href="https://www.facebook.com/CERAPInades" target="_blank" rel="noreferrer">Facebook</a></li>
-            <li><a href="https://www.twitter.com/cerapabidjan" target="_blank" rel="noreferrer">Twitter / X</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>© 2026 CERAP Éditions — Tous droits réservés · <a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></p>
-        <p class="u-footer-small">15, avenue Jean Mermoz, Cocody · Abidjan, Côte d'Ivoire</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- CART FLOAT -->
-  <div class="cart-float" aria-live="polite">
-    <button
-      class="cart-btn"
-      onclick="toggleCart()"
-      aria-label="Panier"
-      aria-haspopup="dialog"
-      aria-controls="cartPanel"
-      aria-expanded="false"
-      type="button"
-    >
-      🛒
-      <span class="cart-count" id="cartCount">0</span>
-    </button>
-  </div>
-
-  <!-- CART OVERLAY -->
-  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart(false)"></div>
-
-  <!-- CART PANEL -->
-  <div class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="cart-panel-header">
-      <h4>Mon panier <span class="cart-header-count" id="cartHeaderCount">0 article</span></h4>
-      <button class="cart-close" data-js="cart-close" type="button" aria-label="Fermer le panier" onclick="toggleCart(false)">✕</button>
-    </div>
-    <div class="cart-items" id="cartItems">
-      <div class="cart-empty">
-        <span class="cart-empty-icon">📚</span>
-        <div class="cart-empty-text">Votre panier est vide</div>
-        <div class="cart-empty-sub">Parcourez notre catalogue pour ajouter des ouvrages</div>
-      </div>
-    </div>
-    <div class="cart-footer" id="cartFooter" style="display:none">
-      <div class="cart-total">
-        <span class="cart-total-label">Total</span>
-        <span class="cart-total-amount" id="cartTotal">0 F CFA</span>
-      </div>
-      <button class="cart-checkout-btn" onclick="checkout()" type="button">Procéder au paiement →</button>
-      <div class="cart-secure">🔒 Paiement sécurisé — Orange Money, MTN, Carte</div>
-    </div>
-  </div>
-
-  <!-- ══ CHECKOUT MODAL ══ -->
-  <div class="modal-overlay" id="checkoutModal">
-    <div class="modal payment-modal">
-      <div class="modal-header">
-        <h3>Finaliser ma commande</h3>
-        <button class="modal-close" onclick="closeModal('checkoutModal')">✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="payment-summary">
-          <span>Montant à régler :</span>
-          <strong id="checkoutTotal">0 F CFA</strong>
-        </div>
-
-        <div class="admin-label" style="margin-top:20px">Choisir un mode de paiement</div>
-        <div class="payment-methods">
-          <div class="pay-method" onclick="selectPayMethod('orange', this)">
-            <div class="pay-logo orange">OM</div>
-            <span>Orange Money</span>
-          </div>
-          <div class="pay-method" onclick="selectPayMethod('mtn', this)">
-            <div class="pay-logo mtn">MTN</div>
-            <span>MTN MoMo</span>
-          </div>
-          <div class="pay-method" onclick="selectPayMethod('wave', this)">
-            <div class="pay-logo wave">Wave</div>
-            <span>Wave</span>
-          </div>
-          <div class="pay-method" onclick="selectPayMethod('card', this)">
-            <div class="pay-logo card">💳</div>
-            <span>Carte Bancaire</span>
-          </div>
-        </div>
-
-        <div id="paymentFields" style="margin-top:24px; display:none;">
-          <div id="phoneField">
-            <label class="admin-label">Numéro de téléphone</label>
-            <input type="tel" class="admin-input" placeholder="07 00 00 00 00" />
-          </div>
-          <div id="cardFields" style="display:none;">
-            <label class="admin-label">Numéro de carte</label>
-            <input type="text" class="admin-input" placeholder="**** **** **** ****" style="margin-bottom:12px" />
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px">
-              <div>
-                <label class="admin-label">Expiration</label>
-                <input type="text" class="admin-input" placeholder="MM/YY" />
-              </div>
-              <div>
-                <label class="admin-label">CVC</label>
-                <input type="text" class="admin-input" placeholder="***" />
-              </div>
-            </div>
-          </div>
-          <button class="btn-primary" style="width:100%; margin-top:20px; justify-content:center" onclick="confirmPayment()">Confirmer le paiement</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ BOOK DETAILS MODAL ══ -->
-  <div class="modal-overlay" id="bookDetailsModal">
-    <div class="modal">
-      <div class="modal-header">
-        <h3>Détails de l'ouvrage</h3>
-        <button class="modal-close" onclick="closeModal('bookDetailsModal')">✕</button>
-      </div>
-      <div class="modal-body" id="bookDetailsBody">
-        <!-- Dynamic content -->
-      </div>
-      <div class="modal-footer" style="padding:16px 24px; border-top:1px solid var(--border); display:flex; gap:12px">
-        <button class="btn-primary" id="modalAddToCartBtn" style="flex:1; justify-content:center">Ajouter au panier</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- JS -->
-  <!-- CinetPay SDK -->
-  <script src="https://checkout.cinetpay.com/sdk/v1/cinetpay.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="./assets/js/supabase-config.js"></script>
-  <script src="./assets/js/utils.js"></script>
-  <script src="./assets/js/script.js"></script>
-</body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CERAP Éditions — Revue Débats</title>
+  <meta name="description" content="Revue Débats, la revue scientifique du CERAP. Analyses, recherches et réflexions sur les enjeux contemporains africains." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="./index.html">
+        <div class="nav-logo-mark"><img src="./assets/images/logo-uja.png" alt="Logo UJA"></div>
+        <div class="nav-logo-text">
+          <strong>CERAP Éditions</strong>
+          <span>Abidjan · Côte d'Ivoire</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="./index.html">Accueil</a></li>
+        <li><a href="./librairie.html">Librairie</a></li>
+        <li><a href="./ligne-editoriale.html">Ligne Éditoriale</a></li>
+        <li><a href="./revue-debats.html" class="active">Revue Débats</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li><a href="./librairie.html" class="nav-cta">Commander →</a></li>
+      </ul>
+      <button class="nav-menu-btn" data-js="mobile-menu-toggle" aria-label="Menu" aria-controls="mobileNav" aria-expanded="false" type="button">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="./index.html">Accueil</a>
+    <a href="./librairie.html">Librairie</a>
+    <a href="./ligne-editoriale.html">Ligne Éditoriale</a>
+    <a href="./revue-debats.html">Revue Débats</a>
+    <a href="./contact.html">Contact</a>
+  </div>
+
+  <section class="section-navy" style="padding: 100px 2rem 80px;">
+    <div class="section-inner" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center;">
+      <div>
+        <span class="section-kicker" style="color: var(--gold-light);">PUBLICATION SCIENTIFIQUE</span>
+        <h1 style="font-family: 'EB Garamond', serif; font-size: 3.5rem; color: white; line-height: 1.1; margin-bottom: 1.5rem;">Revue <em>Débats</em> — Courrier d'Afrique</h1>
+        <p style="font-size: 1.1rem; opacity: 0.8; line-height: 1.6; margin-bottom: 2.5rem; max-width: 600px;">
+          Depuis 2003, la revue Débats offre un espace de réflexion et de dialogue sur les grandes questions socio-politiques, économiques et culturelles qui traversent l'Afrique contemporaine.
+        </p>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#archives" class="btn-primary" style="background: var(--gold); border: none;">Consulter les numéros →</a>
+          <a href="./contact.html" class="btn-secondary" style="border-color: rgba(255,255,255,0.3); color: white;">S'abonner</a>
+        </div>
+      </div>
+      <div style="position: relative;">
+        <div style="background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1);">
+          <h4 style="color: var(--gold-light); margin-bottom: 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em;">Dernier numéro</h4>
+          <h3 style="font-family: 'EB Garamond', serif; font-size: 1.5rem; color: white; margin-bottom: 15px;">Défis de la Gouvernance en Afrique de l'Ouest</h3>
+          <p style="font-size: 13px; opacity: 0.7; margin-bottom: 20px;">Numéro 154 — Mars 2024. Dossier spécial sur les transitions démocratiques et le rôle de la société civile.</p>
+          <a href="./librairie.html" style="color: var(--gold-light); text-decoration: none; font-weight: 700; font-size: 13px;">Acheter ce numéro →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-white js-reveal" data-reveal>
+    <div class="section-inner">
+      <div class="section-header" style="margin-bottom: 4rem;">
+        <span class="section-kicker">À PROPOS</span>
+        <h2 class="section-title">Une revue de référence</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+        <div style="color: var(--text); line-height: 1.8;">
+          <p style="margin-bottom: 1.5rem;"><strong>Débats — Courrier d'Afrique de l'Ouest</strong> est une revue trimestrielle éditée par le CERAP. Elle rassemble des contributions d'universitaires, de chercheurs et de praticiens pour éclairer les enjeux du continent.</p>
+          <p>Nos thématiques de prédilection incluent la gouvernance, l'éducation, la justice sociale, le développement durable, le dialogue interreligieux et la culture.</p>
+        </div>
+        <div class="collections-grid" style="grid-template-columns: 1fr; gap: 1.5rem;">
+          <div class="collection-card" style="padding: 24px; display: flex; gap: 20px; text-align: left; align-items: center;">
+            <div style="font-size: 2rem;">📈</div>
+            <div>
+              <h4 style="margin-bottom: 5px;">Rigueur Scientifique</h4>
+              <p style="font-size: 12px; margin: 0;">Articles soumis à évaluation.</p>
+            </div>
+          </div>
+          <div class="collection-card" style="padding: 24px; display: flex; gap: 20px; text-align: left; align-items: center;">
+            <div style="font-size: 2rem;">💬</div>
+            <div>
+              <h4 style="margin-bottom: 5px;">Dialogue & Paix</h4>
+              <p style="font-size: 12px; margin: 0;">Espace de débat constructif.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <img src="./assets/images/logo-uja.png" alt="Logo UJA">
+            <strong>CERAP Éditions</strong>
+          </div>
+          <p>Maison d'édition universitaire de l'Université Jésuite d'Afrique.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="./index.html">Accueil</a></li>
+            <li><a href="./librairie.html">Librairie</a></li>
+            <li><a href="./ligne-editoriale.html">Ligne Éditoriale</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>Cocody, Abidjan, Côte d'Ivoire</li>
+            <li>editions@cerap-inades.org</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 CERAP Éditions. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/script.js"></script>
+</body>
 </html>
-

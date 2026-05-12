@@ -1,512 +1,227 @@
-﻿<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CERAP Ã‰ditions â€” Ligne Ã©ditoriale</title>
-  <meta name="description" content="DÃ©couvrez la ligne Ã©ditoriale des Ã‰ditions du CERAP : promouvoir les auteurs africains Ã  travers des ouvrages universitaires de rÃ©fÃ©rence." />
-  <meta name="keywords" content="Ligne Ã©ditoriale CERAP, Publication universitaire Afrique, Auteurs ivoiriens, Manuscrits, Recherche acadÃ©mique" />
-  
-  <!-- OpenGraph -->
-  <meta property="og:title" content="Ligne Ã‰ditoriale â€” CERAP Ã‰ditions" />
-  <meta property="og:description" content="DÃ©couvrez nos critÃ¨res de publication et notre mission acadÃ©mique." />
-  <meta property="og:image" content="./assets/images/logo-uja.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
-<body>
-  <div class="site-bg">
-    <div class="bg-blob bg-blob-1"></div>
-    <div class="bg-blob bg-blob-2"></div>
-  </div>
-  <nav>
-    <div class="nav-inner">
-      <a class="nav-logo" href="./index.html">
-        <div class="nav-logo-mark"><img src="./assets/images/logo-uja.png" alt="Logo UJA"></div>
-        <div class="nav-logo-text">
-          <strong>CERAP Ã‰ditions</strong>
-          <span>Abidjan Â· CÃ´te d'Ivoire</span>
-        </div>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="./index.html">Accueil</a></li>
-        <li><a href="./librairie.html">Librairie</a></li>
-        <li><a href="./ligne-editoriale.html" class="active">Ligne Ã‰ditoriale</a></li>
-        <li><a href="./conditions-publication.html">Conditions de Publication</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-        <li><a href="./librairie.html" class="nav-cta">Commander â†’</a></li>
-      </ul>
-
-      <button class="nav-menu-btn" data-js="mobile-menu-toggle" aria-label="Menu" aria-controls="mobileNav" aria-expanded="false" type="button">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="6" x2="19" y2="6"/>
-          <line x1="3" y1="11" x2="19" y2="11"/>
-          <line x1="3" y1="16" x2="19" y2="16"/>
-        </svg>
-      </button>
-    </div>
-  </nav>
-
-  <div class="mobile-nav" id="mobileNav" role="menu" aria-label="Navigation mobile">
-    <a href="./index.html">Accueil</a>
-    <a href="./librairie.html">Librairie</a>
-    <a href="./ligne-editoriale.html">Ligne Ã‰ditoriale</a>
-    <a href="./conditions-publication.html">Conditions de Publication</a>
-    <a href="./contact.html">Contact</a>
-  </div>
-
-  <section class="editorial-hero" style="padding: 60px 2rem 40px; background: var(--white);">
-    <div class="section-inner">
-      <div class="editorial-main-grid" style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start;">
-        
-        <!-- Colonne Gauche: Texte & Mission -->
-        <div class="editorial-left">
-          <span class="section-kicker" style="color: var(--gold); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 11px;">Ã€ PROPOS DE NOUS</span>
-          <h1 class="section-title" style="font-family: 'EB Garamond', serif; font-size: 3rem; color: var(--deep); margin: 0.5rem 0 1rem;">Ligne Ã©ditoriale</h1>
-          <div style="width: 40px; height: 3px; background: var(--gold); margin-bottom: 2.5rem;"></div>
-
-          <div class="mission-quote" style="background: #fdfaf5; border-radius: 16px; padding: 32px; margin-bottom: 2rem; position: relative; border: 1px solid rgba(212,136,6,0.1);">
-            <div style="color: var(--gold); font-size: 2.5rem; font-family: 'EB Garamond', serif; position: absolute; top: 20px; left: 20px; opacity: 0.8; line-height: 1;">â€œ</div>
-            <p style="font-family: 'EB Garamond', serif; font-style: italic; font-size: 1.25rem; color: var(--deep); line-height: 1.6; margin: 0; padding-left: 40px;">
-              Contribuer Ã  la promotion d'auteurs africains en gÃ©nÃ©ral et ouest-africains en particulier, Ã  travers des ouvrages universitaires, scientifiques et de haute culture.
-            </p>
-          </div>
-
-          <div class="mission-text" style="color: var(--deep); line-height: 1.7; font-size: 15px;">
-            <p style="margin-bottom: 1.5rem;">Depuis 2003, les Ã‰ditions du CERAP (EDICERAP) s'inscrivent dans une dÃ©marche d'excellence acadÃ©mique et de promotion culturelle. Notre mission est de nourrir le dÃ©bat d'idÃ©es et de valoriser les recherches qui faÃ§onnent l'Afrique de demain.</p>
-            <p style="margin-bottom: 2.5rem;">Nos publications nourrissent la rÃ©flexion sur la sociÃ©tÃ© et son histoire, la vie politique et religieuse, le droit et la vie spirituelle.</p>
-          </div>
-
-          <div class="hero-actions" style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-            <a href="./contact.html" class="btn-primary" style="padding: 14px 28px; background: var(--gold); color: var(--deep); border: none;">SOUMETTRE UN MANUSCRIT â†’</a>
-            <a href="#collections" class="btn-book-outline" style="padding: 14px 28px; border: 1px solid var(--border-dark); border-radius: 12px; color: var(--deep); text-decoration: none;">DÃ©couvrir nos collections</a>
-          </div>
-        </div>
-
-        <!-- Colonne Droite: Domaines & Grid -->
-        <div class="editorial-right">
-          <h2 style="font-family: 'EB Garamond', serif; font-size: 2rem; color: var(--deep); margin-bottom: 0.5rem;">Nos domaines de publication</h2>
-          <div style="width: 30px; height: 3px; background: var(--gold); margin-bottom: 2rem;"></div>
-
-          <div class="domains-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 2rem;">
-            <!-- Histoire -->
-            <div class="domain-card" style="background: white; border: 1px solid #f0f0f0; border-radius: 20px; padding: 24px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
-              <div style="background: #5D4037; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.2rem;">ðŸ›ï¸</div>
-              <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--deep);">Histoire</h4>
-              <p style="font-size: 11px; color: #777; line-height: 1.4;">Recherches historiques africaines</p>
-            </div>
-            <!-- Droit -->
-            <div class="domain-card" style="background: white; border: 1px solid #f0f0f0; border-radius: 20px; padding: 24px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
-              <div style="background: #0D47A1; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.2rem;">âš–ï¸</div>
-              <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--deep);">Droit</h4>
-              <p style="font-size: 11px; color: #777; line-height: 1.4;">Droit constitutionnel & sciences juridiques</p>
-            </div>
-            <!-- Dialogue -->
-            <div class="domain-card" style="background: white; border: 1px solid #f0f0f0; border-radius: 20px; padding: 24px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
-              <div style="background: #2E7D32; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.2rem;">ðŸ•Šï¸</div>
-              <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--deep);">Dialogue & Paix</h4>
-              <p style="font-size: 11px; color: #777; line-height: 1.4;">Conflits, rÃ©conciliation, mÃ©diation</p>
-            </div>
-            <!-- LittÃ©rature -->
-            <div class="domain-card" style="background: white; border: 1px solid #f0f0f0; border-radius: 20px; padding: 24px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
-              <div style="background: #6A1B9A; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.2rem;">ðŸ“–</div>
-              <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--deep);">LittÃ©rature</h4>
-              <p style="font-size: 11px; color: #777; line-height: 1.4;">Romans, essais, poÃ©sie africaine</p>
-            </div>
-            <!-- SpiritualitÃ© -->
-            <div class="domain-card" style="background: white; border: 1px solid #f0f0f0; border-radius: 20px; padding: 24px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
-              <div style="background: #B71C1C; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.2rem;">âœï¸</div>
-              <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--deep);">SpiritualitÃ©</h4>
-              <p style="font-size: 11px; color: #777; line-height: 1.4;">ThÃ©ologie, vie religieuse, jÃ©suites</p>
-            </div>
-            <!-- Sciences Sociales -->
-            <div class="domain-card" style="background: white; border: 1px solid #f0f0f0; border-radius: 20px; padding: 24px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
-              <div style="background: #E65100; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.2rem;">ðŸ‘¥</div>
-              <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--deep);">Sciences sociales</h4>
-              <p style="font-size: 11px; color: #777; line-height: 1.4;">Sociologie, anthropologie, Ã©conomie</p>
-            </div>
-          </div>
-
-          <div class="cta-banner" style="background: #fdfaf5; border: 1px solid rgba(212,136,6,0.1); border-radius: 20px; padding: 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
-            <div>
-              <h4 style="font-size: 16px; color: var(--deep); margin-bottom: 6px;">Conditions de publication</h4>
-              <p style="font-size: 12px; color: #777; margin: 0;">Vous avez un manuscrit ? DÃ©couvrez nos critÃ¨res de sÃ©lection et notre processus Ã©ditorial.</p>
-            </div>
-            <a href="./conditions-publication.html" class="btn-book-outline" style="font-size: 11px; padding: 8px 16px; background: #fdf3e7; border: none; font-weight: 700; color: var(--deep); text-transform: uppercase; letter-spacing: 0.05em; border-radius: 8px; text-decoration: none; white-space: nowrap;">En savoir plus â†’</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="random-selection-section js-reveal" data-reveal style="background: var(--white); padding: 0 2rem 10px;">
-    <div class="section-inner">
-      <div class="random-selection-header" style="background: var(--deep); color: var(--white); padding: 15px 25px; border-radius: 8px 8px 0 0; display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
-        <h3 style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 1.25rem; font-weight: 400; margin: 0;">SÃ©lection AlÃ©atoire</h3>
-      </div>
-      
-      <div id="randomBooksList" class="random-books-list">
-        <!-- Random books will be injected here -->
-      </div>
-    </div>
-  </section>
-
-  <section class="engagements-section" style="background: var(--bg-soft); padding: 5px 2rem 15px;">
-    <div class="section-inner">
-      <div class="section-header" style="margin-bottom: 0.5rem;">
-        <span class="section-kicker">Nos Engagements</span>
-        <h2 class="section-title">Les piliers de notre maison</h2>
-      </div>
-      <div class="engagements-grid">
-        <div class="engagement-card">
-          <div class="eng-icon">ðŸŽ“</div>
-          <h3>Excellence AcadÃ©mique</h3>
-          <p>Tous nos ouvrages universitaires sont soumis Ã  une double Ã©valuation par les pairs pour garantir une rigueur scientifique irrÃ©prochable.</p>
-        </div>
-        <div class="engagement-card">
-          <div class="eng-icon">ðŸŒ</div>
-          <h3>Promotion Continentale</h3>
-          <p>Nous privilÃ©gions les auteurs africains et ouest-africains afin de donner une visibilitÃ© internationale Ã  la recherche locale.</p>
-        </div>
-        <div class="engagement-card">
-          <div class="eng-icon">ðŸ’¡</div>
-          <h3>Haute Culture</h3>
-          <p>Au-delÃ  du monde acadÃ©mique, nous publions des essais et des Å“uvres littÃ©raires qui nourrissent la vie de l'esprit et du citoyen.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="collections-section js-reveal" data-reveal id="collections">
-    <div class="section-inner">
-      <div class="section-header">
-        <span class="section-kicker">Catalogue</span>
-        <h2 class="section-title">Domaines & Collections</h2>
-        <p class="section-subtitle">Une diversitÃ© thÃ©matique au service de la connaissance.</p>
-      </div>
-      
-      <div class="editorial-categories">
-        <div class="editorial-cat-card">
-          <div class="cat-header">
-            <span class="cat-icon" style="background:#0a2d5c">H</span>
-            <h4>Histoire & SociÃ©tÃ©</h4>
-          </div>
-          <p>Comprendre le passÃ© pour Ã©clairer les enjeux contemporains de l'Afrique.</p>
-          <ul class="cat-list">
-            <li>MÃ©moires nationales</li>
-            <li>Ã‰tudes coloniales</li>
-            <li>Sociologie urbaine</li>
-          </ul>
-        </div>
-
-        <div class="editorial-cat-card">
-          <div class="cat-header">
-            <span class="cat-icon" style="background:#003366">D</span>
-            <h4>Droit & Institutions</h4>
-          </div>
-          <p>Ouvrages de rÃ©fÃ©rence sur le droit OHADA, constitutionnel et administratif.</p>
-          <ul class="cat-list">
-            <li>Codes et Manuels</li>
-            <li>Pratiques juridiques</li>
-            <li>Politiques publiques</li>
-          </ul>
-        </div>
-
-        <div class="editorial-cat-card">
-          <div class="cat-header">
-            <span class="cat-icon" style="background:#1a4a5c">P</span>
-            <h4>Paix & Dialogue</h4>
-          </div>
-          <p>Recherches sur la rÃ©solution des conflits et la mÃ©diation sociale.</p>
-          <ul class="cat-list">
-            <li>Justice transitionnelle</li>
-            <li>Gestion des crises</li>
-            <li>Droits de l'homme</li>
-          </ul>
-        </div>
-
-        <div class="editorial-cat-card">
-          <div class="cat-header">
-            <span class="cat-icon" style="background:#1a2d5c">L</span>
-            <h4>LittÃ©rature & Arts</h4>
-          </div>
-          <p>Valorisation de la crÃ©ativitÃ© littÃ©raire et des expressions artistiques.</p>
-          <ul class="cat-list">
-            <li>Romans & Nouvelles</li>
-            <li>PoÃ©sie engagÃ©e</li>
-            <li>Critique littÃ©raire</li>
-          </ul>
-        </div>
-
-        <div class="editorial-cat-card">
-          <div class="cat-header">
-            <span class="cat-icon" style="background:#0d2347">S</span>
-            <h4>SpiritualitÃ©</h4>
-          </div>
-          <p>RÃ©flexions thÃ©ologiques et vie religieuse dans le contexte africain.</p>
-          <ul class="cat-list">
-            <li>PÃ©dagogie jÃ©suite</li>
-            <li>Ã‰thique & Morale</li>
-            <li>Dialogue interreligieux</li>
-          </ul>
-        </div>
-
-        <div class="editorial-cat-card">
-          <div class="cat-header">
-            <span class="cat-icon" style="background:#002147">R</span>
-            <h4>Revue DÃ©bats</h4>
-          </div>
-          <p>Le mensuel de rÃ©fÃ©rence sur l'actualitÃ© sociale et politique.</p>
-          <ul class="cat-list">
-            <li>Analyses mensuelles</li>
-            <li>Dossiers thÃ©matiques</li>
-            <li>Courrier d'Afrique</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="submission-banner js-reveal" data-reveal>
-    <div class="section-inner">
-      <div class="submission-content">
-        <h2>PrÃªt Ã  publier votre ouvrage ?</h2>
-        <p>Notre comitÃ© de lecture examine chaque manuscrit avec attention. Rejoignez une maison d'Ã©dition prestigieuse et contribuez au rayonnement de la pensÃ©e africaine.</p>
-        <div class="submission-btns">
-          <a href="./conditions-publication.html" class="btn-book-outline" style="border-color:rgba(255,255,255,0.3); color:white;">Lire les conditions</a>
-          <a href="./contact.html" class="btn-primary" style="background:var(--gold); color:var(--deep);">Envoyer mon manuscrit</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div class="nav-logo-mark" style="width:36px;height:36px;font-size:18px;background:var(--gold);color:var(--deep);display:flex;align-items:center;justify-content:center;font-family:'EB Garamond',serif;font-weight:700;">C</div>
-            <span style="font-family:'EB Garamond',serif;font-size:18px;font-weight:700;color:var(--white);">CERAP Ã‰ditions</span>
-          </div>
-          <p>Centre de Recherche et d'Action pour la Paix â€” UniversitÃ© JÃ©suite d'Abidjan. Promouvoir la pensÃ©e africaine depuis 2003.</p>
-        </div>
-
-        <div class="footer-col">
-          <h5>Navigation</h5>
-          <ul class="footer-links">
-            <li><a href="./librairie.html">Librairie</a></li>
-            <li><a href="./ligne-editoriale.html">Ligne Ã©ditoriale</a></li>
-            <li><a href="./contact.html">Nous contacter</a></li>
-            <li><a href="./login.html" style="opacity:0.6;font-size:11px;margin-top:10px;display:block;">Espace Administration</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>CERAP</h5>
-          <ul class="footer-links">
-            <li><a href="https://cerap-inades.org/index.php/historique-et-presentation" target="_blank" rel="noreferrer">PrÃ©sentation</a></li>
-            <li><a href="https://cerap-inades.org/index.php/les-jesuites-o" target="_blank" rel="noreferrer">Les JÃ©suites</a></li>
-            <li><a href="https://cerap-inades.org/index.php/programmes/universitaires/licence" target="_blank" rel="noreferrer">Licences</a></li>
-            <li><a href="https://cerap-inades.org/index.php/programmes/universitaires/master" target="_blank" rel="noreferrer">Masters</a></li>
-            <li><a href="https://cerap-inades.org/index.php/bibliotheque" target="_blank" rel="noreferrer">BibliothÃ¨que</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Contact</h5>
-          <ul class="footer-links">
-            <li><a href="tel:+2252722404720">(+225) 27 22 40 47 20</a></li>
-            <li><a href="mailto:editions@cerap-inades.org">editions@cerap-inades.org</a></li>
-            <li><a href="https://www.facebook.com/CERAPInades" target="_blank" rel="noreferrer">Facebook</a></li>
-            <li><a href="https://www.twitter.com/cerapabidjan" target="_blank" rel="noreferrer">Twitter / X</a></li>
-            <li><a href="https://www.youtube.com/@cerapci" target="_blank" rel="noreferrer">YouTube</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>Â© 2026 CERAP Ã‰ditions â€” Tous droits rÃ©servÃ©s Â· <a href="#">Mentions lÃ©gales</a> Â· <a href="#">Politique de confidentialitÃ©</a></p>
-        <p class="u-footer-small">15, avenue Jean Mermoz, Cocody Â· Abidjan, CÃ´te d'Ivoire</p>
-      </div>
-    </div>
-  </footer>
-
-  <div class="cart-float" aria-live="polite">
-    <button class="cart-btn" onclick="toggleCart()" aria-label="Panier" aria-haspopup="dialog" aria-controls="cartPanel" aria-expanded="false" type="button">
-      ðŸ›’
-      <span class="cart-count" id="cartCount">0</span>
-    </button>
-  </div>
-
-  <!-- CART FLOAT -->
-  <div class="cart-float" aria-live="polite">
-    <button
-      class="cart-btn"
-      onclick="toggleCart()"
-      aria-label="Panier"
-      aria-haspopup="dialog"
-      aria-controls="cartPanel"
-      aria-expanded="false"
-      type="button"
-    >
-      ðŸ›’
-      <span class="cart-count" id="cartCount">0</span>
-    </button>
-  </div>
-
-  <!-- CART OVERLAY -->
-  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart(false)"></div>
-
-  <!-- CART PANEL -->
-  <div class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="cart-panel-header">
-      <h4>Mon panier <span class="cart-header-count" id="cartHeaderCount">0 article</span></h4>
-      <button class="cart-close" data-js="cart-close" type="button" aria-label="Fermer le panier" onclick="toggleCart(false)">âœ•</button>
-    </div>
-    <div class="cart-items" id="cartItems">
-      <div class="cart-empty">
-        <span class="cart-empty-icon">ðŸ“š</span>
-        <div class="cart-empty-text">Votre panier est vide</div>
-        <div class="cart-empty-sub">Parcourez notre catalogue pour ajouter des ouvrages</div>
-      </div>
-    </div>
-    <div class="cart-footer" id="cartFooter" style="display:none">
-      <div class="cart-total">
-        <span class="cart-total-label">Total</span>
-        <span class="cart-total-amount" id="cartTotal">0 F CFA</span>
-      </div>
-      <button class="cart-checkout-btn" onclick="checkout()" type="button">ProcÃ©der au paiement â†’</button>
-      <div class="cart-secure">ðŸ”’ Paiement sÃ©curisÃ© â€” Orange Money, MTN, Carte</div>
-    </div>
-  </div>
-
-  <!-- â•â• CHECKOUT MODAL â•â• -->
-  <div class="modal-overlay" id="checkoutModal">
-    <div class="modal payment-modal">
-      <div class="modal-header">
-        <h3>Finaliser ma commande</h3>
-        <button class="modal-close" onclick="closeModal('checkoutModal')">âœ•</button>
-      </div>
-      <div class="modal-body">
-        <div class="payment-summary">
-          <span>Montant Ã  rÃ©gler :</span>
-          <strong id="checkoutTotal">0 F CFA</strong>
-        </div>
-
-        <div class="admin-label" style="margin-top:20px">Choisir un mode de paiement</div>
-        <div class="payment-methods">
-          <div class="pay-method" onclick="selectPayMethod('orange', this)">
-            <div class="pay-logo orange">OM</div>
-            <span>Orange Money</span>
-          </div>
-          <div class="pay-method" onclick="selectPayMethod('mtn', this)">
-            <div class="pay-logo mtn">MTN</div>
-            <span>MTN MoMo</span>
-          </div>
-          <div class="pay-method" onclick="selectPayMethod('wave', this)">
-            <div class="pay-logo wave">Wave</div>
-            <span>Wave</span>
-          </div>
-          <div class="pay-method" onclick="selectPayMethod('card', this)">
-            <div class="pay-logo card">ðŸ’³</div>
-            <span>Carte Bancaire</span>
-          </div>
-        </div>
-
-        <div id="paymentFields" style="margin-top:24px; display:none;">
-          <div id="phoneField">
-            <label class="admin-label">NumÃ©ro de tÃ©lÃ©phone</label>
-            <input type="tel" class="admin-input" placeholder="07 00 00 00 00" />
-          </div>
-          <div id="cardFields" style="display:none;">
-            <label class="admin-label">NumÃ©ro de carte</label>
-            <input type="text" class="admin-input" placeholder="**** **** **** ****" style="margin-bottom:12px" />
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px">
-              <div>
-                <label class="admin-label">Expiration</label>
-                <input type="text" class="admin-input" placeholder="MM/YY" />
-              </div>
-              <div>
-                <label class="admin-label">CVC</label>
-                <input type="text" class="admin-input" placeholder="***" />
-              </div>
-            </div>
-          </div>
-          <button class="btn-primary" style="width:100%; margin-top:20px; justify-content:center" onclick="confirmPayment()">Confirmer le paiement</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- â•â• BOOK DETAILS MODAL â•â• -->
-  <div class="modal-overlay" id="bookDetailsModal">
-    <div class="modal">
-      <div class="modal-header">
-        <h3>DÃ©tails de l'ouvrage</h3>
-        <button class="modal-close" onclick="closeModal('bookDetailsModal')">âœ•</button>
-      </div>
-      <div class="modal-body" id="bookDetailsBody">
-        <!-- Dynamic content -->
-      </div>
-      <div class="modal-footer" style="padding:16px 24px; border-top:1px solid var(--border); display:flex; gap:12px">
-        <button class="btn-primary" id="modalAddToCartBtn" style="flex:1; justify-content:center">Ajouter au panier</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- SUPABASE -->
-  <!-- CinetPay SDK -->
-  <script src="https://checkout.cinetpay.com/sdk/v1/cinetpay.js"></script>
-  <script src="./assets/js/supabase-config.js"></script>
-  <script src="./assets/js/utils.js"></script>
-  <script src="./assets/js/script.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      // Attendre que les livres soient chargÃ©s (via script.js)
-      // Si books n'est pas encore lÃ , on attend un peu ou on fetch direct
-      if (typeof books === 'undefined' || books.length === 0) {
-        try {
-          const res = await fetch('./data/books.json');
-          window.books = await res.json();
-        } catch(e) { console.error(e); }
-      }
-
-      const container = document.getElementById('randomBooksList');
-      if (!container || !window.books) return;
-
-      // MÃ©langer et prendre 4 livres
-      const shuffled = [...window.books].sort(() => 0.5 - Math.random());
-      const selected = shuffled.slice(0, 4);
-
-      container.innerHTML = selected.map(b => `
-        <div class="random-book-item js-reveal" data-reveal onclick="showBookDetails(${b.id})">
-          <img src="${b.cover}" alt="${b.title}" class="random-book-cover" onerror="this.src='./assets/images/logo-uja.png'">
-          <div class="random-book-info">
-            <span class="random-book-date">${new Date(b.date).toLocaleDateString('fr-FR')}</span>
-            <a href="javascript:void(0)" class="random-book-title">${b.title}</a>
-            <span class="random-book-author">Auteur : ${b.author}</span>
-            <a href="javascript:void(0)" class="random-book-cat">${b.category}</a>
-          </div>
-        </div>
-      `).join('');
-
-      // RÃ©-initialiser les reveals pour ces nouveaux Ã©lÃ©ments
-      if (window.Utils && window.Utils.initScrollReveals) {
-        window.Utils.initScrollReveals('.random-book-item', true);
-      }
-    });
-  </script>
-</body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CERAP Éditions — Ligne éditoriale</title>
+  <meta name="description" content="Découvrez la ligne éditoriale des Éditions du CERAP : promouvoir les auteurs africains à travers des ouvrages universitaires de référence." />
+  <meta name="keywords" content="Ligne éditoriale CERAP, Publication universitaire Afrique, Auteurs ivoiriens, Manuscrits, Recherche académique" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="./index.html">
+        <div class="nav-logo-mark"><img src="./assets/images/logo-uja.png" alt="Logo UJA"></div>
+        <div class="nav-logo-text">
+          <strong>CERAP Éditions</strong>
+          <span>Abidjan · Côte d'Ivoire</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="./index.html">Accueil</a></li>
+        <li><a href="./librairie.html">Librairie</a></li>
+        <li><a href="./ligne-editoriale.html" class="active">Ligne Éditoriale</a></li>
+        <li><a href="./conditions-publication.html">Conditions de Publication</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li><a href="./librairie.html" class="nav-cta">Commander →</a></li>
+      </ul>
+      <button class="nav-menu-btn" data-js="mobile-menu-toggle" aria-label="Menu" aria-controls="mobileNav" aria-expanded="false" type="button">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="./index.html">Accueil</a>
+    <a href="./librairie.html">Librairie</a>
+    <a href="./ligne-editoriale.html">Ligne Éditoriale</a>
+    <a href="./conditions-publication.html">Conditions de Publication</a>
+    <a href="./contact.html">Contact</a>
+  </div>
+
+  <section class="section-white">
+    <div class="section-inner">
+      <div class="editorial-main-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;">
+        <div class="editorial-left">
+          <span class="section-kicker">À PROPOS DE NOUS</span>
+          <h1 class="section-title" style="font-size: 3rem; margin-bottom: 2rem;">Ligne éditoriale</h1>
+          <div class="mission-quote" style="background: var(--cream); border-radius: 24px; padding: 40px; margin-bottom: 2.5rem; position: relative; border: 1px solid rgba(198,146,47,0.1);">
+            <div style="color: var(--gold); font-size: 3rem; font-family: 'EB Garamond', serif; position: absolute; top: 15px; left: 20px; opacity: 0.5;">“</div>
+            <p style="font-family: 'EB Garamond', serif; font-style: italic; font-size: 1.3rem; color: var(--navy); line-height: 1.5; margin: 0; padding-left: 30px;">
+              Contribuer à la promotion d'auteurs africains en général et ouest-africains en particulier, à travers des ouvrages universitaires, scientifiques et de haute culture.
+            </p>
+          </div>
+          <div class="mission-text" style="color: var(--text); line-height: 1.8; font-size: 15px;">
+            <p style="margin-bottom: 1.5rem;">Depuis 2003, les Éditions du CERAP (EDICERAP) s'inscrivent dans une démarche d'excellence académique et de promotion culturelle. Notre mission est de nourrir le débat d'idées et de valoriser les recherches qui façonnent l'Afrique de demain.</p>
+            <p style="margin-bottom: 3rem;">Nos publications nourrissent la réflexion sur la société et son histoire, la vie politique et religieuse, le droit et la vie spirituelle.</p>
+          </div>
+          <div class="hero-actions" style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+            <a href="./contact.html" class="btn-primary">Soumettre un manuscrit</a>
+            <a href="#collections" class="btn-secondary" style="color: var(--navy);">Explorer nos domaines</a>
+          </div>
+        </div>
+        <div class="editorial-right">
+          <h2 style="font-family: 'EB Garamond', serif; font-size: 1.8rem; color: var(--navy); margin-bottom: 2.5rem;">Domaines de publication</h2>
+          <div class="collections-grid" style="grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 3rem;">
+            <div class="collection-card" style="padding: 24px; text-align: left; align-items: flex-start;">
+              <div style="font-size: 1.5rem; margin-bottom: 1rem;">⚖️</div>
+              <h3 style="font-size: 1.1rem;">Droit & Politique</h3>
+              <p style="font-size: 12px;">Systèmes juridiques et gouvernance.</p>
+            </div>
+            <div class="collection-card" style="padding: 24px; text-align: left; align-items: flex-start;">
+              <div style="font-size: 1.5rem; margin-bottom: 1rem;">🏛️</div>
+              <h3 style="font-size: 1.1rem;">Histoire</h3>
+              <p style="font-size: 12px;">Patrimoine et mémoires africaines.</p>
+            </div>
+            <div class="collection-card" style="padding: 24px; text-align: left; align-items: flex-start;">
+              <div style="font-size: 1.5rem; margin-bottom: 1rem;">🕊️</div>
+              <h3 style="font-size: 1.1rem;">Paix & Conflits</h3>
+              <p style="font-size: 12px;">Médiation et réconciliation sociale.</p>
+            </div>
+            <div class="collection-card" style="padding: 24px; text-align: left; align-items: flex-start;">
+              <div style="font-size: 1.5rem; margin-bottom: 1rem;">✝️</div>
+              <h3 style="font-size: 1.1rem;">Spiritualité</h3>
+              <p style="font-size: 12px;">Théologie et vie religieuse.</p>
+            </div>
+            <div class="collection-card" style="padding: 24px; text-align: left; align-items: flex-start;">
+              <div style="font-size: 1.5rem; margin-bottom: 1rem;">👥</div>
+              <h3 style="font-size: 1.1rem;">Sciences Sociales</h3>
+              <p style="font-size: 12px;">Sociologie et anthropologie.</p>
+            </div>
+            <div class="collection-card" style="padding: 24px; text-align: left; align-items: flex-start;">
+              <div style="font-size: 1.5rem; margin-bottom: 1rem;">📚</div>
+              <h3 style="font-size: 1.1rem;">Littérature</h3>
+              <p style="font-size: 12px;">Essais et œuvres de haute culture.</p>
+            </div>
+          </div>
+          <div style="background: var(--cream); border-radius: 20px; padding: 30px; border: 1px solid rgba(198,146,47,0.1);">
+            <h4 style="font-size: 16px; color: var(--navy); margin-bottom: 10px;">Comité de lecture</h4>
+            <p style="font-size: 13px; color: var(--muted); margin-bottom: 0;">Chaque ouvrage universitaire fait l'objet d'une double évaluation par les pairs (peer-review) garantissant la rigueur scientifique de nos publications.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-cream js-reveal" data-reveal>
+    <div class="section-inner">
+      <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+        <span class="section-kicker">CURATION ÉDITORIALE</span>
+        <h2 class="section-title">Sélection aléatoire</h2>
+        <p class="section-subtitle">Une immersion dans la diversité de notre catalogue académique.</p>
+      </div>
+      <div id="randomBooksList" class="random-books-list">
+        <!-- Random books will be injected here -->
+      </div>
+    </div>
+  </section>
+
+  <section class="section-white js-reveal" data-reveal id="collections">
+    <div class="section-inner">
+      <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+        <span class="section-kicker">CATALOGUE</span>
+        <h2 class="section-title">Domaines & Collections</h2>
+        <p class="section-subtitle">Une diversité thématique au service de la connaissance.</p>
+      </div>
+      <div class="collections-grid">
+        <div class="collection-card" style="align-items: flex-start; text-align: left; padding: 32px;">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--navy);">Histoire & Société</h3>
+          <p style="font-size: 14px; color: var(--muted); margin-bottom: 1.5rem;">Comprendre le passé pour éclairer les enjeux contemporains de l'Afrique.</p>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: var(--navy);">
+            <li style="margin-bottom: 8px;">• Mémoires nationales</li>
+            <li style="margin-bottom: 8px;">• Études coloniales</li>
+            <li style="margin-bottom: 0;">• Sociologie urbaine</li>
+          </ul>
+        </div>
+        <div class="collection-card" style="align-items: flex-start; text-align: left; padding: 32px;">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--navy);">Droit & Institutions</h3>
+          <p style="font-size: 14px; color: var(--muted); margin-bottom: 1.5rem;">Ouvrages de référence sur le droit OHADA, constitutionnel et administratif.</p>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: var(--navy);">
+            <li style="margin-bottom: 8px;">• Codes et Manuels</li>
+            <li style="margin-bottom: 8px;">• Pratiques juridiques</li>
+            <li style="margin-bottom: 0;">• Politiques publiques</li>
+          </ul>
+        </div>
+        <div class="collection-card" style="align-items: flex-start; text-align: left; padding: 32px;">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--navy);">Paix & Dialogue</h3>
+          <p style="font-size: 14px; color: var(--muted); margin-bottom: 1.5rem;">Recherches sur la résolution des conflits et la médiation sociale.</p>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: var(--navy);">
+            <li style="margin-bottom: 8px;">• Justice transitionnelle</li>
+            <li style="margin-bottom: 8px;">• Gestion des crises</li>
+            <li style="margin-bottom: 0;">• Droits de l'homme</li>
+          </ul>
+        </div>
+        <div class="collection-card" style="align-items: flex-start; text-align: left; padding: 32px;">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--navy);">Littérature & Arts</h3>
+          <p style="font-size: 14px; color: var(--muted); margin-bottom: 1.5rem;">Valorisation de la créativité littéraire et des expressions artistiques.</p>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: var(--navy);">
+            <li style="margin-bottom: 8px;">• Romans & Nouvelles</li>
+            <li style="margin-bottom: 8px;">• Poésie engagée</li>
+            <li style="margin-bottom: 0;">• Critique littéraire</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-navy" style="text-align: center;">
+    <div class="section-inner">
+      <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Prêt à publier votre ouvrage ?</h2>
+      <p style="max-width: 700px; margin: 0 auto 2.5rem; opacity: 0.8;">Notre comité de lecture examine chaque manuscrit avec attention. Rejoignez une maison d'édition prestigieuse et contribuez au rayonnement de la pensée africaine.</p>
+      <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+        <a href="./conditions-publication.html" class="btn-secondary" style="border-color: rgba(255,255,255,0.3); color: white;">Lire les conditions</a>
+        <a href="./contact.html" class="btn-primary" style="background: var(--gold); border: none;">Envoyer mon manuscrit →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <img src="./assets/images/logo-uja.png" alt="Logo UJA">
+            <strong>CERAP Éditions</strong>
+          </div>
+          <p>Maison d'édition universitaire de l'Université Jésuite d'Afrique. Promotion de l'excellence académique et de la culture africaine.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="./index.html">Accueil</a></li>
+            <li><a href="./librairie.html">Librairie</a></li>
+            <li><a href="./ligne-editoriale.html">Ligne Éditoriale</a></li>
+            <li><a href="./conditions-publication.html">Conditions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>Cocody, Abidjan, Côte d'Ivoire</li>
+            <li>(+225) 27 22 40 47 20</li>
+            <li>editions@cerap-inades.org</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 CERAP Éditions. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof loadRandomBooks === 'function') {
+        loadRandomBooks('randomBooksList', 3);
+      }
+    });
+  </script>
+</body>
 </html>
-

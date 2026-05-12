@@ -1,0 +1,168 @@
+import os
+
+def rewrite_contact():
+    filepath = r"c:\Users\HP\Desktop\CERAP_UI\contact.html"
+    content = """<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CERAP Éditions — Contact</title>
+  <meta name="description" content="Contactez les Éditions du CERAP pour toute commande, abonnement ou soumission de manuscrit." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="./index.html">
+        <div class="nav-logo-mark"><img src="./assets/images/logo-uja.png" alt="Logo UJA"></div>
+        <div class="nav-logo-text">
+          <strong>CERAP Éditions</strong>
+          <span>Abidjan · Côte d'Ivoire</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="./index.html">Accueil</a></li>
+        <li><a href="./librairie.html">Librairie</a></li>
+        <li><a href="./ligne-editoriale.html">Ligne Éditoriale</a></li>
+        <li><a href="./conditions-publication.html">Conditions de Publication</a></li>
+        <li><a href="./contact.html" class="active">Contact</a></li>
+        <li><a href="./librairie.html" class="nav-cta">Commander →</a></li>
+      </ul>
+      <button class="nav-menu-btn" data-js="mobile-menu-toggle" aria-label="Menu" aria-controls="mobileNav" aria-expanded="false" type="button">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="./index.html">Accueil</a>
+    <a href="./librairie.html">Librairie</a>
+    <a href="./ligne-editoriale.html">Ligne Éditoriale</a>
+    <a href="./conditions-publication.html">Conditions de Publication</a>
+    <a href="./contact.html">Contact</a>
+  </div>
+
+  <section class="section-white js-reveal" data-reveal id="contact">
+    <div class="section-inner">
+      <div class="section-header" style="margin-bottom: 3rem;">
+        <span class="section-kicker">NOUS REJOINDRE</span>
+        <h2 class="section-title">Contactez-nous</h2>
+        <p class="section-subtitle">Pour une commande, un abonnement, ou la soumission d'un manuscrit.</p>
+      </div>
+
+      <div class="contact-grid" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem;">
+        <div>
+          <form class="contact-form" data-js="contact-form">
+            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+              <div class="form-group">
+                <label class="form-label">Prénom</label>
+                <input type="text" class="form-input" placeholder="Kofi" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Nom</label>
+                <input type="text" class="form-input" placeholder="Asante" />
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-input" placeholder="kofi@exemple.ci" />
+            </div>
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+              <label class="form-label">Objet</label>
+              <select class="form-select">
+                <option>Commander un ouvrage</option>
+                <option>S'abonner à la Revue Débats</option>
+                <option>Soumettre un manuscrit</option>
+                <option>Demande institutionnelle</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 2rem;">
+              <label class="form-label">Message</label>
+              <textarea class="form-textarea" placeholder="Votre message…" style="height: 150px;"></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Envoyer le message →</button>
+          </form>
+        </div>
+
+        <div class="contact-info" style="background: var(--cream); padding: 40px; border-radius: 24px; border: 1px solid rgba(0,0,0,0.04);">
+          <h3 style="font-family: 'EB Garamond', serif; font-size: 1.8rem; color: var(--navy); margin-bottom: 2rem;">Coordonnées</h3>
+          <div class="contact-info-item" style="display: flex; gap: 15px; margin-bottom: 2rem;">
+            <div style="font-size: 1.2rem;">📍</div>
+            <div>
+              <span style="font-weight: 700; color: var(--gold); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Adresse</span>
+              <span style="color: var(--navy); line-height: 1.5; font-size: 14px;">15, avenue Jean Mermoz, Cocody<br/>08 BP 2088 Abidjan 08, Côte d'Ivoire</span>
+            </div>
+          </div>
+          <div class="contact-info-item" style="display: flex; gap: 15px; margin-bottom: 2rem;">
+            <div style="font-size: 1.2rem;">📞</div>
+            <div>
+              <span style="font-weight: 700; color: var(--gold); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Téléphone</span>
+              <span style="color: var(--navy); line-height: 1.5; font-size: 14px;">(+225) 27 22 40 47 20<br/>(+225) 01 51 44 24 00</span>
+            </div>
+          </div>
+          <div class="contact-info-item" style="display: flex; gap: 15px; margin-bottom: 2rem;">
+            <div style="font-size: 1.2rem;">✉️</div>
+            <div>
+              <span style="font-weight: 700; color: var(--gold); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Email</span>
+              <span style="color: var(--navy); line-height: 1.5; font-size: 14px;">editions@cerap-inades.org</span>
+            </div>
+          </div>
+          <div class="contact-info-item" style="display: flex; gap: 15px;">
+            <div style="font-size: 1.2rem;">🕒</div>
+            <div>
+              <span style="font-weight: 700; color: var(--gold); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Horaires</span>
+              <span style="color: var(--navy); line-height: 1.5; font-size: 14px;">Lun – Ven : 8h00 – 17h00<br/>Sam : 9h00 – 13h00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <img src="./assets/images/logo-uja.png" alt="Logo UJA">
+            <strong>CERAP Éditions</strong>
+          </div>
+          <p>Maison d'édition universitaire de l'Université Jésuite d'Afrique. Promotion de l'excellence académique et de la culture africaine.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="./index.html">Accueil</a></li>
+            <li><a href="./librairie.html">Librairie</a></li>
+            <li><a href="./ligne-editoriale.html">Ligne Éditoriale</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>Cocody, Abidjan, Côte d'Ivoire</li>
+            <li>(+225) 27 22 40 47 20</li>
+            <li>editions@cerap-inades.org</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 CERAP Éditions. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/script.js"></script>
+</body>
+</html>"""
+    with open(filepath, 'w', encoding='utf-8') as f:
+        f.write(content)
+    print(f"Rewrote {filepath}")
+
+rewrite_contact()
