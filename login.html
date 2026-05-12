@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion — CERAP Éditions Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #002147;
+      margin: 0;
+      overflow: hidden;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(212, 136, 6, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(212, 136, 6, 0.1) 0%, transparent 40%);
+      z-index: 0;
+    }
+    .login-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      animation: fade-in 0.8s ease-out;
+    }
+    .login-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    .login-logo {
+      width: 64px;
+      height: 64px;
+      background: #002147;
+      color: #D48806;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-family: 'EB Garamond', serif;
+      font-weight: 700;
+      margin: 0 auto 24px;
+    }
+    h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      color: #002147;
+    }
+    p {
+      color: #64748b;
+      font-size: 14px;
+      margin-bottom: 32px;
+    }
+    .form-group {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+    input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      font-family: 'Atkinson Hyperlegible', sans-serif;
+      font-size: 15px;
+      transition: border-color 0.2s;
+    }
+    input:focus {
+      outline: none;
+      border-color: #D48806;
+    }
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      background: #002147;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 10px;
+    }
+    .btn-login:hover {
+      background: #D48806;
+      transform: translateY(-2px);
+    }
+    .error-msg {
+      color: #dc2626;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 16px;
+      display: none;
+    }
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-logo">C</div>
+      <h1>Administration</h1>
+      <p>Connectez-vous pour gérer vos ouvrages</p>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Identifiant</label>
+          <input type="text" id="username" placeholder="admin" required>
+        </div>
+        <div class="form-group">
+          <label>Mot de passe</label>
+          <input type="password" id="password" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-login">Se connecter →</button>
+        <div id="errorMsg" class="error-msg">Identifiants incorrects</div>
+      </form>
+
+      <div style="margin-top: 30px; font-size: 12px; color: #94a3b8;">
+        <a href="./index.html" style="color: inherit; text-decoration: none;">← Retour au site</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+
+      // Simulation de sécurité
+      if (user === 'admin' && pass === 'cerap2026') {
+        localStorage.setItem('cerap_admin_session', Date.now());
+        window.location.href = 'admin.html';
+      } else {
+        document.getElementById('errorMsg').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

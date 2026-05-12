@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CERAP Éditions — Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Atkinson+Hyperlegible:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="./index.html">
+        <div class="nav-logo-mark"><img src="./assets/images/logo-uja.png" alt="Logo UJA"></div>
+        <div class="nav-logo-text">
+          <strong>CERAP Éditions</strong>
+          <span>Abidjan · Côte d'Ivoire</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="./index.html">Accueil</a></li>
+        <li><a href="./librairie.html">Librairie</a></li>
+        <li><a href="./ligne-editoriale.html">Ligne Éditoriale</a></li>
+        <li><a href="./contact.html" class="active">Contact</a></li>
+        <li><a href="./librairie.html" class="nav-cta">Commander →</a></li>
+      </ul>
+
+      <button class="nav-menu-btn" data-js="mobile-menu-toggle" aria-label="Menu" aria-controls="mobileNav" aria-expanded="false" type="button">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="19" y2="6"/>
+          <line x1="3" y1="11" x2="19" y2="11"/>
+          <line x1="3" y1="16" x2="19" y2="16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav" role="menu" aria-label="Navigation mobile">
+    <a href="./index.html">Accueil</a>
+    <a href="./librairie.html">Librairie</a>
+    <a href="./ligne-editoriale.html">Ligne Éditoriale</a>
+    <a href="./contact.html">Contact</a>
+  </div>
+
+  <section class="contact-section js-reveal" data-reveal id="contact">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-kicker">Nous rejoindre</span>
+        <h2 class="section-title">Contactez-nous</h2>
+        <p class="section-subtitle">Pour une commande, un abonnement, ou la soumission d'un manuscrit.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div>
+          <form class="contact-form" data-js="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Prénom</label>
+                <input type="text" class="form-input" placeholder="Kofi" aria-label="Prénom" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Nom</label>
+                <input type="text" class="form-input" placeholder="Asante" aria-label="Nom" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-input" placeholder="kofi@exemple.ci" aria-label="Email" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Objet</label>
+              <select class="form-select" aria-label="Objet">
+                <option>Commander un ouvrage</option>
+                <option>S'abonner à la Revue Débats</option>
+                <option>Soumettre un manuscrit</option>
+                <option>Demande institutionnelle</option>
+                <option>Autre</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Message</label>
+              <textarea class="form-textarea" placeholder="Votre message…" aria-label="Message"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="align-self:flex-start">Envoyer le message →</button>
+          </form>
+
+          <div id="formSuccess" style="display:none;background:#e8f5ec;border:1px solid var(--green);padding:14px 18px;margin-top:12px;color:var(--green);font-weight:700;font-size:14px;">
+            ✓ Message envoyé ! Nous vous répondrons dans les 48h.
+          </div>
+        </div>
+
+        <div class="contact-info">
+          <h3>Nos coordonnées</h3>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📍</div>
+            <div>
+              <span class="contact-info-label">Adresse</span>
+              <span class="contact-info-val">15, avenue Jean Mermoz, Cocody<br/>08 BP 2088 Abidjan 08, Côte d'Ivoire</span>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📞</div>
+            <div>
+              <span class="contact-info-label">Téléphone</span>
+              <span class="contact-info-val">(+225) 27 22 40 47 20<br/>(+225) 01 51 44 24 00</span>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">✉️</div>
+            <div>
+              <span class="contact-info-label">Email</span>
+              <span class="contact-info-val">editions@cerap-inades.org</span>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">🕐</div>
+            <div>
+              <span class="contact-info-label">Horaires</span>
+              <span class="contact-info-val">Lundi – Vendredi : 8h00 – 17h00<br/>Samedi : 9h00 – 13h00</span>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="https://www.facebook.com/CERAPInades" class="social-link" target="_blank" rel="noreferrer">f</a>
+            <a href="https://www.twitter.com/cerapabidjan" class="social-link" target="_blank" rel="noreferrer">𝕏</a>
+            <a href="https://www.youtube.com/@cerapci" class="social-link" target="_blank" rel="noreferrer">▶</a>
+          </div>
+
+          <div style="margin-top:1.5rem;border:1px solid var(--border);overflow:hidden;">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.5045102304734!2d-4.002789285681483!3d5.339671896126646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1eb77cd9cd065%3A0x9ecf98221f1475c8!2sCERAP!5e0!3m2!1sfr!2sci!4v1591165944682!5m2!1sfr!2sci"
+              width="100%" height="180" frameborder="0" allowfullscreen loading="lazy" style="display:block;border:0"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="nav-logo-mark" style="width:36px;height:36px;font-size:18px;background:var(--gold);color:var(--deep);display:flex;align-items:center;justify-content:center;font-family:'EB Garamond',serif;font-weight:700;">C</div>
+            <span style="font-family:'EB Garamond',serif;font-size:18px;font-weight:700;color:var(--white);">CERAP Éditions</span>
+          </div>
+          <p>Centre de Recherche et d'Action pour la Paix — Université Jésuite d'Abidjan. Promouvoir la pensée africaine depuis 2003.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="./librairie.html">Librairie</a></li>
+            <li><a href="./ligne-editoriale.html">Ligne éditoriale</a></li>
+            <li><a href="./contact.html">Nous contacter</a></li>
+            <li><a href="./login.html" style="opacity:0.6;font-size:11px;margin-top:10px;display:block;">Espace Administration</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>CERAP</h5>
+          <ul class="footer-links">
+            <li><a href="https://cerap-inades.org/index.php/historique-et-presentation" target="_blank" rel="noreferrer">Présentation</a></li>
+            <li><a href="https://cerap-inades.org/index.php/les-jesuites-o" target="_blank" rel="noreferrer">Les Jésuites</a></li>
+            <li><a href="https://cerap-inades.org/index.php/programmes/universitaires/licence" target="_blank" rel="noreferrer">Licences</a></li>
+            <li><a href="https://cerap-inades.org/index.php/programmes/universitaires/master" target="_blank" rel="noreferrer">Masters</a></li>
+            <li><a href="https://cerap-inades.org/index.php/bibliotheque" target="_blank" rel="noreferrer">Bibliothèque</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul class="footer-links">
+            <li><a href="tel:+2252722404720">(+225) 27 22 40 47 20</a></li>
+            <li><a href="mailto:editions@cerap-inades.org">editions@cerap-inades.org</a></li>
+            <li><a href="https://www.facebook.com/CERAPInades" target="_blank" rel="noreferrer">Facebook</a></li>
+            <li><a href="https://www.twitter.com/cerapabidjan" target="_blank" rel="noreferrer">Twitter / X</a></li>
+            <li><a href="https://www.youtube.com/@cerapci" target="_blank" rel="noreferrer">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 CERAP Éditions — Tous droits réservés · <a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></p>
+        <p class="u-footer-small">15, avenue Jean Mermoz, Cocody · Abidjan, Côte d'Ivoire</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cart-float" aria-live="polite">
+    <button class="cart-btn" onclick="toggleCart()" aria-label="Panier" aria-haspopup="dialog" aria-controls="cartPanel" aria-expanded="false" type="button">
+      🛒
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+
+  <div class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="cart-panel-header">
+      <h4>Mon panier</h4>
+      <button class="cart-close" data-js="cart-close" type="button" aria-label="Fermer le panier" onclick="toggleCart(false)">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">Votre panier est vide</div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotal">0 F CFA</span>
+      </div>
+      <button class="btn-primary" style="width:100%;justify-content:center" onclick="checkout()" type="button">Procéder au paiement →</button>
+    </div>
+  </div>
+
+  <script src="./assets/js/utils.js"></script>
+  <script src="./assets/js/script.js" defer></script>
+</body>
+</html>
+

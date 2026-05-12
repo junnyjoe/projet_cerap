@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CERAP Éditions — Maison d'édition académique africaine</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Atkinson+Hyperlegible:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+
+<script>
+  // Test rapide de connexion (invisible visuellement)
+  // Si ça n'exécute pas, le JS n'est pas chargé.
+  console.log('✅ JS inline détecté : index.html');
+</script>
+
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="#accueil">
+        <div class="nav-logo-mark"><img src="./assets/images/logo-uja.png" alt="Logo UJA"></div>
+        <div class="nav-logo-text">
+          <strong>CERAP Éditions</strong>
+          <span>Abidjan · Côte d'Ivoire</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="./index.html" class="active">Accueil</a></li>
+        <li><a href="./librairie.html">Librairie</a></li>
+        <li><a href="./ligne-editoriale.html">Ligne Éditoriale</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li><a href="./librairie.html" class="nav-cta">Commander →</a></li>
+      </ul>
+
+      <button
+        class="nav-menu-btn"
+        data-js="mobile-menu-toggle"
+        aria-label="Menu"
+        aria-controls="mobileNav"
+        aria-expanded="false"
+        type="button"
+      >
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="19" y2="6" />
+          <line x1="3" y1="11" x2="19" y2="11" />
+          <line x1="3" y1="16" x2="19" y2="16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav" role="menu" aria-label="Navigation mobile">
+    <a href="./index.html">Accueil</a>
+    <a href="./librairie.html">Librairie</a>
+    <a href="./ligne-editoriale.html">Ligne Éditoriale</a>
+    <a href="./contact.html">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="accueil">
+    <!-- Floating elegant shapes -->
+    <div class="hero-shapes" aria-hidden="true">
+      <div class="elegant-shape shape-1" style="--delay:0.3s"></div>
+      <div class="elegant-shape shape-2" style="--delay:0.5s"></div>
+      <div class="elegant-shape shape-3" style="--delay:0.4s"></div>
+      <div class="elegant-shape shape-4" style="--delay:0.6s"></div>
+      <div class="elegant-shape shape-5" style="--delay:0.7s"></div>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-label hero-fade-up hero-fade-up-1"><span></span>Maison d'édition académique africaine depuis 2003</div>
+        <h1 class="hero-fade-up hero-fade-up-2">
+          <span class="hero-title-main">Voix africaines,</span><br />
+          <span>savoirs </span><em>universels</em>
+        </h1>
+        <p class="hero-fade-up hero-fade-up-3">
+          Les Éditions du CERAP publient des ouvrages universitaires, scientifiques et de haute culture, et contribuent au rayonnement des auteurs africains en Côte d'Ivoire et dans le monde.
+        </p>
+
+        <div class="hero-actions hero-fade-up hero-fade-up-4">
+          <a href="./librairie.html" class="btn-primary">Explorer la librairie →</a>
+          <a href="./ligne-editoriale.html" class="btn-secondary">Conditions de Publication</a>
+        </div>
+
+        <div class="hero-stats hero-fade-up hero-fade-up-5" aria-label="Statistiques">
+          <div>
+            <span class="hero-stat-num" id="statFounding">2003</span>
+            <span class="hero-stat-label">Fondation</span>
+          </div>
+          <div>
+            <span class="hero-stat-num" id="statBooksPublished">+80</span>
+            <span class="hero-stat-label">Ouvrages publiés</span>
+          </div>
+          <div>
+            <span class="hero-stat-num">Mensuelle</span>
+            <span class="hero-stat-label">Revue Débats</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right hero-fade-up hero-fade-up-3">
+        <div class="hero-featured-book">
+          <div class="hero-book-badge">Nouveauté</div>
+
+          <div class="hero-book-grid">
+            <div class="hero-book-cover">
+              <div class="hero-book-cover-text">LE SANVI<br />TOME I</div>
+            </div>
+
+            <div class="hero-book-info">
+              <span class="hero-book-cat">Histoire</span>
+              <div class="hero-book-title">Le Sanvi — Tome I</div>
+              <p class="hero-book-desc">
+                Une étude historique approfondie sur le royaume Sanvi, son organisation et son héritage dans l'histoire de la Côte d'Ivoire.
+              </p>
+
+              <div class="hero-book-price">20 000 <small>F CFA</small></div>
+
+              <div class="hero-book-actions">
+                <a
+                  href="#"
+                  class="btn-book btn-book-primary"
+                  onclick="addToCart('Le Sanvi T1','20 000 F CFA','cover-histoire');return false;"
+                >Ajouter au panier</a>
+                <a href="#" class="btn-book btn-book-outline" onclick="showBookDetails(1);return false;">Détails</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-mini-books" aria-label="Sélection rapide">
+            <div class="hero-mini-book" onclick="addToCart('Droit Constitutionnel','12 000 F CFA','cover-droit')" role="button" tabindex="0">
+              <div class="hero-mini-cover cover-droit">DC</div>
+              <div>
+                <div class="hero-mini-book-title">Droit Constitutionnel Licence 1</div>
+                <div class="hero-mini-book-price">12 000 F CFA</div>
+              </div>
+            </div>
+
+            <div class="hero-mini-book" onclick="addToCart('Actes du Colloque T1','7 500 F CFA','cover-dialogue')" role="button" tabindex="0">
+              <div class="hero-mini-cover cover-dialogue">AC</div>
+              <div>
+                <div class="hero-mini-book-title">Actes du Colloque International T1</div>
+                <div class="hero-mini-book-price">7 500 F CFA</div>
+              </div>
+            </div>
+
+            <div class="hero-mini-book" onclick="addToCart('Ethnies &amp; Crises Politiques','5 000 F CFA','cover-droit')" role="button" tabindex="0">
+              <div class="hero-mini-cover cover-histoire">EP</div>
+              <div>
+                <div class="hero-mini-book-title">Ethnies et Crises Politiques en Guinée</div>
+                <div class="hero-mini-book-price">5 000 F CFA</div>
+              </div>
+            </div>
+
+            <div class="hero-mini-book" onclick="addToCart('Revue Débats — n° courant','2 500 F CFA','cover-revue')" role="button" tabindex="0">
+              <div class="hero-mini-cover cover-revue">DB</div>
+              <div>
+                <div class="hero-mini-book-title">Revue Débats — n° courant</div>
+                <div class="hero-mini-book-price">2 500 F CFA</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORIQUE -->
+  <section class="historique-section js-reveal" data-reveal id="historique">
+    <div class="section-inner">
+      <div class="js-reveal" data-reveal>
+        <span class="section-kicker">Qui sommes-nous</span>
+        <h2 class="section-title">Historique</h2>
+      </div>
+
+      <div class="historique-content">
+        <p>
+          Ouvert en 2003, le département des Éditions du CERAP succède aux anciennes Éditions de l'INADES qui avaient dû suspendre leurs activités en 1992.
+        </p>
+        <p>
+          Avec ce nouveau départ, les Éditions du CERAP ont fait le choix de publier des ouvrages universitaires, scientifiques et de haute culture destinés à un public élargi d'enseignants, d'étudiants et de lecteurs soucieux de trouver dans des ouvrages de référence de quoi nourrir leur réflexion sur la société et son histoire, sur la vie politique et sur la vie religieuse, sur les réalités du droit et sur celles de la vie spirituelle.
+        </p>
+        <p>
+          Elles entendent par-là, contribuer à la promotion d'auteurs africains en général et ouest-africains en particulier. Ainsi, de 2003 jusqu'à ce jour, plusieurs ouvrages ont été publiés. En plus de ces ouvrages, une revue de trente-deux pages dénommée <strong>Débats Courrier d'Afrique de l'Ouest</strong> est mensuellement publiée et diffusée dans le monde.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS RÉCENTES -->
+  <section id="publications" class="js-reveal" data-reveal>
+    <div class="section-inner">
+      <div class="section-header-row">
+        <div class="section-header" style="margin-bottom:0">
+          <h2 class="section-title">Publications Récentes</h2>
+        </div>
+        <a href="./librairie.html" class="view-all">Voir plus
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 7h10M8 3l4 4-4 4" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="books-grid" id="booksGrid" aria-live="polite">
+        <!-- books injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="nav-logo-mark" style="width:36px;height:36px;font-size:18px;background:var(--gold);color:var(--deep);display:flex;align-items:center;justify-content:center;font-family:'EB Garamond',serif;font-weight:700;">C</div>
+            <span style="font-family:'EB Garamond',serif;font-size:18px;font-weight:700;color:var(--white);">CERAP Éditions</span>
+          </div>
+          <p>Centre de Recherche et d'Action pour la Paix — Université Jésuite d'Abidjan. Promouvoir la pensée africaine depuis 2003.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="./librairie.html">Librairie</a></li>
+            <li><a href="./ligne-editoriale.html">Ligne éditoriale</a></li>
+            <li><a href="./contact.html">Nous contacter</a></li>
+            <li><a href="./login.html" style="opacity:0.6;font-size:11px;margin-top:10px;display:block;">Espace Administration</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>CERAP</h5>
+          <ul class="footer-links">
+            <li><a href="https://cerap-inades.org/index.php/historique-et-presentation" target="_blank" rel="noreferrer">Présentation</a></li>
+            <li><a href="https://cerap-inades.org/index.php/les-jesuites-o" target="_blank" rel="noreferrer">Les Jésuites</a></li>
+            <li><a href="https://cerap-inades.org/index.php/programmes/universitaires/licence" target="_blank" rel="noreferrer">Licences</a></li>
+            <li><a href="https://cerap-inades.org/index.php/programmes/universitaires/master" target="_blank" rel="noreferrer">Masters</a></li>
+            <li><a href="https://cerap-inades.org/index.php/bibliotheque" target="_blank" rel="noreferrer">Bibliothèque</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul class="footer-links">
+            <li><a href="tel:+2252722404720">(+225) 27 22 40 47 20</a></li>
+            <li><a href="mailto:editions@cerap-inades.org">editions@cerap-inades.org</a></li>
+            <li><a href="https://www.facebook.com/CERAPInades" target="_blank" rel="noreferrer">Facebook</a></li>
+            <li><a href="https://www.twitter.com/cerapabidjan" target="_blank" rel="noreferrer">Twitter / X</a></li>
+            <li><a href="https://www.youtube.com/@cerapci" target="_blank" rel="noreferrer">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 CERAP Éditions — Tous droits réservés · <a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></p>
+        <p class="u-footer-small">15, avenue Jean Mermoz, Cocody · Abidjan, Côte d'Ivoire</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART FLOAT -->
+  <div class="cart-float" aria-live="polite">
+    <button
+      class="cart-btn"
+      onclick="toggleCart()"
+      aria-label="Panier"
+      aria-haspopup="dialog"
+      aria-controls="cartPanel"
+      aria-expanded="false"
+      type="button"
+    >
+      🛒
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+
+  <!-- CART OVERLAY -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart(false)"></div>
+
+  <!-- CART PANEL -->
+  <div class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="cart-panel-header">
+      <h4>Mon panier <span class="cart-header-count" id="cartHeaderCount">0 article</span></h4>
+      <button class="cart-close" data-js="cart-close" type="button" aria-label="Fermer le panier" onclick="toggleCart(false)">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <span class="cart-empty-icon">📚</span>
+        <div class="cart-empty-text">Votre panier est vide</div>
+        <div class="cart-empty-sub">Parcourez notre catalogue pour ajouter des ouvrages</div>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span class="cart-total-label">Total</span>
+        <span class="cart-total-amount" id="cartTotal">0 F CFA</span>
+      </div>
+      <button class="cart-checkout-btn" onclick="checkout()" type="button">Procéder au paiement →</button>
+      <div class="cart-secure">🔒 Paiement sécurisé — Orange Money, MTN, Carte</div>
+    </div>
+  </div>
+
+  <!-- ══ CHECKOUT MODAL ══ -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal payment-modal">
+      <div class="modal-header">
+        <h3>Finaliser ma commande</h3>
+        <button class="modal-close" onclick="closeModal('checkoutModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="payment-summary">
+          <span>Montant à régler :</span>
+          <strong id="checkoutTotal">0 F CFA</strong>
+        </div>
+
+        <div class="admin-label" style="margin-top:20px">Choisir un mode de paiement</div>
+        <div class="payment-methods">
+          <div class="pay-method" onclick="selectPayMethod('orange', this)">
+            <div class="pay-logo orange">OM</div>
+            <span>Orange Money</span>
+          </div>
+          <div class="pay-method" onclick="selectPayMethod('mtn', this)">
+            <div class="pay-logo mtn">MTN</div>
+            <span>MTN MoMo</span>
+          </div>
+          <div class="pay-method" onclick="selectPayMethod('wave', this)">
+            <div class="pay-logo wave">Wave</div>
+            <span>Wave</span>
+          </div>
+          <div class="pay-method" onclick="selectPayMethod('card', this)">
+            <div class="pay-logo card">💳</div>
+            <span>Carte Bancaire</span>
+          </div>
+        </div>
+
+        <div id="paymentFields" style="margin-top:24px; display:none;">
+          <div id="phoneField">
+            <label class="admin-label">Numéro de téléphone</label>
+            <input type="tel" class="admin-input" placeholder="07 00 00 00 00" />
+          </div>
+          <div id="cardFields" style="display:none;">
+            <label class="admin-label">Numéro de carte</label>
+            <input type="text" class="admin-input" placeholder="**** **** **** ****" style="margin-bottom:12px" />
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px">
+              <div>
+                <label class="admin-label">Expiration</label>
+                <input type="text" class="admin-input" placeholder="MM/YY" />
+              </div>
+              <div>
+                <label class="admin-label">CVC</label>
+                <input type="text" class="admin-input" placeholder="***" />
+              </div>
+            </div>
+          </div>
+          <button class="btn-primary" style="width:100%; margin-top:20px; justify-content:center" onclick="confirmPayment()">Confirmer le paiement</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ BOOK DETAILS MODAL ══ -->
+  <div class="modal-overlay" id="bookDetailsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Détails de l'ouvrage</h3>
+        <button class="modal-close" onclick="closeModal('bookDetailsModal')">✕</button>
+      </div>
+      <div class="modal-body" id="bookDetailsBody">
+        <!-- Dynamic content -->
+      </div>
+      <div class="modal-footer" style="padding:16px 24px; border-top:1px solid var(--border); display:flex; gap:12px">
+        <button class="btn-primary" id="modalAddToCartBtn" style="flex:1; justify-content:center">Ajouter au panier</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="./assets/js/utils.js"></script>
+  <script src="./assets/js/script.js" defer></script>
+</body>
+</html>
+

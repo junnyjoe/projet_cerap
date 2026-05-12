@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <script>
+    // Security check - MUST BE FIRST
+    if (!localStorage.getItem('cerap_admin_session')) {
+      window.location.href = 'login.html';
+    }
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CERAP Éditions — Administration</title>
+  <meta name="description" content="Tableau de bord administrateur des Éditions du CERAP" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/admin.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="admin-layout">
+
+    <!-- ══ SIDEBAR ══ -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo"><img src="./assets/images/logo-uja.png" alt="Logo UJA" /></div>
+        <div class="sidebar-brand">
+          <strong>CERAP Éditions</strong>
+          <span>Administration</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-label">Principal</div>
+        <a class="sidebar-link active" data-page="dashboard" href="#">
+          <span class="icon">📊</span> Tableau de bord
+        </a>
+        <a class="sidebar-link" data-page="books" href="#">
+          <span class="icon">📚</span> Livres
+        </a>
+        <a class="sidebar-link" data-page="sales" href="#">
+          <span class="icon">📈</span> Statistiques
+        </a>
+        <div class="sidebar-section-label">Communication</div>
+        <a class="sidebar-link" data-page="messages" href="#">
+          <span class="icon">📩</span> Messages
+          <span class="badge" id="sidebarMsgBadge">3</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="#" onclick="logout(); return false;">🚪 Déconnexion</a>
+      </div>
+    </aside>
+
+    <!-- ══ MAIN ══ -->
+    <main class="admin-main">
+
+      <!-- TOPBAR -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuBtn" type="button" aria-label="Menu">☰</button>
+          <div>
+            <h1 id="topbarTitle">Tableau de bord</h1>
+            <p id="topbarSub">Vue d'ensemble de votre activité</p>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <input type="search" id="globalSearchInput" class="topbar-search" placeholder="Rechercher…" aria-label="Rechercher" oninput="handleGlobalSearch(this.value)" />
+          <div class="topbar-avatar">AD</div>
+        </div>
+      </header>
+
+      <div class="admin-content">
+
+        <!-- ═══════════════════════════════════ -->
+        <!-- PAGE: DASHBOARD                     -->
+        <!-- ═══════════════════════════════════ -->
+        <div class="admin-page active" id="page-dashboard">
+
+          <!-- Stat cards -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">📚</div>
+              <div class="stat-label">Total livres</div>
+              <div class="stat-value" id="statBooks">0</div>
+              <div class="stat-change up">↑ Catalogue actif</div>
+            </div>
+            <div class="stat-card gold">
+              <div class="stat-icon">🛒</div>
+              <div class="stat-label">Total ventes</div>
+              <div class="stat-value" id="statSales">0</div>
+              <div class="stat-change up">↑ +12% ce mois</div>
+            </div>
+            <div class="stat-card green">
+              <div class="stat-icon">💰</div>
+              <div class="stat-label">Chiffre d'affaires</div>
+              <div class="stat-value"><span id="statRevenue">0</span> <small style="font-size:0.5em">F</small></div>
+              <div class="stat-change up">↑ +8.5%</div>
+            </div>
+            <div class="stat-card terra">
+              <div class="stat-icon">📩</div>
+              <div class="stat-label">Messages reçus</div>
+              <div class="stat-value" id="statContacts">0</div>
+              <div class="stat-change down"><span id="statUnread">0</span> non lus</div>
+            </div>
+          </div>
+
+          <!-- Mini stats row -->
+          <div class="stats-grid" style="grid-template-columns: repeat(3,1fr); margin-bottom:32px;">
+            <div class="stat-card">
+              <div class="stat-icon">📅</div>
+              <div class="stat-label">Commandes du jour</div>
+              <div class="stat-value" id="statToday">0</div>
+            </div>
+            <div class="stat-card gold">
+              <div class="stat-icon">📆</div>
+              <div class="stat-label">Commandes du mois</div>
+              <div class="stat-value" id="statMonth">0</div>
+            </div>
+            <div class="stat-card green">
+              <div class="stat-icon">🧾</div>
+              <div class="stat-label">Panier moyen</div>
+              <div class="stat-value"><span id="statAvgCart">0</span> <small style="font-size:0.5em">F</small></div>
+            </div>
+          </div>
+
+          <!-- Charts -->
+          <div class="charts-row">
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3>Revenus & Commandes</h3>
+                <div class="chart-tabs">
+                  <button class="chart-tab active" data-period="monthly" onclick="renderRevenueChart('monthly')">Mensuel</button>
+                  <button class="chart-tab" data-period="weekly" onclick="renderRevenueChart('weekly')">Semaine</button>
+                </div>
+              </div>
+              <div style="height:320px"><canvas id="revenueChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3>Par catégorie</h3>
+              </div>
+              <div style="height:320px"><canvas id="categoryChart"></canvas></div>
+            </div>
+          </div>
+
+          <!-- Recent orders + Top sellers -->
+          <div class="charts-row">
+            <div class="table-card">
+              <div class="table-card-header">
+                <h3>Commandes récentes</h3>
+              </div>
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>N° Commande</th>
+                    <th>Client</th>
+                    <th>Articles</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                    <th>Statut</th>
+                  </tr>
+                </thead>
+                <tbody id="recentOrdersBody"></tbody>
+              </table>
+            </div>
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3>🏆 Meilleures ventes</h3>
+              </div>
+              <div class="top-sellers-list" id="dashTopSellers"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════ -->
+        <!-- PAGE: BOOKS                         -->
+        <!-- ═══════════════════════════════════ -->
+        <div class="admin-page" id="page-books">
+          <div class="table-card">
+            <div class="table-card-header">
+              <h3>Catalogue des livres</h3>
+              <div class="table-actions">
+                <input type="search" class="table-search" placeholder="Rechercher…" oninput="renderBooks(this.value)" />
+                <button class="btn-admin btn-admin-primary" onclick="openAddBookModal()">+ Ajouter</button>
+              </div>
+            </div>
+            <div style="overflow-x:auto">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Livre</th>
+                    <th>Catégorie</th>
+                    <th>Prix</th>
+                    <th>Stock</th>
+                    <th>Vendus</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="booksTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════ -->
+        <!-- PAGE: SALES                         -->
+        <!-- ═══════════════════════════════════ -->
+        <div class="admin-page" id="page-sales">
+          <div class="stats-grid">
+            <div class="stat-card green">
+              <div class="stat-icon">💰</div>
+              <div class="stat-label">Revenus totaux</div>
+              <div class="stat-value" id="salesRevenue" style="font-size:1.4rem">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">📦</div>
+              <div class="stat-label">Commandes totales</div>
+              <div class="stat-value" id="salesOrders">0</div>
+            </div>
+            <div class="stat-card gold">
+              <div class="stat-icon">🧾</div>
+              <div class="stat-label">Panier moyen</div>
+              <div class="stat-value" id="salesAvg" style="font-size:1.4rem">0</div>
+            </div>
+            <div class="stat-card terra">
+              <div class="stat-icon">📖</div>
+              <div class="stat-label">Articles vendus</div>
+              <div class="stat-value" id="salesItems">0</div>
+            </div>
+          </div>
+
+          <div class="charts-row">
+            <div class="chart-card">
+              <div class="chart-card-header"><h3>Tendances des revenus (12 mois)</h3></div>
+              <div style="height:340px"><canvas id="salesLineChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-card-header"><h3>🏆 Classement des ventes</h3></div>
+              <div style="overflow-x:auto">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Livre</th>
+                      <th>Vendus</th>
+                      <th>Revenus</th>
+                    </tr>
+                  </thead>
+                  <tbody id="topSellersFullList"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ═══════════════════════════════════ -->
+        <!-- PAGE: MESSAGES                      -->
+        <!-- ═══════════════════════════════════ -->
+        <div class="admin-page" id="page-messages">
+          <div class="table-card">
+            <div class="table-card-header">
+              <h3>📩 Messages reçus <span class="status-badge non_lu" id="msgUnreadCount">0</span></h3>
+              <div class="table-actions">
+                <input type="search" class="table-search" placeholder="Rechercher…" oninput="renderMessages(this.value)" />
+              </div>
+            </div>
+            <div style="overflow-x:auto">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Objet</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="messagesBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ══ BOOK MODAL ══ -->
+  <div class="modal-overlay" id="bookModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="bookModalTitle">Ajouter un livre</h3>
+        <button class="modal-close" onclick="closeModal('bookModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="bookForm" onsubmit="event.preventDefault();saveBook();">
+          <input type="hidden" id="bookFormId" />
+          <div class="form-grid">
+            <div>
+              <label class="admin-label">Titre</label>
+              <input class="admin-input" id="bookFormTitle" required placeholder="Titre de l'ouvrage" />
+            </div>
+            <div>
+              <label class="admin-label">Auteur</label>
+              <input class="admin-input" id="bookFormAuthor" required placeholder="Nom de l'auteur" />
+            </div>
+            <div>
+              <label class="admin-label">Catégorie</label>
+              <select class="admin-select" id="bookFormCategory">
+                <option>Histoire</option>
+                <option>Droit</option>
+                <option>Dialogue & Paix</option>
+                <option>Religion</option>
+                <option>Éducation</option>
+                <option>Économie</option>
+                <option>Revue</option>
+              </select>
+            </div>
+            <div>
+              <label class="admin-label">Prix (F CFA)</label>
+              <input class="admin-input" id="bookFormPrice" type="number" required placeholder="12000" />
+            </div>
+            <div>
+              <label class="admin-label">Stock</label>
+              <input class="admin-input" id="bookFormStock" type="number" required placeholder="50" />
+            </div>
+            <div>
+              <label class="admin-label">Date publication</label>
+              <input class="admin-input" id="bookFormDate" type="date" />
+            </div>
+            <div>
+              <label class="admin-label">Couverture (image)</label>
+              <input class="admin-input" id="bookFormCover" type="file" accept="image/*" onchange="handleCoverChange(event)" />
+            </div>
+            <div>
+              <img id="bookCoverPreview" src="" alt="Aperçu de la couverture" style="max-width:100%;border-radius:6px;margin-top:8px;display:none;" />
+            </div>
+            <input type="hidden" id="bookFormCoverData" />
+            <div class="form-full">
+              <label class="admin-label">Description</label>
+              <textarea class="admin-textarea" id="bookFormDesc" placeholder="Description de l'ouvrage…"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-admin btn-admin-outline" onclick="closeModal('bookModal')">Annuler</button>
+        <button class="btn-admin btn-admin-primary" onclick="saveBook()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ MESSAGE DETAIL MODAL ══ -->
+  <div class="modal-overlay" id="msgModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>📩 Détail du message</h3>
+        <button class="modal-close" onclick="closeModal('msgModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="margin-bottom:16px">
+          <div class="admin-label">De</div>
+          <div style="font-size:15px;font-weight:700;color:var(--deep)" id="msgDetailName"></div>
+          <div style="font-size:13px;color:var(--warm-gray)" id="msgDetailEmail"></div>
+        </div>
+        <div style="margin-bottom:16px">
+          <div class="admin-label">Objet</div>
+          <div style="font-size:15px;color:var(--deep)" id="msgDetailSubject"></div>
+        </div>
+        <div style="margin-bottom:16px">
+          <div class="admin-label">Date</div>
+          <div style="font-size:13px;color:var(--warm-gray)" id="msgDetailDate"></div>
+        </div>
+        <div>
+          <div class="admin-label">Message</div>
+          <div style="background:var(--light-gray);padding:16px;border-radius:10px;font-size:14px;line-height:1.7;color:var(--ink)" id="msgDetailBody"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-admin btn-admin-outline" onclick="closeModal('msgModal')">Fermer</button>
+        <a class="btn-admin btn-admin-primary" id="msgReplyBtn" href="#">Répondre par email</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/js/utils.js"></script>
+  <script src="./assets/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+[
+  {"id":1,"firstName":"Kofi","lastName":"Asante","email":"kofi.asante@univ-ci.edu","subject":"Soumettre un manuscrit","message":"Bonjour, je souhaite soumettre un manuscrit sur l'histoire du royaume Ashanti. Pourriez-vous me communiquer les modalités ?","date":"2026-05-12T09:15:00","read":false},
+  {"id":2,"firstName":"Aminata","lastName":"Coulibaly","email":"aminata.c@gmail.com","subject":"Commander un ouvrage","message":"Je cherche le livre 'Le Sanvi Tome I' pour mes recherches universitaires. Est-il disponible ?","date":"2026-05-11T14:30:00","read":false},
+  {"id":3,"firstName":"Jean-Pierre","lastName":"Kouamé","email":"jpkouame@cerap.org","subject":"Demande institutionnelle","message":"Au nom de la bibliothèque de l'Université de Cocody, nous souhaitons passer une commande groupée de 50 exemplaires.","date":"2026-05-10T11:00:00","read":true},
+  {"id":4,"firstName":"Fatou","lastName":"Diarra","email":"f.diarra@outlook.com","subject":"S'abonner à la Revue Débats","message":"Je souhaite souscrire un abonnement annuel à la revue Débats. Quels sont les modes de paiement acceptés ?","date":"2026-05-09T16:45:00","read":true},
+  {"id":5,"firstName":"Ibrahim","lastName":"Sanogo","email":"i.sanogo@yahoo.fr","subject":"Autre","message":"Bonjour, j'aimerais savoir si vous proposez des stages dans votre département éditorial. Merci.","date":"2026-05-08T08:20:00","read":true},
+  {"id":6,"firstName":"Marie","lastName":"N'Dri","email":"marie.ndri@univ-fhb.edu.ci","subject":"Soumettre un manuscrit","message":"Je suis professeure de droit et j'ai un ouvrage prêt sur le droit foncier en Côte d'Ivoire.","date":"2026-05-07T10:10:00","read":false},
+  {"id":7,"firstName":"Ousmane","lastName":"Traoré","email":"ousmane.t@gmail.com","subject":"Commander un ouvrage","message":"Bonjour, est-il possible de commander depuis le Burkina Faso ? Quels sont les frais de livraison ?","date":"2026-05-06T13:55:00","read":true}
+]

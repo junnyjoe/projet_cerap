@@ -1,0 +1,52 @@
+{
+  "summary": {
+    "totalRevenue": 18750000,
+    "totalOrders": 1677,
+    "todayOrders": 12,
+    "monthOrders": 187,
+    "avgCart": 11185,
+    "totalBooks": 10,
+    "totalContacts": 43
+  },
+  "monthly": [
+    {"month":"Jan","revenue":1120000,"orders":98},
+    {"month":"Fév","revenue":980000,"orders":87},
+    {"month":"Mar","revenue":1350000,"orders":112},
+    {"month":"Avr","revenue":1580000,"orders":134},
+    {"month":"Mai","revenue":1720000,"orders":148},
+    {"month":"Jun","revenue":1450000,"orders":125},
+    {"month":"Jul","revenue":1180000,"orders":102},
+    {"month":"Aoû","revenue":1680000,"orders":143},
+    {"month":"Sep","revenue":1890000,"orders":162},
+    {"month":"Oct","revenue":2010000,"orders":175},
+    {"month":"Nov","revenue":1950000,"orders":168},
+    {"month":"Déc","revenue":1840000,"orders":158}
+  ],
+  "weekly": [
+    {"day":"Lun","orders":28,"revenue":312000},
+    {"day":"Mar","orders":35,"revenue":391000},
+    {"day":"Mer","orders":42,"revenue":469000},
+    {"day":"Jeu","orders":31,"revenue":346000},
+    {"day":"Ven","orders":38,"revenue":425000},
+    {"day":"Sam","orders":22,"revenue":246000},
+    {"day":"Dim","orders":8,"revenue":89000}
+  ],
+  "categories": [
+    {"name":"Droit","value":35},
+    {"name":"Histoire","value":25},
+    {"name":"Revue","value":20},
+    {"name":"Religion","value":10},
+    {"name":"Éducation","value":5},
+    {"name":"Autre","value":5}
+  ],
+  "recentOrders": [
+    {"id":"CMD-2026-0451","client":"Kouadio Aya","items":2,"total":32000,"date":"2026-05-12","status":"livré"},
+    {"id":"CMD-2026-0450","client":"N'Guessan Marc","items":1,"total":12000,"date":"2026-05-12","status":"en_cours"},
+    {"id":"CMD-2026-0449","client":"Touré Fatou","items":3,"total":27500,"date":"2026-05-11","status":"livré"},
+    {"id":"CMD-2026-0448","client":"Bamba Issouf","items":1,"total":20000,"date":"2026-05-11","status":"en_cours"},
+    {"id":"CMD-2026-0447","client":"Konan Adjoua","items":2,"total":14500,"date":"2026-05-10","status":"livré"},
+    {"id":"CMD-2026-0446","client":"Diallo Ibrahim","items":4,"total":45000,"date":"2026-05-10","status":"livré"},
+    {"id":"CMD-2026-0445","client":"Yao Christiane","items":1,"total":2500,"date":"2026-05-09","status":"annulé"},
+    {"id":"CMD-2026-0444","client":"Ouattara Moussa","items":2,"total":25000,"date":"2026-05-09","status":"livré"}
+  ]
+}

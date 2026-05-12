@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CERAP Éditions — Ligne éditoriale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Atkinson+Hyperlegible:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="./index.html">
+        <div class="nav-logo-mark"><img src="./assets/images/logo-uja.png" alt="Logo UJA"></div>
+        <div class="nav-logo-text">
+          <strong>CERAP Éditions</strong>
+          <span>Abidjan · Côte d'Ivoire</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="./index.html">Accueil</a></li>
+        <li><a href="./librairie.html">Librairie</a></li>
+        <li><a href="./ligne-editoriale.html" class="active">Ligne Éditoriale</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li><a href="./librairie.html" class="nav-cta">Commander →</a></li>
+      </ul>
+
+      <button class="nav-menu-btn" data-js="mobile-menu-toggle" aria-label="Menu" aria-controls="mobileNav" aria-expanded="false" type="button">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="19" y2="6"/>
+          <line x1="3" y1="11" x2="19" y2="11"/>
+          <line x1="3" y1="16" x2="19" y2="16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav" role="menu" aria-label="Navigation mobile">
+    <a href="./index.html">Accueil</a>
+    <a href="./librairie.html">Librairie</a>
+    <a href="./ligne-editoriale.html">Ligne Éditoriale</a>
+    <a href="./contact.html">Contact</a>
+  </div>
+
+  <section class="editorial-section js-reveal" data-reveal id="editorial">
+    <div class="section-inner">
+      <div class="editorial-grid">
+        <div class="editorial-text">
+          <span class="section-kicker">Notre mission</span>
+          <h2 class="section-title">Ligne éditoriale</h2>
+          <div class="editorial-quote">
+            <p>Contribuer à la promotion d'auteurs africains en général et ouest-africains en particulier, à travers des ouvrages universitaires, scientifiques et de haute culture.</p>
+          </div>
+          <p>Ouvert en 2003, le département des Éditions du CERAP succède aux anciennes Éditions de l'INADES. Avec ce nouveau départ, les Éditions du CERAP ont fait le choix de publier des ouvrages destinés à un public élargi d'enseignants, d'étudiants et de lecteurs.</p>
+          <p style="margin-top:1rem">Nos publications nourrissent la réflexion sur la société et son histoire, la vie politique et religieuse, le droit et la vie spirituelle.</p>
+          <a href="./contact.html" class="btn-primary" style="margin-top:1.5rem;display:inline-flex">Soumettre un manuscrit →</a>
+        </div>
+
+        <div>
+          <h3 style="font-size:1.2rem;margin-bottom:1rem;font-family:'EB Garamond',serif;">Nos domaines de publication</h3>
+          <div class="editorial-categories">
+            <a href="./librairie.html" class="editorial-cat-card">
+              <span class="cat-color-dot" style="background:#0a2d5c"></span>
+              <h4>Histoire</h4>
+              <span>Recherches historiques africaines</span>
+            </a>
+            <a href="./librairie.html" class="editorial-cat-card">
+              <span class="cat-color-dot" style="background:#003366"></span>
+              <h4>Droit</h4>
+              <span>Droit constitutionnel & sciences juridiques</span>
+            </a>
+            <a href="./librairie.html" class="editorial-cat-card">
+              <span class="cat-color-dot" style="background:#1a4a5c"></span>
+              <h4>Dialogue & Paix</h4>
+              <span>Conflits, réconciliation, médiation</span>
+            </a>
+            <a href="./librairie.html" class="editorial-cat-card">
+              <span class="cat-color-dot" style="background:#1a2d5c"></span>
+              <h4>Littérature</h4>
+              <span>Romans, essais, poésie africaine</span>
+            </a>
+            <a href="./librairie.html" class="editorial-cat-card">
+              <span class="cat-color-dot" style="background:#0d2347"></span>
+              <h4>Spiritualité</h4>
+              <span>Théologie, vie religieuse, jesuites</span>
+            </a>
+            <a href="./librairie.html" class="editorial-cat-card">
+              <span class="cat-color-dot" style="background:#002147"></span>
+              <h4>Sciences sociales</h4>
+              <span>Sociologie, anthropologie, économie</span>
+            </a>
+          </div>
+
+          <div style="background:var(--gold-bg);border:1px solid rgba(154,108,42,0.2);padding:1.25rem;margin-top:1.25rem;">
+            <h4 style="font-family:'EB Garamond',serif;font-size:1rem;margin-bottom:6px;">Conditions de publication</h4>
+            <p style="font-size:13.5px;color:var(--warm-gray);margin-bottom:10px;">Vous avez un manuscrit ? Découvrez nos critères de sélection et notre processus éditorial.</p>
+            <a href="./contact.html" style="font-size:12px;font-weight:700;color:var(--gold);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;">Voir les conditions →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="nav-logo-mark" style="width:36px;height:36px;font-size:18px;background:var(--gold);color:var(--deep);display:flex;align-items:center;justify-content:center;font-family:'EB Garamond',serif;font-weight:700;">C</div>
+            <span style="font-family:'EB Garamond',serif;font-size:18px;font-weight:700;color:var(--white);">CERAP Éditions</span>
+          </div>
+          <p>Centre de Recherche et d'Action pour la Paix — Université Jésuite d'Abidjan. Promouvoir la pensée africaine depuis 2003.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="./librairie.html">Librairie</a></li>
+            <li><a href="./ligne-editoriale.html">Ligne éditoriale</a></li>
+            <li><a href="./contact.html">Nous contacter</a></li>
+            <li><a href="./login.html" style="opacity:0.6;font-size:11px;margin-top:10px;display:block;">Espace Administration</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>CERAP</h5>
+          <ul class="footer-links">
+            <li><a href="https://cerap-inades.org/index.php/historique-et-presentation" target="_blank" rel="noreferrer">Présentation</a></li>
+            <li><a href="https://cerap-inades.org/index.php/les-jesuites-o" target="_blank" rel="noreferrer">Les Jésuites</a></li>
+            <li><a href="https://cerap-inades.org/index.php/programmes/universitaires/licence" target="_blank" rel="noreferrer">Licences</a></li>
+            <li><a href="https://cerap-inades.org/index.php/programmes/universitaires/master" target="_blank" rel="noreferrer">Masters</a></li>
+            <li><a href="https://cerap-inades.org/index.php/bibliotheque" target="_blank" rel="noreferrer">Bibliothèque</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul class="footer-links">
+            <li><a href="tel:+2252722404720">(+225) 27 22 40 47 20</a></li>
+            <li><a href="mailto:editions@cerap-inades.org">editions@cerap-inades.org</a></li>
+            <li><a href="https://www.facebook.com/CERAPInades" target="_blank" rel="noreferrer">Facebook</a></li>
+            <li><a href="https://www.twitter.com/cerapabidjan" target="_blank" rel="noreferrer">Twitter / X</a></li>
+            <li><a href="https://www.youtube.com/@cerapci" target="_blank" rel="noreferrer">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 CERAP Éditions — Tous droits réservés · <a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></p>
+        <p class="u-footer-small">15, avenue Jean Mermoz, Cocody · Abidjan, Côte d'Ivoire</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cart-float" aria-live="polite">
+    <button class="cart-btn" onclick="toggleCart()" aria-label="Panier" aria-haspopup="dialog" aria-controls="cartPanel" aria-expanded="false" type="button">
+      🛒
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+
+  <div class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="cart-panel-header">
+      <h4>Mon panier</h4>
+      <button class="cart-close" data-js="cart-close" type="button" aria-label="Fermer le panier" onclick="toggleCart(false)">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">Votre panier est vide</div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotal">0 F CFA</span>
+      </div>
+      <button class="btn-primary" style="width:100%;justify-content:center" onclick="checkout()" type="button">Procéder au paiement →</button>
+    </div>
+  </div>
+
+  <script src="./assets/js/utils.js"></script>
+  <script src="./assets/js/script.js" defer></script>
+</body>
+</html>
+
