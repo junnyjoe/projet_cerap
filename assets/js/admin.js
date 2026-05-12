@@ -25,6 +25,32 @@ document.addEventListener('DOMContentLoaded', async () => {
   Utils.initScrollReveals('.stat-card, .chart-card, .table-card', true);
 });
 
+// ── MODALS ──
+function openModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.classList.add('open');
+    // Si c'est le modal livre, on réinitialise le titre si c'est un nouvel ajout
+    if (id === 'bookModal' && !document.getElementById('bookFormId').value) {
+      document.getElementById('bookModalTitle').textContent = 'Ajouter un livre';
+    }
+  }
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.classList.remove('open');
+    // Nettoyage si c'est le formulaire livre
+    if (id === 'bookModal') {
+      document.getElementById('bookForm').reset();
+      document.getElementById('bookFormId').value = '';
+      document.getElementById('bookCoverPreview').style.display = 'none';
+      document.getElementById('bookFormCoverData').value = '';
+    }
+  }
+}
+
 
 
 async function loadData() {
@@ -794,6 +820,7 @@ window.viewMessage = viewMessage;
 window.deleteMessage = deleteMessage;
 window.handleGlobalSearch = handleGlobalSearch;
 window.navigateTo = navigateTo;
+window.openModal = openModal;
 window.closeModal = closeModal;
 
 // Escape key closes modals
