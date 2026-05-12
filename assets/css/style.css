@@ -884,9 +884,12 @@ section { padding: 72px 2rem; }
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--gold);
-  display: block;
-  margin-bottom: 5px;
+  color: var(--white);
+  background: var(--terracotta);
+  display: inline-block;
+  padding: 4px 8px;
+  margin-bottom: 8px;
+  border-radius: 4px;
 }
 .book-title {
   font-family: 'EB Garamond', serif;
@@ -902,15 +905,15 @@ section { padding: 72px 2rem; }
   justify-content: space-between;
   margin-top: 10px;
 }
-.book-price { font-family: 'EB Garamond', serif; font-size: 1.1rem; font-weight: 700; color: var(--deep); }
+.book-price { 
+  font-size: 13px; 
+  font-weight: 700; 
+  color: var(--deep); 
+}
 .book-status {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 3px 8px;
-  background: #e8f5ec;
-  color: var(--green);
+  font-size: 13px;
+  font-weight: 500;
+  color: #14b8a6;
 }
 .book-add-btn {
   width: 100%;

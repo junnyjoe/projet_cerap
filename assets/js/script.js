@@ -108,8 +108,8 @@ function renderBooks(filter) {
         <span class="book-cat-tag">${b.category}</span>
         <div class="book-title">${b.title}</div>
         <div class="book-footer">
-          <span class="book-price">${formattedPrice}</span>
           <span class="book-status">${b.status === 'stock_faible' ? 'Stock faible' : 'Disponible'}</span>
+          <span class="book-price">XOF: ${formattedPrice}</span>
         </div>
         <div class="book-card-actions" style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px;">
            <button class="book-add-btn" style="margin-top:0" onclick="event.stopPropagation(); showBookDetails(${b.id})">Détails</button>
