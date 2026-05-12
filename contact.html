@@ -1,250 +1,181 @@
 <!DOCTYPE html>
-
 <html lang="fr">
-
 <head>
-
   <meta charset="UTF-8" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>CERAP Éditions — Contact</title>
-
   <meta name="description" content="Contactez les Éditions du CERAP pour toute commande, abonnement ou soumission de manuscrit." />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />
-
   <link rel="stylesheet" href="./assets/css/style.css" />
-
+  <style>
+    .contact-ref-title {
+      border-left: 4px solid white;
+      padding-left: 15px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+      color: white;
+    }
+    .contact-ref-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .contact-ref-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 1.2rem;
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+    }
+    .contact-ref-list li strong {
+      color: white;
+    }
+    .social-icons-ref {
+      display: flex;
+      gap: 15px;
+      margin-top: 1rem;
+    }
+    .social-icon-ref {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .social-icon-ref:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--navy);
+    }
+  </style>
 </head>
-
 <body>
-
   <nav>
-
     <div class="nav-inner">
-
       <a class="nav-logo" href="./index.html">
-
         <div class="nav-logo-mark"><img src="./assets/images/logo-uja.png" alt="Logo UJA"></div>
-
         <div class="nav-logo-text">
-
           <strong>CERAP Éditions</strong>
-
           <span>Abidjan · Côte d'Ivoire</span>
-
         </div>
-
       </a>
-
       <ul class="nav-links">
-
         <li><a href="./index.html">Accueil</a></li>
-
         <li><a href="./librairie.html">Librairie</a></li>
-
         <li><a href="./ligne-editoriale.html">Ligne Éditoriale</a></li>
-
-        <li><a href="./conditions-publication.html">Conditions de Publication</a></li>
-
+        <li><a href="./conditions-publication.html">Conditions</a></li>
         <li><a href="./contact.html" class="active">Contact</a></li>
-
         <li><a href="./librairie.html" class="nav-cta">Commander →</a></li>
-
       </ul>
-
-      <button class="nav-menu-btn" data-js="mobile-menu-toggle" aria-label="Menu" aria-controls="mobileNav" aria-expanded="false" type="button">
-
+      <button class="nav-menu-btn" data-js="mobile-menu-toggle" type="button">
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2">
-
           <line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/>
-
         </svg>
-
       </button>
-
     </div>
-
   </nav>
 
-
-
-  <div class="mobile-nav" id="mobileNav">
-
-    <a href="./index.html">Accueil</a>
-
-    <a href="./librairie.html">Librairie</a>
-
-    <a href="./ligne-editoriale.html">Ligne Éditoriale</a>
-
-    <a href="./conditions-publication.html">Conditions de Publication</a>
-
-    <a href="./contact.html">Contact</a>
-
-  </div>
-
-
-
-  <section class="section-white js-reveal" data-reveal id="contact">
-
+  <section class="section-white">
     <div class="section-inner">
-
-      <div class="section-header" style="margin-bottom: 3rem;">
-
-        <span class="section-kicker">NOUS REJOINDRE</span>
-
-        <h2 class="section-title">Contactez-nous</h2>
-
-        <p class="section-subtitle">Pour une commande, un abonnement, ou la soumission d'un manuscrit.</p>
-
+      <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+        <span class="section-kicker">COMMUNICATION</span>
+        <h2 class="section-title">Soumettez votre projet</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">Utilisez le formulaire ci-dessous pour toute demande de publication ou de renseignement.</p>
       </div>
-
-
-
-      <div class="contact-grid" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem;">
-
-        <div>
-
-          <form class="contact-form" data-js="contact-form">
-
-            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-
-              <div class="form-group">
-
-                <label class="form-label">Prénom</label>
-
-                <input type="text" class="form-input" placeholder="Kofi" />
-
-              </div>
-
-              <div class="form-group">
-
-                <label class="form-label">Nom</label>
-
-                <input type="text" class="form-input" placeholder="Asante" />
-
-              </div>
-
+      
+      <div style="max-width: 800px; margin: 0 auto;">
+        <form class="contact-form" style="background: var(--cream); padding: 50px; border-radius: 24px; border: 1px solid rgba(0,0,0,0.05);">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+            <div class="form-group">
+              <label class="form-label">Nom Complet</label>
+              <input type="text" class="form-input" placeholder="Votre nom…">
             </div>
-
-            <div class="form-group" style="margin-bottom: 1.5rem;">
-
+            <div class="form-group">
               <label class="form-label">Email</label>
-
-              <input type="email" class="form-input" placeholder="kofi@exemple.ci" />
-
+              <input type="email" class="form-input" placeholder="votre@email.com">
             </div>
-
-            <div class="form-group" style="margin-bottom: 1.5rem;">
-
-              <label class="form-label">Objet</label>
-
-              <select class="form-select">
-
-                <option>Commander un ouvrage</option>
-
-                <option>S'abonner à la Revue Débats</option>
-
-                <option>Soumettre un manuscrit</option>
-
-                <option>Demande institutionnelle</option>
-
-                <option>Autre</option>
-
-              </select>
-
-            </div>
-
-            <div class="form-group" style="margin-bottom: 2rem;">
-
-              <label class="form-label">Message</label>
-
-              <textarea class="form-textarea" placeholder="Votre message…" style="height: 150px;"></textarea>
-
-            </div>
-
-            <button type="submit" class="btn-primary">Envoyer le message →</button>
-
-          </form>
-
-        </div>
-
-
-
-        <div class="contact-info" style="background: var(--cream); padding: 40px; border-radius: 24px; border: 1px solid rgba(0,0,0,0.04);">
-
-          <h3 style="font-family: 'EB Garamond', serif; font-size: 1.8rem; color: var(--navy); margin-bottom: 2rem;">Coordonnées</h3>
-
-          <div class="contact-info-item" style="display: flex; gap: 15px; margin-bottom: 2rem;">
-
-            <div style="font-size: 1.2rem;">📍</div>
-
-            <div>
-
-              <span style="font-weight: 700; color: var(--gold); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Adresse</span>
-
-              <span style="color: var(--navy); line-height: 1.5; font-size: 14px;">15, avenue Jean Mermoz, Cocody<br/>08 BP 2088 Abidjan 08, Côte d'Ivoire</span>
-
-            </div>
-
           </div>
-
-          <div class="contact-info-item" style="display: flex; gap: 15px; margin-bottom: 2rem;">
-
-            <div style="font-size: 1.2rem;">📞</div>
-
-            <div>
-
-              <span style="font-weight: 700; color: var(--gold); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Téléphone</span>
-
-              <span style="color: var(--navy); line-height: 1.5; font-size: 14px;">(+225) 27 22 40 47 20<br/>(+225) 01 51 44 24 00</span>
-
-            </div>
-
+          <div class="form-group" style="margin-bottom: 2rem;">
+            <label class="form-label">Objet</label>
+            <select class="form-select">
+              <option>Soumission de manuscrit</option>
+              <option>Commande de livres</option>
+              <option>Abonnement Revue Débats</option>
+              <option>Autre demande</option>
+            </select>
           </div>
-
-          <div class="contact-info-item" style="display: flex; gap: 15px; margin-bottom: 2rem;">
-
-            <div style="font-size: 1.2rem;">✉️</div>
-
-            <div>
-
-              <span style="font-weight: 700; color: var(--gold); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Email</span>
-
-              <span style="color: var(--navy); line-height: 1.5; font-size: 14px;">editions@cerap-inades.org</span>
-
-            </div>
-
+          <div class="form-group" style="margin-bottom: 2.5rem;">
+            <label class="form-label">Votre Message</label>
+            <textarea class="form-textarea" placeholder="Décrivez votre projet…" style="height: 180px;"></textarea>
           </div>
-
-          <div class="contact-info-item" style="display: flex; gap: 15px;">
-
-            <div style="font-size: 1.2rem;">🕒</div>
-
-            <div>
-
-              <span style="font-weight: 700; color: var(--gold); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Horaires</span>
-
-              <span style="color: var(--navy); line-height: 1.5; font-size: 14px;">Lun – Ven : 8h00 – 17h00<br/>Sam : 9h00 – 13h00</span>
-
-            </div>
-
-          </div>
-
-        </div>
-
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Envoyer mon message →</button>
+        </form>
       </div>
-
     </div>
-
   </section>
 
+  <section class="section-navy" style="padding: 100px 2rem;">
+    <div class="section-inner">
+      <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 5rem;">
+        
+        <!-- LEFT: Contact Columns -->
+        <div style="display: grid; grid-template-columns: 1fr; gap: 4rem;">
+          
+          <div>
+            <div class="contact-ref-title">ADRESSE</div>
+            <p style="color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.6;">
+              15, avenue Jean Mermoz, Cocody<br>
+              08 BP 2088 Abidjan 08 Côte d'Ivoire
+            </p>
+          </div>
 
+          <div>
+            <div class="contact-ref-title">SUIVEZ-NOUS</div>
+            <div class="social-icons-ref">
+              <a href="#" class="social-icon-ref">f</a>
+              <a href="#" class="social-icon-ref">𝕏</a>
+              <a href="#" class="social-icon-ref">▶</a>
+            </div>
+          </div>
 
-      <footer>
+          <div>
+            <div class="contact-ref-title">CONTACTEZ-NOUS</div>
+            <ul class="contact-ref-list">
+              <li><span>📞</span> (+225) 27 22 40 47 20</li>
+              <li><span>✉️</span> editions@cerap-inades.org</li>
+              <li><span>💬</span> (+225) 01 51 44 24 00</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: Geolocation -->
+        <div>
+          <div class="contact-ref-title">GEOLOCALISATION</div>
+          <div style="width: 100%; height: 350px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m1!1s0xfc1ec379201f9d5%3A0xc331d9966150247!2zQ0VSQVAgKEPDpW50cmUgZGUgUmVjaGVyY2hlIGV0IGQnQWN0aW9uIHBvdXIgbGEgUGFpeCk!2m2!1d-3.992222!2d5.34!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1ec379201f9d5%3A0xc331d9966150247!2zQ0VSQVAgKEPDpW50cmUgZGUgUmVjaGVyY2hlIGV0IGQnQWN0aW9uIHBvdXIgbGEgUGFpeCk!5e0!3m2!1sfr!2sci!4v1715545000000!5m2!1sfr!2sci" 
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <a href="https://goo.gl/maps/example" target="_blank" style="display: block; margin-top: 15px; color: var(--gold-light); font-size: 13px; text-decoration: none;">
+            Ouvrir dans Google Maps ↗
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
     <div class="footer-inner">
       <div class="footer-grid">
         <div class="footer-col">
@@ -278,10 +209,8 @@
     </div>
   </footer>
 
-
-
+  <script src="./assets/js/supabase-config.js"></script>
+  <script src="./assets/js/utils.js"></script>
   <script src="./assets/js/script.js"></script>
-
 </body>
-
 </html>
