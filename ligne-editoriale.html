@@ -61,27 +61,84 @@
     <a href="./contact.html">Contact</a>
   </div>
 
-  <section class="editorial-hero">
+  <section class="editorial-hero" style="padding: 60px 2rem 40px; background: var(--white);">
     <div class="section-inner">
-      <div class="editorial-hero-grid" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center;">
-        <div class="editorial-hero-text">
-          <span class="section-kicker">Vision & Mission</span>
-          <h1 class="section-title" style="font-size:clamp(2.2rem, 5vw, 3.5rem); margin-bottom:1.5rem; color:var(--deep);">Une voix pour la pensée africaine</h1>
-          <p class="editorial-lead">
-            Depuis 2003, les Éditions du CERAP (EDICERAP) s'inscrivent dans une démarche d'excellence académique et de promotion culturelle. Notre mission est de nourrir le débat d'idées et de valoriser les recherches qui façonnent l'Afrique de demain.
-          </p>
-          <div class="hero-actions">
-            <a href="./contact.html" class="btn-primary" style="padding: 14px 28px;">SOUMETTRE UN MANUSCRIT →</a>
-            <a href="#collections" class="btn-book-outline" style="padding:14px 28px; text-decoration:none; display:inline-flex; align-items:center; border-radius:12px; border:1px solid var(--border-dark); color:var(--deep);">Découvrir nos collections</a>
+      <div class="editorial-main-grid" style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start;">
+        
+        <!-- Colonne Gauche: Texte & Mission -->
+        <div class="editorial-left">
+          <span class="section-kicker" style="color: var(--gold); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 11px;">À PROPOS DE NOUS</span>
+          <h1 class="section-title" style="font-family: 'EB Garamond', serif; font-size: 3rem; color: var(--deep); margin: 0.5rem 0 1rem;">Ligne éditoriale</h1>
+          <div style="width: 40px; height: 3px; background: var(--gold); margin-bottom: 2.5rem;"></div>
+
+          <div class="mission-quote" style="background: #fdfaf5; border-radius: 16px; padding: 32px; margin-bottom: 2rem; position: relative; border: 1px solid rgba(212,136,6,0.1);">
+            <div style="color: var(--gold); font-size: 2.5rem; font-family: 'EB Garamond', serif; position: absolute; top: 20px; left: 20px; opacity: 0.8; line-height: 1;">“</div>
+            <p style="font-family: 'EB Garamond', serif; font-style: italic; font-size: 1.25rem; color: var(--deep); line-height: 1.6; margin: 0; padding-left: 40px;">
+              Contribuer à la promotion d'auteurs africains en général et ouest-africains en particulier, à travers des ouvrages universitaires, scientifiques et de haute culture.
+            </p>
+          </div>
+
+          <div class="mission-text" style="color: var(--deep); line-height: 1.7; font-size: 15px;">
+            <p style="margin-bottom: 1.5rem;">Depuis 2003, les Éditions du CERAP (EDICERAP) s'inscrivent dans une démarche d'excellence académique et de promotion culturelle. Notre mission est de nourrir le débat d'idées et de valoriser les recherches qui façonnent l'Afrique de demain.</p>
+            <p style="margin-bottom: 2.5rem;">Nos publications nourrissent la réflexion sur la société et son histoire, la vie politique et religieuse, le droit et la vie spirituelle.</p>
+          </div>
+
+          <div class="hero-actions" style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+            <a href="./contact.html" class="btn-primary" style="padding: 14px 28px; background: var(--gold); color: var(--deep); border: none;">SOUMETTRE UN MANUSCRIT →</a>
+            <a href="#collections" class="btn-book-outline" style="padding: 14px 28px; border: 1px solid var(--border-dark); border-radius: 12px; color: var(--deep); text-decoration: none;">Découvrir nos collections</a>
           </div>
         </div>
-        <div class="editorial-hero-image" style="display: flex; justify-content: flex-end; position: relative;">
-          <div class="editorial-hero-decor" style="position:relative; width: fit-content;">
-             <img src="https://cerap-inades.org/images/com_booklibrary/book_images/book_58_cover.jpg" alt="Featured Book" style="width:200px; height:auto; box-shadow: 20px 20px 60px rgba(0,0,0,0.1); border-radius:4px; transform:rotate(-5deg);" onerror="this.src='./assets/images/logo-uja.png'">
-             <div class="editorial-stat-card gold" style="position:absolute; bottom:-20px; right:-20px; box-shadow: 0 10px 30px rgba(212,136,6,0.2);">
-               <span class="stat-num">300+</span>
-               <span class="stat-txt">Ouvrages publiés</span>
-             </div>
+
+        <!-- Colonne Droite: Domaines & Grid -->
+        <div class="editorial-right">
+          <h2 style="font-family: 'EB Garamond', serif; font-size: 2rem; color: var(--deep); margin-bottom: 0.5rem;">Nos domaines de publication</h2>
+          <div style="width: 30px; height: 3px; background: var(--gold); margin-bottom: 2rem;"></div>
+
+          <div class="domains-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 2rem;">
+            <!-- Histoire -->
+            <div class="domain-card" style="background: white; border: 1px solid #f0f0f0; border-radius: 20px; padding: 24px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+              <div style="background: #5D4037; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.2rem;">🏛️</div>
+              <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--deep);">Histoire</h4>
+              <p style="font-size: 11px; color: #777; line-height: 1.4;">Recherches historiques africaines</p>
+            </div>
+            <!-- Droit -->
+            <div class="domain-card" style="background: white; border: 1px solid #f0f0f0; border-radius: 20px; padding: 24px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+              <div style="background: #0D47A1; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.2rem;">⚖️</div>
+              <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--deep);">Droit</h4>
+              <p style="font-size: 11px; color: #777; line-height: 1.4;">Droit constitutionnel & sciences juridiques</p>
+            </div>
+            <!-- Dialogue -->
+            <div class="domain-card" style="background: white; border: 1px solid #f0f0f0; border-radius: 20px; padding: 24px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+              <div style="background: #2E7D32; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.2rem;">🕊️</div>
+              <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--deep);">Dialogue & Paix</h4>
+              <p style="font-size: 11px; color: #777; line-height: 1.4;">Conflits, réconciliation, médiation</p>
+            </div>
+            <!-- Littérature -->
+            <div class="domain-card" style="background: white; border: 1px solid #f0f0f0; border-radius: 20px; padding: 24px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+              <div style="background: #6A1B9A; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.2rem;">📖</div>
+              <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--deep);">Littérature</h4>
+              <p style="font-size: 11px; color: #777; line-height: 1.4;">Romans, essais, poésie africaine</p>
+            </div>
+            <!-- Spiritualité -->
+            <div class="domain-card" style="background: white; border: 1px solid #f0f0f0; border-radius: 20px; padding: 24px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+              <div style="background: #B71C1C; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.2rem;">✝️</div>
+              <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--deep);">Spiritualité</h4>
+              <p style="font-size: 11px; color: #777; line-height: 1.4;">Théologie, vie religieuse, jésuites</p>
+            </div>
+            <!-- Sciences Sociales -->
+            <div class="domain-card" style="background: white; border: 1px solid #f0f0f0; border-radius: 20px; padding: 24px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+              <div style="background: #E65100; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.2rem;">👥</div>
+              <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--deep);">Sciences sociales</h4>
+              <p style="font-size: 11px; color: #777; line-height: 1.4;">Sociologie, anthropologie, économie</p>
+            </div>
+          </div>
+
+          <div class="cta-banner" style="background: #fdfaf5; border: 1px solid rgba(212,136,6,0.1); border-radius: 20px; padding: 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+            <div>
+              <h4 style="font-size: 16px; color: var(--deep); margin-bottom: 6px;">Conditions de publication</h4>
+              <p style="font-size: 12px; color: #777; margin: 0;">Vous avez un manuscrit ? Découvrez nos critères de sélection et notre processus éditorial.</p>
+            </div>
+            <a href="./conditions-publication.html" class="btn-book-outline" style="font-size: 11px; padding: 8px 16px; background: #fdf3e7; border: none; font-weight: 700; color: var(--deep); text-transform: uppercase; letter-spacing: 0.05em; border-radius: 8px; text-decoration: none; white-space: nowrap;">En savoir plus →</a>
           </div>
         </div>
       </div>
