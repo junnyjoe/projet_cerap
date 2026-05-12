@@ -103,6 +103,32 @@ h1, h2, h3, h4, h5 {
   flex-shrink: 0;
 }
 .sidebar-logo img { width: 100%; height: 100%; object-fit: cover; }
+
+.backend-status {
+  padding: 10px 20px;
+  background: rgba(0,0,0,0.15);
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.status-loading .status-dot { background: #94a3b8; animation: pulse-status 1.5s infinite; }
+.status-online .status-dot { background: #22c55e; box-shadow: 0 0 8px #22c55e; }
+.status-offline .status-dot { background: #ef4444; }
+.status-text { color: rgba(255,255,255,0.6); font-weight: 500; }
+
+@keyframes pulse-status {
+  0% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0.4; transform: scale(0.8); }
+}
 .sidebar-brand { display: flex; flex-direction: column; }
 .sidebar-brand strong {
   font-family: 'EB Garamond', serif;

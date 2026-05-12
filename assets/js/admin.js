@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 async function loadData() {
+  const statusEl = document.getElementById('backendStatus');
   try {
     // 1. Fetch Books
     const { data: bData, error: bError } = await supabase.from('books').select('*').order('created_at', { ascending: false });
@@ -47,9 +48,14 @@ async function loadData() {
     if (oData && oData.length > 0) {
       salesData = processOrders(oData);
     } else {
-      // Simulation fallback if no orders yet
       const sRes = await fetch('./data/sales.json');
       salesData = await sRes.json();
+    }
+
+    // Update Status to Online
+    if (statusEl) {
+      statusEl.className = 'backend-status status-online';
+      statusEl.querySelector('.status-text').textContent = 'Connecté (Live)';
     }
 
   } catch (e) {
@@ -62,6 +68,12 @@ async function loadData() {
     booksData = await bRes.json();
     salesData = await sRes.json();
     contactsData = await cRes.json();
+
+    // Update Status to Offline/Local
+    if (statusEl) {
+      statusEl.className = 'backend-status status-offline';
+      statusEl.querySelector('.status-text').textContent = 'Mode Local (Offline)';
+    }
   }
 }
 
