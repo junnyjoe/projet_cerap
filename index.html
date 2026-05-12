@@ -80,87 +80,98 @@
     <a href="./contact.html">Contact</a>
   </div>
 
-  <!-- 1. HERO PREMIUM -->
-  <section class="hero-premium">
-    <div class="hero-shapes" aria-hidden="true">
-      <div class="elegant-shape shape-1" style="--delay:0.3s"></div>
-      <div class="elegant-shape shape-2" style="--delay:0.5s"></div>
-            <span class="hero-stat-label">Fondation</span>
+  <!-- 1. HERO — PREMIUM EDITORIAL -->
+  <section class="hero-ed">
+    <!-- Texture layers -->
+    <div class="hero-ed-grain" aria-hidden="true"></div>
+    <div class="hero-ed-glow" aria-hidden="true"></div>
+    <div class="hero-ed-pattern" aria-hidden="true"></div>
+
+    <div class="hero-ed-inner">
+      <!-- LEFT: Editorial text -->
+      <div class="hero-ed-left">
+        <div class="hero-ed-badge">
+          <span class="hero-ed-badge-dot"></span>
+          Maison d'édition académique · Depuis 2003
+        </div>
+
+        <h1 class="hero-ed-title">
+          Voix africaines,<br>
+          <em>savoirs universels</em>
+        </h1>
+
+        <p class="hero-ed-lead">
+          Les Éditions du CERAP publient des ouvrages universitaires et de haute culture, et contribuent au rayonnement des auteurs africains.
+        </p>
+
+        <div class="hero-ed-actions">
+          <a href="./librairie.html" class="hero-ed-btn-gold">Explorer le catalogue →</a>
+          <a href="./ligne-editoriale.html" class="hero-ed-btn-ghost">Notre ligne éditoriale</a>
+        </div>
+
+        <div class="hero-ed-stats">
+          <div class="hero-ed-stat">
+            <span class="hero-ed-stat-num">2003</span>
+            <span class="hero-ed-stat-lbl">Fondation</span>
           </div>
-          <div>
-            <span class="hero-stat-num" id="statBooksPublished">+80</span>
-            <span class="hero-stat-label">Ouvrages publiés</span>
+          <div class="hero-ed-stat">
+            <span class="hero-ed-stat-num">300+</span>
+            <span class="hero-ed-stat-lbl">Ouvrages</span>
           </div>
-          <div>
-            <span class="hero-stat-num">Mensuelle</span>
-            <span class="hero-stat-label">Revue Débats</span>
+          <div class="hero-ed-stat">
+            <span class="hero-ed-stat-num">40+</span>
+            <span class="hero-ed-stat-lbl">Auteurs</span>
+          </div>
+          <div class="hero-ed-stat">
+            <span class="hero-ed-stat-num">12</span>
+            <span class="hero-ed-stat-lbl">Pays</span>
           </div>
         </div>
       </div>
 
-      <div class="hero-right hero-fade-up hero-fade-up-3">
-        <div class="hero-featured-book">
-          <div class="hero-book-badge">Nouveauté</div>
-
-          <div class="hero-book-grid">
-            <div class="hero-book-cover" style="background: linear-gradient(135deg, #5c4033, #3d2b22);">
-              <div class="hero-book-cover-text">INTRODUCTION<br>HISTORIQUE AU<br>DROIT IVOIRIEN</div>
-            </div>
-
-            <div class="hero-book-info">
-              <span class="hero-book-cat">Droit</span>
-              <div class="hero-book-title">Introduction historique au droit ivoirien</div>
-              <p class="hero-book-desc">
-                Une perspective historique fondamentale sur l'évolution du système juridique en Côte d'Ivoire par Séraphin NÉNÉ BI.
-              </p>
-
-              <div class="hero-book-price">9 500 <small>F CFA</small></div>
-
-              <div class="hero-book-actions">
-                <a
-                  href="#"
-                  class="btn-book btn-book-primary"
-                  onclick="addToCart(234, 'Introduction historique au droit ivoirien','9 500 F CFA','https://cerap-inades.org/images/com_booklibrary/book_images/book_234_cover.jpg');return false;"
-                >Ajouter au panier</a>
-                <a href="#" class="btn-book btn-book-outline" onclick="showBookDetails(234);return false;">Détails</a>
-              </div>
+      <!-- RIGHT: Book showcase -->
+      <div class="hero-ed-right">
+        <!-- Large book cover -->
+        <div class="hero-ed-book-wrap">
+          <div class="hero-ed-book-cover">
+            <img src="https://cerap-inades.org/images/com_booklibrary/book_images/book_234_cover.jpg"
+                 alt="Introduction historique au droit ivoirien"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="hero-ed-cover-fallback">
+              <span>INTRODUCTION HISTORIQUE AU DROIT IVOIRIEN</span>
+              <small>Séraphin NÉNÉ BI</small>
             </div>
           </div>
+          <div class="hero-ed-book-spine"></div>
+          <div class="hero-ed-book-shadow"></div>
+        </div>
 
-          <div class="hero-mini-books" aria-label="Sélection rapide">
-            <div class="hero-mini-book" onclick="addToCart(241, 'Droit du commerce international','15 000 F CFA','https://cerap-inades.org/images/com_booklibrary/book_images/book_241_cover.jpg')" role="button" tabindex="0">
-              <div class="hero-mini-cover cover-droit">DCI</div>
-              <div>
-                <div class="hero-mini-book-title">Droit du commerce international</div>
-                <div class="hero-mini-book-price">15 000 F CFA</div>
-              </div>
-            </div>
-
-            <div class="hero-mini-book" onclick="addToCart(240, 'Monétique et paiement électronique','13 500 F CFA','https://cerap-inades.org/images/com_booklibrary/book_images/book_240_cover.jpg')" role="button" tabindex="0">
-              <div class="hero-mini-cover cover-droit">MPE</div>
-              <div>
-                <div class="hero-mini-book-title">Monétique et paiement électronique</div>
-                <div class="hero-mini-book-price">13 500 F CFA</div>
-              </div>
-            </div>
-
-            <div class="hero-mini-book" onclick="addToCart(239, 'Droit des sûretés','12 500 F CFA','https://cerap-inades.org/images/com_booklibrary/book_images/book_239_cover.jpg')" role="button" tabindex="0">
-              <div class="hero-mini-cover cover-droit">DDS</div>
-              <div>
-                <div class="hero-mini-book-title">Droit des sûretés</div>
-                <div class="hero-mini-book-price">12 500 F CFA</div>
-              </div>
-            </div>
-
-            <div class="hero-mini-book" onclick="addToCart(238, 'TD Droit des Affaires','7 500 F CFA','https://cerap-inades.org/images/com_booklibrary/book_images/book_238_cover.jpg')" role="button" tabindex="0">
-              <div class="hero-mini-cover cover-droit">TDA</div>
-              <div>
-                <div class="hero-mini-book-title">Travaux dirigés de droit des affaires</div>
-                <div class="hero-mini-book-price">7 500 F CFA</div>
-              </div>
-            </div>
+        <!-- Glass info card -->
+        <div class="hero-ed-glass-card">
+          <span class="hero-ed-cat-tag">Droit</span>
+          <h3>Introduction historique au droit ivoirien</h3>
+          <p>Séraphin NÉNÉ BI</p>
+          <div class="hero-ed-price">9 500 <small>F CFA</small></div>
+          <div class="hero-ed-card-actions">
+            <a href="#" class="hero-ed-btn-gold" style="font-size:12px; padding:10px 20px;"
+               onclick="addToCart(234,'Introduction historique au droit ivoirien','9 500 F CFA','https://cerap-inades.org/images/com_booklibrary/book_images/book_234_cover.jpg');return false;">
+              Ajouter au panier
+            </a>
+            <a href="#" class="hero-ed-btn-ghost" style="font-size:12px; padding:10px 20px;"
+               onclick="showBookDetails(234);return false;">
+              Détails
+            </a>
           </div>
+        </div>
 
+        <!-- Floating mini-cards -->
+        <div class="hero-ed-float hero-ed-float-1">
+          <span class="hero-ed-float-icon">📚</span>
+          <span>Revue Débats — Mensuelle</span>
+        </div>
+        <div class="hero-ed-float hero-ed-float-2">
+          <span class="hero-ed-float-icon">🎓</span>
+          <span>Double évaluation par les pairs</span>
         </div>
       </div>
     </div>
