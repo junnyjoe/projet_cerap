@@ -186,9 +186,9 @@ html { scroll-behavior: smooth; }
 }
 
 body {
-  font-family: 'Atkinson Hyperlegible', sans-serif;
+  font-family: 'Inter', 'Atkinson Hyperlegible', sans-serif;
   background: var(--cream);
-  color: var(--ink);
+  color: var(--text);
   font-size: 16px;
   line-height: 1.7;
 }
@@ -1898,8 +1898,20 @@ footer { background: var(--ink); padding: 48px 2rem 24px; }
   background: linear-gradient(135deg, #061226 0%, #0d2145 60%, #091a3a 100%);
   position: relative;
   overflow: hidden;
-  padding: 140px 2rem 100px !important;
+  padding: 90px 2rem 70px !important;
   color: var(--white);
+}
+
+/* Extra warm glow top-left */
+.hero-ed::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(198,146,47,0.15), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(13,33,69,0.8), transparent 60%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* ── Texture: grain ── */
@@ -1939,7 +1951,7 @@ footer { background: var(--ink); padding: 48px 2rem 24px; }
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  gap: 5rem;
+  gap: 4rem;
   align-items: center;
   position: relative;
   z-index: 3;
@@ -1973,11 +1985,11 @@ footer { background: var(--ink); padding: 48px 2rem 24px; }
 
 .hero-ed-title {
   font-family: 'EB Garamond', serif;
-  font-size: clamp(48px, 6vw, 78px);
+  font-size: clamp(42px, 5.5vw, 68px);
   font-weight: 700;
   line-height: 0.95;
   color: var(--white);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
 }
 .hero-ed-title em {
@@ -1986,15 +1998,15 @@ footer { background: var(--ink); padding: 48px 2rem 24px; }
 }
 
 .hero-ed-lead {
-  font-size: 1.15rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.75;
   color: rgba(255,255,255,0.65);
-  max-width: 520px;
-  margin-bottom: 2.5rem;
+  max-width: 480px;
+  margin-bottom: 2rem;
 }
 
 /* ── Buttons ── */
-.hero-ed-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.hero-ed-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
 
 .hero-ed-btn-gold {
   display: inline-flex; align-items: center; gap: 8px;
@@ -2042,8 +2054,8 @@ footer { background: var(--ink); padding: 48px 2rem 24px; }
 /* ── Stats row ── */
 .hero-ed-stats {
   display: flex;
-  gap: 2.5rem;
-  padding-top: 2rem;
+  gap: 2rem;
+  padding-top: 1.5rem;
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 .hero-ed-stat-num {
@@ -2064,27 +2076,35 @@ footer { background: var(--ink); padding: 48px 2rem 24px; }
 }
 
 /* ══ RIGHT COLUMN ══ */
-.hero-ed-right { position: relative; display: flex; justify-content: center; }
+.hero-ed-right {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.5rem;
+  justify-content: flex-start;
+}
 
 /* ── Book cover ── */
 .hero-ed-book-wrap {
   position: relative;
-  width: 260px;
+  flex-shrink: 0;
+  width: 190px;
   z-index: 2;
 }
 .hero-ed-book-cover {
-  width: 260px;
-  height: 380px;
-  border-radius: 4px 12px 12px 4px;
+  width: 190px;
+  height: 270px;
+  border-radius: 4px 10px 10px 4px;
   overflow: hidden;
   position: relative;
   box-shadow:
-    8px 8px 0 rgba(198,146,47,0.15),
-    20px 30px 60px rgba(0,0,0,0.5);
+    6px 6px 0 rgba(198,146,47,0.2),
+    16px 24px 50px rgba(0,0,0,0.5);
   transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
 }
 .hero-ed-book-cover:hover {
-  transform: rotate(-2deg) translateY(-8px);
+  transform: rotate(-2deg) translateY(-6px);
 }
 .hero-ed-book-cover img {
   width: 100%; height: 100%;
@@ -2129,26 +2149,26 @@ footer { background: var(--ink); padding: 48px 2rem 24px; }
 /* Floor shadow */
 .hero-ed-book-shadow {
   position: absolute;
-  bottom: -20px; left: 15%;
-  width: 70%; height: 30px;
-  background: radial-gradient(ellipse, rgba(0,0,0,0.4), transparent 70%);
-  filter: blur(10px);
+  bottom: -14px; left: 10%;
+  width: 80%; height: 20px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.35), transparent 70%);
+  filter: blur(8px);
   z-index: 0;
 }
 
-/* ── Glass info card ── */
+/* ── Glass info card — now inline beside the cover ── */
 .hero-ed-glass-card {
-  position: absolute;
-  bottom: -30px; right: -40px;
+  flex: 1;
+  min-width: 0;
   background: rgba(255,255,255,0.06);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 20px;
-  padding: 24px;
-  max-width: 280px;
+  padding: 20px;
   z-index: 4;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+  align-self: flex-start;
 }
 .hero-ed-cat-tag {
   display: inline-block;
@@ -2354,9 +2374,9 @@ footer { background: var(--ink); padding: 48px 2rem 24px; }
 }
 
 /* ══ GLOBAL SECTION PADDING ══ */
-section { padding: 80px 2rem !important; }
-.hero-ed { padding: 140px 2rem 100px !important; }
-footer { padding: 100px 2rem 40px !important; }
+section { padding: 60px 2rem !important; }
+.hero-ed { padding: 90px 2rem 70px !important; }
+footer { padding: 80px 2rem 40px !important; }
 
 /* ══ SECTION BG HELPERS ══ */
 .section-navy { background: var(--navy); color: var(--white); }
