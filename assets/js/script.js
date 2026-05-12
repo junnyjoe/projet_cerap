@@ -6,10 +6,39 @@ let books = [];
 /**
  * Charge les données du catalogue depuis le fichier JSON
  */
-function renderSkeletons() {
-  const grid = document.getElementById('booksGrid');
+async function loadBooks() {
+  const mainGrid = document.getElementById('booksGrid');
+  const featuredGrid = document.getElementById('featuredBooks');
+  const newArrivalsGrid = document.getElementById('newArrivalsGrid');
+
+  if (!mainGrid && !featuredGrid && !newArrivalsGrid) return;
+  
+  if (mainGrid) renderSkeletons('booksGrid');
+  if (featuredGrid) renderSkeletons('featuredBooks');
+  if (newArrivalsGrid) renderSkeletons('newArrivalsGrid');
+
+  try {
+    const { data, error } = await supabase.from('books').select('*').order('created_at', { ascending: false });
+    if (error) throw error;
+
+    books = (data && data.length > 0) ? data : await (await fetch('./data/books.json')).json();
+    
+    if (mainGrid) renderBooks('all', 'booksGrid');
+    if (featuredGrid) renderBooks('all', 'featuredBooks', 4); // Limit to 4 for featured
+    if (newArrivalsGrid) renderBooks('all', 'newArrivalsGrid', 4); // Limit to 4 for new
+  } catch (error) {
+    console.warn('Fallback to local JSON:', error);
+    books = await (await fetch('./data/books.json')).json();
+    if (mainGrid) renderBooks('all', 'booksGrid');
+    if (featuredGrid) renderBooks('all', 'featuredBooks', 4);
+    if (newArrivalsGrid) renderBooks('all', 'newArrivalsGrid', 4);
+  }
+}
+
+function renderSkeletons(gridId) {
+  const grid = document.getElementById(gridId);
   if (!grid) return;
-  grid.innerHTML = Array(6).fill(0).map(() => `
+  grid.innerHTML = Array(4).fill(0).map(() => `
     <div class="book-card skeleton-card">
       <div class="book-cover skeleton"></div>
       <div class="book-body">
@@ -19,32 +48,6 @@ function renderSkeletons() {
       </div>
     </div>
   `).join('');
-}
-
-async function loadBooks() {
-  if (!document.getElementById('booksGrid')) return;
-  renderSkeletons();
-  try {
-    // Tentative Supabase
-    const { data, error } = await supabase.from('books').select('*').order('created_at', { ascending: false });
-    
-    if (error) throw error;
-
-    if (data && data.length > 0) {
-      books = data;
-    } else {
-      // Fallback JSON local si Supabase est vide
-      const response = await fetch('./data/books.json');
-      books = await response.json();
-    }
-    
-    renderBooks('all');
-  } catch (error) {
-    console.warn('Supabase non configuré ou erreur, passage au local JSON:', error);
-    const response = await fetch('./data/books.json');
-    books = await response.json();
-    renderBooks('all');
-  }
 }
 
 let cart = [];
@@ -90,9 +93,12 @@ let currentFilter = 'all';
  * Affiche les livres dans la grille selon le filtre sélectionné
  * @param {string} filter - Catégorie de filtre
  */
-function renderBooks(filter) {
-  const grid = document.getElementById('booksGrid');
-  const filtered = filter === 'all' ? books : books.filter((b) => b.category.toLowerCase().includes(filter.toLowerCase()));
+function renderBooks(filter, gridId = 'booksGrid', limit = null) {
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+
+  let filtered = filter === 'all' ? books : books.filter((b) => b.category.toLowerCase().includes(filter.toLowerCase()));
+  if (limit) filtered = filtered.slice(0, limit);
 
   grid.innerHTML = filtered.map((b) => {
     const safeTitle = b.title.replace(/'/g, "\\'");
