@@ -101,8 +101,8 @@ function renderBooks(filter) {
     
     return `
     <div class="book-card js-reveal" data-reveal onclick="showBookDetails(${b.id})">
-      <div class="book-cover" style="background:${b.cover && b.cover.startsWith('data:image') ? 'transparent' : `linear-gradient(145deg,${b.color || '#002147'} 0%,${b.color || '#002147'}99 100%)`}">
-        ${b.cover && b.cover.startsWith('data:image') ? `<img src="${b.cover}" alt="Couverture de ${safeTitle}" style="width:100%;height:100%;object-fit:cover;" loading="lazy"/>` : `<div class="book-cover-title">${b.title}</div>`}
+      <div class="book-cover" style="background:${b.cover ? 'transparent' : `linear-gradient(145deg,${b.color || '#002147'} 0%,${b.color || '#002147'}99 100%)`}">
+        ${b.cover ? `<img src="${b.cover}" alt="Couverture de ${safeTitle}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<div class=\'book-cover-title\'>${b.title}</div>'"/>` : `<div class="book-cover-title">${b.title}</div>`}
       </div>
       <div class="book-body">
         <span class="book-cat-tag">${b.category}</span>
@@ -193,7 +193,9 @@ function renderCart() {
     total += numPrice;
     return `
     <div class="cart-item" style="animation-delay:${i * 0.06}s">
-      <div class="cart-item-cover" style="background:linear-gradient(135deg,#0a2d5c,#001a3a);border-radius:6px;">${item.abbr}</div>
+      <div class="cart-item-cover" style="background:${item.abbr && item.abbr.startsWith('http') ? 'transparent' : 'linear-gradient(135deg,#0a2d5c,#001a3a)'}; border-radius:6px;">
+        ${item.abbr && item.abbr.startsWith('http') ? `<img src="${item.abbr}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"/>` : item.abbr}
+      </div>
       <div class="cart-item-info">
         <div class="cart-item-title">${item.title}</div>
         <div class="cart-item-price">${item.price}</div>
@@ -346,8 +348,8 @@ function showBookDetails(id) {
   
   body.innerHTML = `
     <div class="book-details-grid">
-      <div class="details-cover" style="background:${b.cover && b.cover.startsWith('data:image') ? 'transparent' : `linear-gradient(135deg,${b.color || '#002147'},${b.color || '#002147'}cc)`}">
-        ${b.cover && b.cover.startsWith('data:image') ? `<img src="${b.cover}" alt="Cover" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"/>` : b.title}
+      <div class="details-cover" style="background:${b.cover ? 'transparent' : `linear-gradient(135deg,${b.color || '#002147'},${b.color || '#002147'}cc)`}">
+        ${b.cover ? `<img src="${b.cover}" alt="Cover" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" onerror="this.parentElement.innerText='${b.title}'"/>` : b.title}
       </div>
       <div>
         <span class="details-cat">${b.category}</span>

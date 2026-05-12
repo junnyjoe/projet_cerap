@@ -239,6 +239,122 @@
     </div>
   </div>
 
+  <!-- CART FLOAT -->
+  <div class="cart-float" aria-live="polite">
+    <button
+      class="cart-btn"
+      onclick="toggleCart()"
+      aria-label="Panier"
+      aria-haspopup="dialog"
+      aria-controls="cartPanel"
+      aria-expanded="false"
+      type="button"
+    >
+      🛒
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+
+  <!-- CART OVERLAY -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart(false)"></div>
+
+  <!-- CART PANEL -->
+  <div class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="cart-panel-header">
+      <h4>Mon panier <span class="cart-header-count" id="cartHeaderCount">0 article</span></h4>
+      <button class="cart-close" data-js="cart-close" type="button" aria-label="Fermer le panier" onclick="toggleCart(false)">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <span class="cart-empty-icon">📚</span>
+        <div class="cart-empty-text">Votre panier est vide</div>
+        <div class="cart-empty-sub">Parcourez notre catalogue pour ajouter des ouvrages</div>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span class="cart-total-label">Total</span>
+        <span class="cart-total-amount" id="cartTotal">0 F CFA</span>
+      </div>
+      <button class="cart-checkout-btn" onclick="checkout()" type="button">Procéder au paiement →</button>
+      <div class="cart-secure">🔒 Paiement sécurisé — Orange Money, MTN, Carte</div>
+    </div>
+  </div>
+
+  <!-- ══ CHECKOUT MODAL ══ -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal payment-modal">
+      <div class="modal-header">
+        <h3>Finaliser ma commande</h3>
+        <button class="modal-close" onclick="closeModal('checkoutModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="payment-summary">
+          <span>Montant à régler :</span>
+          <strong id="checkoutTotal">0 F CFA</strong>
+        </div>
+
+        <div class="admin-label" style="margin-top:20px">Choisir un mode de paiement</div>
+        <div class="payment-methods">
+          <div class="pay-method" onclick="selectPayMethod('orange', this)">
+            <div class="pay-logo orange">OM</div>
+            <span>Orange Money</span>
+          </div>
+          <div class="pay-method" onclick="selectPayMethod('mtn', this)">
+            <div class="pay-logo mtn">MTN</div>
+            <span>MTN MoMo</span>
+          </div>
+          <div class="pay-method" onclick="selectPayMethod('wave', this)">
+            <div class="pay-logo wave">Wave</div>
+            <span>Wave</span>
+          </div>
+          <div class="pay-method" onclick="selectPayMethod('card', this)">
+            <div class="pay-logo card">💳</div>
+            <span>Carte Bancaire</span>
+          </div>
+        </div>
+
+        <div id="paymentFields" style="margin-top:24px; display:none;">
+          <div id="phoneField">
+            <label class="admin-label">Numéro de téléphone</label>
+            <input type="tel" class="admin-input" placeholder="07 00 00 00 00" />
+          </div>
+          <div id="cardFields" style="display:none;">
+            <label class="admin-label">Numéro de carte</label>
+            <input type="text" class="admin-input" placeholder="**** **** **** ****" style="margin-bottom:12px" />
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px">
+              <div>
+                <label class="admin-label">Expiration</label>
+                <input type="text" class="admin-input" placeholder="MM/YY" />
+              </div>
+              <div>
+                <label class="admin-label">CVC</label>
+                <input type="text" class="admin-input" placeholder="***" />
+              </div>
+            </div>
+          </div>
+          <button class="btn-primary" style="width:100%; margin-top:20px; justify-content:center" onclick="confirmPayment()">Confirmer le paiement</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ BOOK DETAILS MODAL ══ -->
+  <div class="modal-overlay" id="bookDetailsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Détails de l'ouvrage</h3>
+        <button class="modal-close" onclick="closeModal('bookDetailsModal')">✕</button>
+      </div>
+      <div class="modal-body" id="bookDetailsBody">
+        <!-- Dynamic content -->
+      </div>
+      <div class="modal-footer" style="padding:16px 24px; border-top:1px solid var(--border); display:flex; gap:12px">
+        <button class="btn-primary" id="modalAddToCartBtn" style="flex:1; justify-content:center">Ajouter au panier</button>
+      </div>
+    </div>
+  </div>
+
   <!-- SUPABASE -->
   <!-- CinetPay SDK -->
   <script src="https://checkout.cinetpay.com/sdk/v1/cinetpay.js"></script>
