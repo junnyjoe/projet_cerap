@@ -1079,20 +1079,22 @@ section { padding: 72px 2rem; }
   background: radial-gradient(circle at 70% 30%, rgba(212,136,6,0.03) 0%, transparent 70%);
   pointer-events: none;
 }
-.editorial-hero-grid { 
-  display: grid; 
-  grid-template-columns: 1.2fr 1fr; 
-  gap: 4rem; 
-  align-items: center; 
+.editorial-hero-text {
+  color: var(--deep);
+  z-index: 10;
+}
+.section-title {
+  color: var(--deep) !important;
 }
 .editorial-lead { 
-  font-size: 1.2rem; 
-  line-height: 1.6; 
-  color: var(--warm-gray); 
+  font-size: 1.25rem; 
+  line-height: 1.7; 
+  color: #4a5568 !important; 
   margin-bottom: 2.5rem;
   font-family: 'EB Garamond', serif;
+  max-width: 600px;
 }
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-actions { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 2rem; }
 
 .editorial-hero-image { position: relative; padding-right: 40px; }
 .editorial-stat-card {
