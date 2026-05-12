@@ -106,20 +106,22 @@ function renderBooks(filter, gridId = 'booksGrid', limit = null) {
     const formattedPrice = Utils.formatCurrency(b.price);
     
     return `
-    <div class="book-card js-reveal" data-reveal onclick="showBookDetails(${b.id})">
-      <div class="book-cover" style="background:${b.cover ? 'transparent' : `linear-gradient(145deg,${b.color || '#002147'} 0%,${b.color || '#002147'}99 100%)`}">
-        ${b.cover ? `<img src="${b.cover}" alt="Couverture de ${safeTitle}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<div class=\'book-cover-title\'>${b.title}</div>'"/>` : `<div class="book-cover-title">${b.title}</div>`}
+    <div class="book-card js-reveal" data-reveal onclick="showBookDetails(${b.id})" style="background: white; border: 1px solid rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column;">
+      <div class="book-cover" style="aspect-ratio: 1/1.4; background:${b.cover ? 'transparent' : `linear-gradient(145deg,${b.color || '#07152d'} 0%,${b.color || '#07152d'}99 100%)`}; padding: 12px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+        ${b.cover ? `<img src="${b.cover}" alt="${safeTitle}" style="width:100%;height:100%;object-fit:contain; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));" onerror="this.parentElement.innerHTML='<div class=\'book-cover-title\'>${b.title}</div>'"/>` : `<div class="book-cover-title">${b.title}</div>`}
       </div>
-      <div class="book-body">
-        <span class="book-cat-tag">${b.category}</span>
-        <div class="book-title">${b.title}</div>
-        <div class="book-footer">
-          <span class="book-status">${b.status === 'stock_faible' ? 'Stock faible' : 'Disponible'}</span>
-          <span class="book-price">XOF: ${formattedPrice}</span>
-        </div>
-        <div class="book-card-actions" style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px;">
-           <button class="book-add-btn" style="margin-top:0" onclick="event.stopPropagation(); showBookDetails(${b.id})">Détails</button>
-           <button class="book-add-btn" style="margin-top:0; background:var(--gold); color:var(--deep)" onclick="event.stopPropagation(); addToCart(${b.id}, '${safeTitle}', '${formattedPrice}', '${safeCover}')">+ Panier</button>
+      <div class="book-body" style="padding: 20px; flex: 1; display: flex; flex-direction: column;">
+        <span style="display: inline-block; background: #C43E4E; color: white; font-size: 11px; padding: 4px 10px; font-weight: 700; margin-bottom: 12px; width: fit-content; text-transform: uppercase;">${b.category}</span>
+        <div class="book-title" style="font-family: 'EB Garamond', serif; font-size: 16px; font-weight: 700; margin-bottom: 12px; line-height: 1.3; color: var(--navy); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${b.title}</div>
+        <div style="margin-top: auto;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+             <span style="color: #0088CC; font-size: 13px; font-weight: 600;">${b.status === 'stock_faible' ? 'Stock faible' : 'Disponible'}</span>
+             <span style="font-weight: 800; color: #333; font-size: 14px;">XOF: ${formattedPrice} F</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <button class="book-add-btn" style="margin:0; padding: 10px; font-size: 11px; font-weight: 700; text-transform: uppercase;" onclick="event.stopPropagation(); showBookDetails(${b.id})">Détails</button>
+            <button class="book-add-btn" style="margin:0; padding: 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; background: var(--navy); color: white;" onclick="event.stopPropagation(); addToCart(${b.id}, '${safeTitle}', '${formattedPrice}', '${safeCover}')">Acheter</button>
+          </div>
         </div>
       </div>
     </div>
