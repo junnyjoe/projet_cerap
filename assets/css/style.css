@@ -22,6 +22,50 @@
   --green-light: #28a85a;
 
   --card-shadow: 0 2px 12px rgba(0,33,71,0.10);
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* ══ ANIMATED BACKGROUND ══ */
+.site-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: -2;
+  background: #000c1d;
+  overflow: hidden;
+}
+
+.bg-blob {
+  position: absolute;
+  width: 80vw;
+  height: 80vw;
+  background: radial-gradient(circle, rgba(0, 33, 71, 0.4) 0%, transparent 70%);
+  filter: blur(80px);
+  border-radius: 50%;
+  animation: float 25s infinite alternate;
+}
+
+.bg-blob-1 { top: -20%; left: -20%; animation-duration: 35s; opacity: 0.6; }
+.bg-blob-2 { bottom: -20%; right: -20%; background: radial-gradient(circle, rgba(212, 136, 6, 0.1) 0%, transparent 70%); animation-duration: 40s; animation-delay: -7s; }
+
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  33% { transform: translate(5%, 5%) rotate(5deg) scale(1.05); }
+  66% { transform: translate(-3%, 8%) rotate(-3deg) scale(0.95); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+
+/* ══ SKELETON LOADERS ══ */
+.skeleton {
+  background: linear-gradient(90deg, #132030 25%, #1d2d3d 50%, #132030 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1613,3 +1657,33 @@ footer { background: var(--ink); padding: 48px 2rem 24px; }
 .admin-label { font-size: 11px; font-weight: 700; color: var(--warm-gray); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 6px; }
 .admin-input { width: 100%; padding: 12px; border: 1.5px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 14px; }
 .admin-input:focus { border-color: var(--gold); outline: none; }
+
+/* ══ GLOBAL LOADER ══ */
+.page-loader {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: #000c1d;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease;
+}
+
+.page-loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(212, 136, 6, 0.1);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

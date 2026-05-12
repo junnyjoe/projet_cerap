@@ -67,6 +67,28 @@ const Utils = {
       }
     };
     window.requestAnimationFrame(step);
+  },
+
+  /**
+   * Affiche un loader global de page
+   */
+  showPageLoader: function() {
+    const loader = document.createElement('div');
+    loader.id = 'globalLoader';
+    loader.className = 'page-loader';
+    loader.innerHTML = '<div class="loader-spinner"></div>';
+    document.body.appendChild(loader);
+  },
+
+  /**
+   * Masque le loader global
+   */
+  hidePageLoader: function() {
+    const loader = document.getElementById('globalLoader');
+    if (loader) {
+      loader.classList.add('fade-out');
+      setTimeout(() => loader.remove(), 600);
+    }
   }
 };
 

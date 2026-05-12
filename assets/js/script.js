@@ -6,8 +6,24 @@ let books = [];
 /**
  * Charge les données du catalogue depuis le fichier JSON
  */
+function renderSkeletons() {
+  const grid = document.getElementById('booksGrid');
+  if (!grid) return;
+  grid.innerHTML = Array(6).fill(0).map(() => `
+    <div class="book-card skeleton-card">
+      <div class="book-cover skeleton"></div>
+      <div class="book-body">
+        <div class="skeleton" style="height:12px; width:40%; margin-bottom:10px;"></div>
+        <div class="skeleton" style="height:20px; width:90%; margin-bottom:10px;"></div>
+        <div class="skeleton" style="height:14px; width:60%;"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
 async function loadBooks() {
   if (!document.getElementById('booksGrid')) return;
+  renderSkeletons();
   try {
     // Tentative Supabase
     const { data, error } = await supabase.from('books').select('*').order('created_at', { ascending: false });
@@ -337,9 +353,12 @@ function initRevueOptions() {
 }
 
 // Init dom ready
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  // Show loader immediately
+  Utils.showPageLoader();
+
   // init catalogue
-  loadBooks();
+  await loadBooks();
   
   // init reveals
   Utils.initScrollReveals('.js-reveal', false);
@@ -349,8 +368,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       Utils.animateNumber(document.getElementById('statFounding'), 2003, 2000);
       Utils.animateNumber(document.getElementById('statBooksPublished'), 80, 2000);
-    }, 1000);
+    }, 500);
   }
+
+  // Hide loader with a slight delay for smooth entry
+  setTimeout(() => Utils.hidePageLoader(), 800);
 
   // revue seulement si présente
   if (document.querySelector('.revue-sub-option')) {
