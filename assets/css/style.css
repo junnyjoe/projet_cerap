@@ -15,23 +15,23 @@
   --terracotta: #CE3E45;
   --terracotta-light: #e05a60;
 
-  --cream: #f7f8fa;
+  --cream: #f7f9fc;
   --white: #ffffff;
 
   --green: #1a7a42;
   --green-light: #28a85a;
 
-  --card-shadow: 0 2px 12px rgba(0,33,71,0.10);
-  --glass: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --card-shadow: 0 4px 20px rgba(0,33,71,0.08);
+  --glass: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 33, 71, 0.05);
 }
 
-/* ══ ANIMATED BACKGROUND ══ */
+/* ══ LIGHT ANIMATED BACKGROUND ══ */
 .site-bg {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
   z-index: -2;
-  background: #000c1d;
+  background: #fdfdfd;
   overflow: hidden;
 }
 
@@ -39,14 +39,14 @@
   position: absolute;
   width: 80vw;
   height: 80vw;
-  background: radial-gradient(circle, rgba(0, 33, 71, 0.4) 0%, transparent 70%);
-  filter: blur(80px);
+  background: radial-gradient(circle, rgba(0, 33, 71, 0.05) 0%, transparent 70%);
+  filter: blur(100px);
   border-radius: 50%;
   animation: float 25s infinite alternate;
 }
 
-.bg-blob-1 { top: -20%; left: -20%; animation-duration: 35s; opacity: 0.6; }
-.bg-blob-2 { bottom: -20%; right: -20%; background: radial-gradient(circle, rgba(212, 136, 6, 0.1) 0%, transparent 70%); animation-duration: 40s; animation-delay: -7s; }
+.bg-blob-1 { top: -20%; left: -20%; animation-duration: 35s; opacity: 0.5; }
+.bg-blob-2 { bottom: -20%; right: -20%; background: radial-gradient(circle, rgba(212, 136, 6, 0.08) 0%, transparent 70%); animation-duration: 40s; animation-delay: -7s; }
 
 @keyframes float {
   0% { transform: translate(0, 0) rotate(0deg) scale(1); }
@@ -57,7 +57,7 @@
 
 /* ══ SKELETON LOADERS ══ */
 .skeleton {
-  background: linear-gradient(90deg, #132030 25%, #1d2d3d 50%, #132030 75%);
+  background: linear-gradient(90deg, #f0f2f5 25%, #e1e4e8 50%, #f0f2f5 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   border-radius: 8px;
@@ -175,11 +175,12 @@ h1,h2,h3,h4,h5 {
 
 /* ── NAVBAR ── */
 nav {
-  background: var(--deep);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 3px solid var(--gold);
+  border-bottom: 1px solid rgba(0, 33, 71, 0.05);
 }
 .nav-inner {
   max-width: 1200px;
@@ -218,18 +219,18 @@ nav {
   font-family: 'EB Garamond', serif;
   font-size: 17px;
   font-weight: 700;
-  color: var(--white);
+  color: var(--deep);
   letter-spacing: 0.02em;
 }
 .nav-logo-text span {
   font-size: 10px;
-  color: var(--gold-light);
+  color: var(--gold);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .nav-links { display: flex; gap: 0; list-style: none; }
 .nav-links a {
-  color: rgba(255,255,255,0.75);
+  color: var(--warm-gray);
   text-decoration: none;
   font-size: 13.5px;
   letter-spacing: 0.04em;
@@ -238,10 +239,10 @@ nav {
   display: flex;
   align-items: center;
   border-bottom: 3px solid transparent;
-  margin-bottom: -3px;
+  margin-bottom: -1px;
   transition: color 0.2s, border-color 0.2s;
 }
-.nav-links a:hover { color: var(--white); border-color: var(--gold); }
+.nav-links a:hover { color: var(--deep); border-color: var(--gold); }
 .nav-links a.active { color: var(--gold-light); border-color: var(--gold); }
 .nav-cta {
   background: var(--gold);
@@ -401,10 +402,10 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,33,71,0.03);
+  border: 1px solid rgba(0,33,71,0.08);
   border-radius: 9999px;
-  color: rgba(255,255,255,0.6);
+  color: var(--deep);
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -427,21 +428,15 @@ nav {
   letter-spacing: -0.02em;
 }
 .hero h1 .hero-title-main {
-  background: linear-gradient(to bottom, #ffffff, rgba(255,255,255,0.8));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--deep);
 }
 .hero h1 em {
   font-style: italic;
-  background: linear-gradient(to right, var(--gold-light), rgba(255,255,255,0.9), var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--gold);
 }
 
 .hero p {
-  color: rgba(255,255,255,0.45);
+  color: var(--warm-gray);
   font-size: 16.5px;
   line-height: 1.8;
   margin-bottom: 2.5rem;
@@ -960,20 +955,20 @@ section { padding: 72px 2rem; }
 .revue-sub-option .price-period { font-size: 10px; color: var(--gold); font-weight: 700; margin-top: 2px; display: block; text-transform: uppercase; letter-spacing: 0.06em; }
 
 /* ── PAYMENT SECTION ── */
-.payment-section { background: var(--deep); }
-.payment-section .section-kicker { color: var(--gold-light); }
-.payment-section .section-title { color: var(--white); }
-.payment-section .section-subtitle { color: rgba(255,255,255,0.55); }
+.payment-section { background: #f0f3f7; }
+.payment-section .section-kicker { color: var(--gold); }
+.payment-section .section-title { color: var(--deep); }
+.payment-section .section-subtitle { color: var(--warm-gray); }
 .payment-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,33,71,0.08);
+  border: 1px solid rgba(0,33,71,0.08);
   margin-top: 3rem;
 }
 .payment-option {
-  background: rgba(255,255,255,0.03);
+  background: #ffffff;
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
@@ -983,20 +978,21 @@ section { padding: 72px 2rem; }
   transition: background 0.2s;
   cursor: pointer;
 }
-.payment-option:hover { background: rgba(212,136,6,0.12); }
+.payment-option:hover { background: var(--gold-bg); }
 .payment-icon {
   width: 56px;
   height: 56px;
-  border: 2px solid rgba(212,136,6,0.3);
+  border: 2px solid rgba(212,136,6,0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 22px;
   border-radius: 50%;
+  color: var(--deep);
 }
-.payment-name { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 700; color: var(--white); }
-.payment-desc { font-size: 12.5px; color: rgba(255,255,255,0.45); line-height: 1.5; }
-.payment-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; background: rgba(212,136,6,0.2); color: var(--gold-light); }
+.payment-name { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 700; color: var(--deep); }
+.payment-desc { font-size: 12.5px; color: var(--warm-gray); line-height: 1.5; }
+.payment-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; background: var(--gold-bg); color: var(--gold); }
 
 /* ── LIGNE EDITORIALE (minimal pour cohérence) ── */
 .editorial-section { background: var(--white); }
@@ -1063,8 +1059,8 @@ section { padding: 72px 2rem; }
 .contact-info-val { font-size: 14px; color: var(--ink); line-height: 1.5; }
 
 .social-links { display: flex; gap: 10px; margin-top: 1.5rem; }
-.social-link { width: 38px; height: 38px; background: var(--deep); color: var(--white); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 14px; font-weight: 700; font-family: 'EB Garamond', serif; transition: background 0.15s; }
-.social-link:hover { background: var(--gold); color: var(--deep); }
+.social-link { width: 38px; height: 38px; background: var(--light-gray); color: var(--deep); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 14px; font-weight: 700; font-family: 'EB Garamond', serif; transition: background 0.15s; border-radius: 4px; }
+.social-link:hover { background: var(--gold); color: var(--white); }
 
 /* ── CONDITIONS DE PUBLICATION ── */
 .conditions-section {
@@ -1662,7 +1658,7 @@ footer { background: var(--ink); padding: 48px 2rem 24px; }
 .page-loader {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: #000c1d;
+  background: #ffffff;
   z-index: 9999;
   display: flex;
   align-items: center;
