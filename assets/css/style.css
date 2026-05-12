@@ -1,28 +1,29 @@
 /* CERAP Éditions — style.css (production-grade, refactor HTML -> CSS) */
 
 :root {
-  --deep: #1A3A5C;
-  --ink: #1A3A5C;
-  --warm-gray: #6B6058;
-  --light-gray: #F1EBE1;
-  --border: #dce1e8;
-  --border-dark: #9A6C2A;
-
-  --gold: #9A6C2A;
-  --gold-light: #E8A317;
-  --gold-bg: #FAF7F2;
-
-  --terracotta: #5C1A2A;
-  --terracotta-light: #CE3E45;
-
-  --cream: #FAF7F2;
+  /* Oxford Press + Africa Premium Palette */
+  --navy: #07152d;
+  --navy-light: #12345b;
+  --gold: #c6922f;
+  --gold-light: #e0b55f;
+  --cream: #f7f3eb;
   --white: #ffffff;
+  --text: #1d1d1d;
+  --muted: #6b7280;
+  
+  --deep: var(--navy);
+  --ink: var(--navy);
+  --warm-gray: var(--muted);
+  --light-gray: #f0f2f5;
+  --border: #dce1e8;
+  --border-dark: var(--gold);
 
-  --green: #2A5C3F;
-  --green-light: #28a85a;
+  --gold-bg: rgba(198, 146, 47, 0.05);
+  --terracotta: #5C1A2A;
 
-  --shadow: 0 4px 20px rgba(26,58,92,0.08);
-  --card-shadow: 0 8px 30px rgba(0,0,0,0.04);
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+  --shadow-md: 0 10px 40px rgba(0,0,0,0.06);
+  --shadow-lg: 0 30px 60px rgba(0,0,0,0.15);
 }
 
 /* ══ LIGHT ANIMATED BACKGROUND ══ */
@@ -1880,27 +1881,98 @@ footer { background: var(--ink); padding: 48px 2rem 24px; }
   to { transform: rotate(360deg); }
 }
 
-/* ── GLOBAL WHITESPACE FIX (User Recommended) ── */
-main, section, .hero, .editorial-section, .editorial-hero {
-  height: auto !important;
-  min-height: auto !important;
-}
+/* ── OXFORD PREMIUM REFACTOR ── */
+.section-navy { background: var(--navy); color: var(--white); }
+.section-cream { background: var(--cream); }
+.section-white { background: var(--white); }
 
-section {
+.section-navy .section-title { color: var(--white) !important; }
+.section-navy .section-subtitle { color: rgba(255,255,255,0.7); }
+
+.hero-premium {
+  background: linear-gradient(135deg, #07152d, #0b2247);
+  padding: 100px 2rem 80px;
   position: relative;
-  padding: 40px 2rem !important;
+  overflow: hidden;
+  color: var(--white);
 }
 
-.section-header {
-  margin-bottom: 1rem !important;
+.hero-badge {
+  display: inline-block;
+  background: rgba(198, 146, 47, 0.15);
+  color: var(--gold-light);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(198, 146, 47, 0.3);
 }
 
-body {
-  overflow-x: hidden;
+.hero-premium h1 {
+  font-size: clamp(52px, 7vw, 92px);
+  line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 2rem;
+}
+.hero-premium h1 span.gold-italic {
+  color: var(--gold-light);
+  font-style: italic;
 }
 
-main {
-  display: block;
+.hero-premium p {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+}
+
+/* Collections Cards */
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.collection-card {
+  background: var(--white);
+  padding: 40px 32px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.collection-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+.coll-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
+.collection-card h3 { font-size: 1.4rem; color: var(--navy); margin-bottom: 0.5rem; }
+
+/* Stats section */
+.stats-premium {
+  background: linear-gradient(135deg, #07152d, #0b2247);
+  position: relative;
+}
+.stats-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(198, 146, 47, 0.1), transparent 70%);
+  pointer-events: none;
+}
+.stat-box { text-align: center; }
+.stat-val { font-size: 3.5rem; font-weight: 800; color: var(--gold-light); line-height: 1; margin-bottom: 0.5rem; }
+.stat-lbl { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; }
+
+/* Global overrides for padding */
+section {
+  padding: 80px 2rem !important;
 }
 
 /* ── RANDOM SELECTION (Ligne Éditoriale) ── */
