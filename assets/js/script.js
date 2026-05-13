@@ -1,4 +1,5 @@
 /* script.js — refactor JS depuis index 1.html */
+const supabase = window.supabaseClient;
 
 // Données (catalogue)
 let books = [];
