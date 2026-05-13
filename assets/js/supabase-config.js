@@ -3,7 +3,4 @@ const SUPABASE_URL = 'https://yalltyqddkiafnvlapeh.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlhbGx0eXFkZGtpYWZudmxhcGVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1ODgyOTgsImV4cCI6MjA5NDE2NDI5OH0.H1j0YRN5VK_Ip1j5CGbZDbjGNZCao414CsEceV2VZ5Y';
 
 // Le CDN expose l'objet global "supabase" avec la méthode createClient
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-// On expose sous le nom "supabase" pour que le reste du code fonctionne
-window.supabase = supabaseClient;
+window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);

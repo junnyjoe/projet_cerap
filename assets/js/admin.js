@@ -1,6 +1,7 @@
 /* ══════════════════════════════════════════
    CERAP Éditions — Admin Dashboard JS
    ══════════════════════════════════════════ */
+const supabase = window.supabaseClient;
 
 // ── STATE ──
 let booksData = [];
