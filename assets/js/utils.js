@@ -10,6 +10,7 @@ const Utils = {
    * @returns {string}
    */
   formatCurrency: function(amount) {
+    if (amount === null || amount === undefined) return '0';
     return amount.toLocaleString('fr-FR') + ' F CFA';
   },
 

@@ -106,7 +106,7 @@ function renderBooks(filter, gridId = 'booksGrid', limit = null) {
     const formattedPrice = Utils.formatCurrency(b.price);
     
     return `
-    <div class="book-card js-reveal" data-reveal onclick="showBookDetails(${b.id})" style="background: white; border: 1px solid rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column;">
+    <div class="book-card js-reveal" data-reveal onclick="showBookDetails('${b.id}')" style="background: white; border: 1px solid rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column;">
       <div class="book-cover" style="aspect-ratio: 1/1.4; background:${b.cover ? 'transparent' : `linear-gradient(145deg,${b.color || '#07152d'} 0%,${b.color || '#07152d'}99 100%)`}; padding: 12px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
         ${b.cover ? `<img src="${b.cover}" alt="${safeTitle}" style="width:100%;height:100%;object-fit:contain; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));" onerror="this.parentElement.innerHTML='<div class=\'book-cover-title\'>${b.title}</div>'"/>` : `<div class="book-cover-title">${b.title}</div>`}
       </div>
@@ -116,11 +116,11 @@ function renderBooks(filter, gridId = 'booksGrid', limit = null) {
         <div style="margin-top: auto;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
              <span style="color: #0088CC; font-size: 13px; font-weight: 600;">${b.status === 'stock_faible' ? 'Stock faible' : 'Disponible'}</span>
-             <span style="font-weight: 800; color: #333; font-size: 14px;">XOF: ${formattedPrice} F</span>
+             <span style="font-weight: 800; color: #333; font-size: 14px;">XOF: ${formattedPrice}</span>
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-            <button class="book-add-btn" style="margin:0; padding: 10px; font-size: 11px; font-weight: 700; text-transform: uppercase;" onclick="event.stopPropagation(); showBookDetails(${b.id})">Détails</button>
-            <button class="book-add-btn" style="margin:0; padding: 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; background: var(--navy); color: white;" onclick="event.stopPropagation(); addToCart(${b.id}, '${safeTitle}', '${formattedPrice}', '${safeCover}')">Acheter</button>
+            <button class="book-add-btn" style="margin:0; padding: 10px; font-size: 11px; font-weight: 700; text-transform: uppercase;" onclick="event.stopPropagation(); showBookDetails('${b.id}')">Détails</button>
+            <button class="book-add-btn" style="margin:0; padding: 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; background: var(--navy); color: white;" onclick="event.stopPropagation(); addToCart('${b.id}', '${safeTitle}', '${formattedPrice}', '${safeCover}')">Acheter</button>
           </div>
         </div>
       </div>
@@ -190,7 +190,7 @@ function renderBooksList(data) {
     const safeCover = b.cover ? b.cover.replace(/'/g, "\\'") : '';
     
     return `
-    <div class="book-list-item js-reveal" data-reveal onclick="showBookDetails(${b.id})">
+    <div class="book-list-item js-reveal" data-reveal onclick="showBookDetails('${b.id}')">
       <div class="book-list-cover">
         ${b.cover ? `<img src="${b.cover}" alt="${safeTitle}" style="max-width:100%; max-height:100%; object-fit:contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));">` : `<div style="font-family:'EB Garamond', serif; font-weight:700; text-align:center; padding:10px; font-size:12px;">${b.title}</div>`}
       </div>
@@ -205,8 +205,8 @@ function renderBooksList(data) {
         <div style="display:flex; justify-content:space-between; align-items:flex-end;">
           <div style="font-weight:800; color:var(--navy); font-size:1.2rem;">${formattedPrice} <small style="font-size:10px; font-weight:400;">XOF</small></div>
           <div style="display:flex; gap:10px;">
-            <button class="btn-secondary" style="padding:8px 15px; font-size:11px;" onclick="event.stopPropagation(); showBookDetails(${b.id})">Détails</button>
-            <button class="btn-primary" style="padding:8px 15px; font-size:11px;" onclick="event.stopPropagation(); addToCart(${b.id}, '${safeTitle}', '${formattedPrice}', '${safeCover}')">Acheter</button>
+            <button class="btn-secondary" style="padding:8px 15px; font-size:11px;" onclick="event.stopPropagation(); showBookDetails('${b.id}')">Détails</button>
+            <button class="btn-primary" style="padding:8px 15px; font-size:11px;" onclick="event.stopPropagation(); addToCart('${b.id}', '${safeTitle}', '${formattedPrice}', '${safeCover}')">Acheter</button>
           </div>
         </div>
       </div>
@@ -229,7 +229,7 @@ function renderRandomSelection() {
   const selected = shuffled.slice(0, 4);
 
   el.innerHTML = selected.map(b => `
-    <div class="lib-mini-book" onclick="showBookDetails(${b.id})" style="cursor:pointer;">
+    <div class="lib-mini-book" onclick="showBookDetails('${b.id}')" style="cursor:pointer;">
       <div class="lib-mini-cover" style="background: ${b.color || '#eee'}; display:flex; align-items:center; justify-content:center; overflow:hidden;">
          ${b.cover ? `<img src="${b.cover}" style="width:100%; height:100%; object-fit:cover;">` : `<span style="font-size:8px; text-align:center;">${b.title}</span>`}
       </div>
@@ -438,7 +438,7 @@ function confirmPayment() {
 }
 
 function showBookDetails(id) {
-  const b = books.find(x => x.id === id);
+  const b = books.find(x => String(x.id) === String(id));
   if (!b) return;
   
   const body = document.getElementById('bookDetailsBody');
@@ -455,7 +455,7 @@ function showBookDetails(id) {
         <div class="details-author">Par ${b.author}</div>
         <div class="details-meta">
           <strong>Prix :</strong> ${formattedPrice}<br>
-          <strong>Date :</strong> ${new Date(b.date).toLocaleDateString('fr-FR', {year: 'numeric', month: 'long', day: 'numeric'})}
+          <strong>Date :</strong> ${b.date ? new Date(b.date).toLocaleDateString('fr-FR', {year: 'numeric', month: 'long', day: 'numeric'}) : 'N/A'}
         </div>
         <div class="details-desc">${b.description || 'Ouvrage universitaire de référence.'}</div>
       </div>
@@ -463,12 +463,15 @@ function showBookDetails(id) {
   `;
   
   const addBtn = document.getElementById('modalAddToCartBtn');
-  addBtn.onclick = () => {
-    addToCart(b.id, b.title, formattedPrice, b.cover);
-    closeModal('bookDetailsModal');
-  };
+  if (addBtn) {
+    addBtn.onclick = () => {
+      addToCart(b.id, b.title, formattedPrice, b.cover);
+      closeModal('bookDetailsModal');
+    };
+  }
   
-  document.getElementById('bookDetailsModal').classList.add('open');
+  const modal = document.getElementById('bookDetailsModal');
+  if (modal) modal.classList.add('open');
 }
 
 function closeModal(id) {
