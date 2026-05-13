@@ -193,7 +193,8 @@ function addToCart(id, title, price, abbr) {
 
 // --- ADVANCED LIBRAIRIE JS ---
 
-window.filterBySearch = function(val) {
+window.searchBooks = function() {
+  const val = document.getElementById('bookSearch').value.toLowerCase();
   const filtered = books.filter(b => 
     b.title.toLowerCase().includes(val) || 
     b.author.toLowerCase().includes(val) || 
@@ -202,8 +203,9 @@ window.filterBySearch = function(val) {
   renderBooksList(filtered);
 }
 
-window.filterByAlpha = function(letter) {
-  const filtered = (letter === 'all') ? books : books.filter(b => b.title.trim().toUpperCase().startsWith(letter));
+window.filterByGenre = function() {
+  const genre = document.getElementById('genreFilter').value;
+  const filtered = (genre === 'all') ? books : books.filter(b => b.category === genre);
   renderBooksList(filtered);
 }
 
@@ -213,28 +215,14 @@ function renderBooksList(data) {
 
   grid.innerHTML = data.map(b => {
     const safeTitle = b.title.replace(/'/g, "\\'");
-    const formattedPrice = Utils.formatCurrency(b.price);
-    const safeCover = b.cover ? b.cover.replace(/'/g, "\\'") : '';
     
     return `
-    <div class="book-list-item js-reveal" data-reveal onclick="showBookDetails('${b.id}')">
-      <div class="book-list-cover">
-        ${b.cover ? `<img src="${b.cover}" alt="${safeTitle}" style="max-width:100%; max-height:100%; object-fit:contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));">` : `<div style="font-family:'EB Garamond', serif; font-weight:700; text-align:center; padding:10px; font-size:12px;">${b.title}</div>`}
-      </div>
-      <div class="book-list-details">
-        <span class="book-cat-tag" style="background:var(--navy); color:var(--gold); font-size:9px; margin-bottom:10px;">${b.category}</span>
-        <h3>${b.title}</h3>
-        <div class="book-list-meta">
-          Auteur : <strong>${b.author || 'CERAP Éditions'}</strong><br>
-          Année de publication : ${b.year || '2023'}<br>
-          Thématique : <span style="color:var(--navy); font-weight:600;">${b.category}</span>
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:flex-end;">
-          <div style="font-weight:800; color:var(--navy); font-size:1.2rem;">${formattedPrice} <small style="font-size:10px; font-weight:400;">XOF</small></div>
-          <div style="display:flex; gap:10px;">
-            <button class="btn-secondary" style="padding:8px 15px; font-size:11px;" onclick="event.stopPropagation(); showBookDetails('${b.id}')">Détails</button>
-            <button class="btn-primary" style="padding:8px 15px; font-size:11px;" onclick="event.stopPropagation(); addToCart('${b.id}', '${safeTitle}', '${formattedPrice}', '${safeCover}')">Acheter</button>
-          </div>
+    <div class="book-card-clean js-reveal" data-reveal onclick="showBookDetails('${b.id}')" style="cursor:pointer; transition: transform 0.3s ease;">
+      <div style="aspect-ratio: 1/1.4; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #eee; position: relative;">
+        ${b.cover ? `<img src="${b.cover}" alt="${safeTitle}" style="width: 100%; height: 100%; object-fit: cover;">` : `<div style="height:100%; display:flex; align-items:center; justify-content:center; background: #002147; color:white; padding:20px; text-align:center; font-family:'EB Garamond', serif;">${b.title}</div>`}
+        <div class="card-overlay" style="position:absolute; bottom:0; left:0; width:100%; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 20px; opacity:0; transition: opacity 0.3s;">
+           <h4 style="color:white; margin:0; font-size:14px;">${b.title}</h4>
+           <p style="color:rgba(255,255,255,0.7); margin:5px 0 0; font-size:11px;">${b.author}</p>
         </div>
       </div>
     </div>
@@ -242,10 +230,10 @@ function renderBooksList(data) {
   }).join('');
   
   if (data.length === 0) {
-    grid.innerHTML = '<div style="text-align:center; padding:50px; color:var(--warm-gray);">Aucun résultat trouvé pour votre recherche.</div>';
+    grid.innerHTML = '<div style="text-align:center; grid-column: 1/-1; padding:100px; color:#64748b;">Aucun ouvrage trouvé.</div>';
   }
 
-  Utils.initScrollReveals('.book-list-item', true);
+  Utils.initScrollReveals('.book-card-clean', true);
 }
 
 function renderRandomSelection() {

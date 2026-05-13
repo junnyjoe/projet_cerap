@@ -15,124 +15,58 @@
     <div class="bg-blob bg-blob-2"></div>
   </div>
 
-  <nav>
-    <div class="nav-inner">
-      <a class="nav-logo" href="./index.html">
-        <div class="nav-logo-mark"><img src="./assets/images/logo-uja.png" alt="Logo UJA"></div>
-        <div class="nav-logo-text">
-          <strong>CERAP Éditions</strong>
-          <span>Abidjan · Côte d'Ivoire</span>
-        </div>
-      </a>
-      <ul class="nav-links">
-        <li><a href="./index.html">Accueil</a></li>
-        <li><a href="./librairie.html" class="active">Librairie</a></li>
-        <li><a href="./ligne-editoriale.html">Ligne Éditoriale</a></li>
-        <li><a href="./conditions-publication.html">Conditions</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-        <li><a href="./librairie.html" class="nav-cta">Commander →</a></li>
+  <nav style="background: white; border-bottom: 1px solid #eee; padding: 15px 0;">
+    <div class="nav-inner" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+      <ul style="display: flex; gap: 40px; list-style: none; font-weight: 600; color: #4b5563;">
+        <li><a href="./index.html" style="text-decoration: none; color: inherit;">Accueil</a></li>
+        <li><a href="#" onclick="toggleCart()" style="text-decoration: none; color: inherit;">Panier</a></li>
+        <li><a href="./ligne-editoriale.html" style="text-decoration: none; color: inherit;">Informations</a></li>
       </ul>
-      <button class="nav-menu-btn" data-js="mobile-menu-toggle" type="button">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/>
-        </svg>
-      </button>
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <div style="text-align: right;">
+          <div style="font-size: 13px; font-weight: 600; color: #374151;">Utilisateur1</div>
+          <a href="#" style="font-size: 11px; color: #dc2626; text-decoration: none; font-weight: 700;">Déconnexion</a>
+        </div>
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: #f3f4f6; overflow: hidden; border: 2px solid #eee;">
+          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Profile" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
     </div>
   </nav>
 
-  <div class="mobile-nav" id="mobileNav">
-    <a href="./index.html">Accueil</a>
-    <a href="./librairie.html">Librairie</a>
-    <a href="./ligne-editoriale.html">Ligne Éditoriale</a>
-    <a href="./conditions-publication.html">Conditions</a>
-    <a href="./contact.html">Contact</a>
-  </div>
+  <main style="max-width: 1200px; margin: 60px auto; padding: 0 20px;">
+    <h1 style="text-align: center; font-family: 'EB Garamond', serif; font-size: 3.5rem; color: #1e293b; margin-bottom: 40px;">Nos Livres</h1>
 
-  <section class="section-navy" style="padding-top: 40px; border-bottom: 1px solid rgba(255,255,255,0.05);">
-    <div class="section-inner">
-
-    <div class="section-inner">
-      
-      <!-- 1. CATEGORIES GRID WITH COUNTS -->
-      <div class="lib-cat-grid">
-        <div class="lib-cat-item" onclick="filterBooks('Histoire', this)">
-          <div class="lib-cat-icon">📜</div>
-          <div class="lib-cat-info"><strong>Histoire</strong><span>31 ouvrages</span></div>
-        </div>
-        <div class="lib-cat-item" onclick="filterBooks('Droit', this)">
-          <div class="lib-cat-icon">⚖️</div>
-          <div class="lib-cat-info"><strong>Droit</strong><span>51 ouvrages</span></div>
-        </div>
-        <div class="lib-cat-item" onclick="filterBooks('Dialogue', this)">
-          <div class="lib-cat-icon">🕊️</div>
-          <div class="lib-cat-info"><strong>Dialogue & Paix</strong><span>20 ouvrages</span></div>
-        </div>
-        <div class="lib-cat-item" onclick="filterBooks('Démocratie', this)">
-          <div class="lib-cat-icon">🗳️</div>
-          <div class="lib-cat-info"><strong>Démocratie</strong><span>8 ouvrages</span></div>
-        </div>
-        <div class="lib-cat-item" onclick="filterBooks('Économie', this)">
-          <div class="lib-cat-icon">📈</div>
-          <div class="lib-cat-info"><strong>Économie</strong><span>5 ouvrages</span></div>
-        </div>
-        <div class="lib-cat-item" onclick="filterBooks('Sciences Sociales', this)">
-          <div class="lib-cat-icon">🌍</div>
-          <div class="lib-cat-info"><strong>Sc. Sociales</strong><span>15 ouvrages</span></div>
-        </div>
+    <!-- Search & Filter Bar -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 50px;">
+      <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); display: flex; gap: 10px; align-items: center;">
+        <input type="text" id="bookSearch" placeholder="Rechercher un livre..." style="flex: 1; padding: 12px 15px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;">
+        <button class="btn-primary" style="background: #3498db; border: none; padding: 12px 25px; border-radius: 6px; color: white; font-weight: 600; cursor: pointer;" onclick="searchBooks()">Rechercher</button>
       </div>
-
-      <!-- 2. SEARCH & ALPHA FILTER -->
-      <div class="lib-search-bar">
-        <div style="display: flex; gap: 10px;">
-          <input type="text" class="form-input" id="bookSearch" placeholder="Rechercher par titre, auteur, thématique..." style="margin:0;">
-          <button class="btn-primary" style="padding: 10px 25px; border-radius: 4px;" onclick="searchBooks()">Rechercher</button>
-        </div>
-        <div class="lib-alpha-nav" id="alphaNav">
-          <a href="#" class="lib-alpha-btn active" onclick="filterAlpha('all')">Tous</a>
-          <!-- A-Z will be here -->
-        </div>
+      <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); display: flex; gap: 10px; align-items: center;">
+        <span style="font-size: 14px; color: #4b5563; white-space: nowrap;">Trier par genre :</span>
+        <select id="genreFilter" style="flex: 1; padding: 12px 15px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; background: white;">
+          <option value="all">Tous</option>
+          <option value="Histoire">Histoire</option>
+          <option value="Droit">Droit</option>
+          <option value="Dialogue">Dialogue & Paix</option>
+          <option value="Sciences Sociales">Sciences Sociales</option>
+          <option value="Littérature">Littérature</option>
+        </select>
+        <button class="btn-primary" style="background: #3498db; border: none; padding: 12px 25px; border-radius: 6px; color: white; font-weight: 600; cursor: pointer;" onclick="filterByGenre()">Trier</button>
       </div>
-
-          </div>
-  </section>
-
-  <section class="section-white" style="padding-top: 80px;">
-    <div class="section-inner">
-      <!-- 3. MAIN LAYOUT -->
-      <div class="lib-main-layout">
-        
-        <!-- LEFT: CATALOGUE -->
-        <div id="booksGrid">
-          <!-- Populated by JS -->
-        </div>
-
-        <!-- RIGHT: SIDEBAR -->
-        <aside class="lib-sidebar">
-          <div class="lib-sidebar-box">
-            <div class="lib-sidebar-header">
-              <span>🎲</span> Sélection Aléatoire
-            </div>
-            <div class="lib-sidebar-content" id="randomSelection">
-              <!-- Populated by JS -->
-            </div>
-          </div>
-
-          <div class="lib-sidebar-box" style="background: var(--navy); color: white; padding: 25px;">
-            <h4 style="color: var(--gold); margin-bottom: 1rem;">Besoin d'aide ?</h4>
-            <p style="font-size: 13px; opacity: 0.8; line-height: 1.6; margin-bottom: 1.5rem;">Vous ne trouvez pas un ouvrage spécifique ou souhaitez commander en gros ?</p>
-            <a href="./contact.html" class="btn-primary" style="background: white; color: var(--navy); width: 100%; justify-content: center; font-size: 11px;">Nous contacter</a>
-          </div>
-        </aside>
-
-      </div>
-
-      <!-- 4. PAGINATION -->
-      <div class="lib-pagination" id="pagination">
-        <!-- Populated by JS -->
-      </div>
-
     </div>
-  </section>
+
+    <!-- Book Grid -->
+    <div id="booksGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px;">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Pagination -->
+    <div class="lib-pagination" id="pagination" style="margin-top: 60px; display: flex; justify-content: center; gap: 10px;">
+      <!-- Populated by JS -->
+    </div>
+  </main>
 
   <footer>
     <div class="footer-inner">
