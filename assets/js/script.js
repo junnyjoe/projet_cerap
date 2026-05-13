@@ -1,4 +1,12 @@
 /* script.js — refactor JS depuis index 1.html */
+window.onerror = function(msg, url, line) {
+  const errDiv = document.createElement('div');
+  errDiv.style.cssText = 'position:fixed; top:0; left:0; width:100%; background:#C43E4E; color:white; padding:10px; font-size:12px; z-index:9999; text-align:center;';
+  errDiv.textContent = `Erreur: ${msg} (Ligne ${line})`;
+  document.body.appendChild(errDiv);
+  setTimeout(() => errDiv.remove(), 10000);
+};
+
 const supabase = window.supabaseClient;
 
 // Données (catalogue)
