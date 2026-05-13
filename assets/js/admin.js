@@ -56,36 +56,37 @@ function closeModal(id) {
 async function loadData() {
   const statusEl = document.getElementById('backendStatus');
   try {
-    // 1. Fetch Books
-    const { data: bData, error: bError } = await supabase.from('books').select('*').order('created_at', { ascending: false });
-    if (bError) throw bError;
-    
-    // 2. Fetch Contacts
-    const { data: cData, error: cError } = await supabase.from('contacts').select('*').order('created_at', { ascending: false });
-    if (cError) throw cError;
+    // Test connection with a simple query
+    const { data: bData, error: bError } = await supabase.from('books').select('*').limit(1);
+    if (bError) {
+      console.error('Supabase connection error:', bError);
+      throw bError;
+    }
 
-    // 3. Fetch Orders (Live Data)
-    const { data: oData, error: oError } = await supabase.from('orders').select('*').order('created_at', { ascending: false });
-    if (oError) throw oError;
+    // If test passes, fetch everything
+    const [books, contacts, orders] = await Promise.all([
+      supabase.from('books').select('*').order('created_at', { ascending: false }),
+      supabase.from('contacts').select('*').order('created_at', { ascending: false }),
+      supabase.from('orders').select('*').order('created_at', { ascending: false })
+    ]);
 
-    if (bData) booksData = bData;
-    if (cData) contactsData = cData;
+    if (books.data) booksData = books.data;
+    if (contacts.data) contactsData = contacts.data;
 
-    if (oData && oData.length > 0) {
-      salesData = processOrders(oData);
+    if (orders.data && orders.data.length > 0) {
+      salesData = processOrders(orders.data);
     } else {
       const sRes = await fetch('./data/sales.json');
       salesData = await sRes.json();
     }
 
-    // Update Status to Online
     if (statusEl) {
       statusEl.className = 'backend-status status-online';
       statusEl.querySelector('.status-text').textContent = 'Connecté (Live)';
     }
 
   } catch (e) {
-    console.warn('Supabase load fallback:', e);
+    console.error('Switching to Local Mode. Reason:', e.message || e);
     const [bRes, sRes, cRes] = await Promise.all([
       fetch('./data/books.json'),
       fetch('./data/sales.json'),
@@ -95,10 +96,9 @@ async function loadData() {
     salesData = await sRes.json();
     contactsData = await cRes.json();
 
-    // Update Status to Offline/Local
     if (statusEl) {
       statusEl.className = 'backend-status status-offline';
-      statusEl.querySelector('.status-text').textContent = 'Mode Local (Offline)';
+      statusEl.querySelector('.status-text').textContent = 'Mode Local (' + (e.message || 'Erreur') + ')';
     }
   }
 }
