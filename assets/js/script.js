@@ -21,7 +21,14 @@ async function loadBooks() {
     const { data, error } = await supabase.from('books').select('*').order('created_at', { ascending: false });
     if (error) throw error;
 
-    books = (data && data.length > 0) ? data : await (await fetch('./data/books.json')).json();
+    const localBooks = await (await fetch('./data/books.json')).json();
+    // Fusionner : Les nouveaux livres de la BDD en premier, puis le reste du catalogue local
+    if (data && data.length > 0) {
+      // Éviter les doublons par ID si nécessaire (ici on suppose que les IDs Supabase sont UUID et JSON sont entiers)
+      books = [...data, ...localBooks];
+    } else {
+      books = localBooks;
+    }
     
     if (mainGrid) renderBooks('all', 'booksGrid');
     if (featuredGrid) renderBooks('all', 'featuredBooks', 4); // Limit to 4 for featured
