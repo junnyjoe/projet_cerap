@@ -26,29 +26,40 @@ async function loadBooks() {
   if (featuredGrid) renderSkeletons('featuredBooks');
   if (newArrivalsGrid) renderSkeletons('newArrivalsGrid');
 
+  console.log('Tentative de chargement du catalogue...');
+
   try {
-    const { data, error } = await supabase.from('books').select('*').order('created_at', { ascending: false });
+    // Timeout pour la BDD (3s max)
+    const dbPromise = supabase.from('books').select('*').order('created_at', { ascending: false });
+    const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout BDD')), 3000));
+    
+    const { data, error } = await Promise.race([dbPromise, timeoutPromise]);
     if (error) throw error;
 
-    const localBooks = await (await fetch('./data/books.json')).json();
-    // Fusionner : Les nouveaux livres de la BDD en premier, puis le reste du catalogue local
+    const res = await fetch('./data/books.json');
+    const localBooks = res.ok ? await res.json() : [];
+    
     if (data && data.length > 0) {
-      // Éviter les doublons par ID si nécessaire (ici on suppose que les IDs Supabase sont UUID et JSON sont entiers)
       books = [...data, ...localBooks];
+      console.log(`${data.length} livres chargés depuis Supabase + ${localBooks.length} locaux.`);
     } else {
       books = localBooks;
+      console.log('Aucune donnée en BDD, chargement du catalogue local.');
     }
-    
-    if (mainGrid) renderBooks('all', 'booksGrid');
-    if (featuredGrid) renderBooks('all', 'featuredBooks', 4); // Limit to 4 for featured
-    if (newArrivalsGrid) renderBooks('all', 'newArrivalsGrid', 4); // Limit to 4 for new
-  } catch (error) {
-    console.warn('Fallback to local JSON:', error);
-    books = await (await fetch('./data/books.json')).json();
-    if (mainGrid) renderBooks('all', 'booksGrid');
-    if (featuredGrid) renderBooks('all', 'featuredBooks', 4);
-    if (newArrivalsGrid) renderBooks('all', 'newArrivalsGrid', 4);
+  } catch (err) {
+    console.error('Erreur catalogue, passage en mode secours:', err);
+    try {
+      const res = await fetch('./data/books.json');
+      books = res.ok ? await res.json() : [];
+    } catch(e) {
+      console.error('Échec total du chargement:', e);
+    }
   }
+
+  // Rendu final
+  if (mainGrid) renderBooks('all', 'booksGrid');
+  if (featuredGrid) renderBooks('all', 'featuredBooks', 4);
+  if (newArrivalsGrid) renderBooks('all', 'newArrivalsGrid', 4);
 }
 
 function renderSkeletons(gridId) {
