@@ -177,6 +177,7 @@
         errorEl.textContent = error.message;
         errorEl.style.display = 'block';
       } else {
+        localStorage.setItem('cerap_admin_session', Date.now().toString());
         window.location.href = 'admin.html';
       }
     });
