@@ -1,7 +1,7 @@
 /* ══════════════════════════════════════════
    CERAP Éditions — Admin Dashboard JS
    ══════════════════════════════════════════ */
-let supabase = null;
+let dbClient = null;
 
 // ── STATE ──
 let booksData = [];
@@ -13,18 +13,18 @@ let catChart = null;
 let salesLineChartInstance = null;
 
 async function logout() {
-  if (supabase) await supabase.auth.signOut();
+  if (dbClient) await dbClient.auth.signOut();
   localStorage.removeItem('cerap_admin_session');
   window.location.href = 'login.html';
 }
 
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', async () => {
-  supabase = window.supabaseClient;
+  dbClient = window.supabaseClient;
   
   // Vérification session réelle via Supabase
-  if (supabase) {
-    const { data: { session } } = await supabase.auth.getSession();
+  if (dbClient) {
+    const { data: { session } } = await dbClient.auth.getSession();
     if (!session) {
       window.location.href = 'login.html';
       return;
@@ -79,17 +79,17 @@ function closeModal(id) {
 async function loadData() {
   const statusEl = document.getElementById('backendStatus');
   try {
-    if (!supabase) throw new Error('Supabase client not initialized');
+    if (!dbClient) throw new Error('Supabase client not initialized');
 
     // Test connection
-    const { data: bData, error: bError } = await supabase.from('books').select('id').limit(1);
+    const { data: bData, error: bError } = await dbClient.from('books').select('id').limit(1);
     if (bError) throw bError;
 
     // Fetch everything
     const [books, contacts, orders] = await Promise.all([
-      supabase.from('books').select('*').order('created_at', { ascending: false }),
-      supabase.from('contacts').select('*').order('created_at', { ascending: false }),
-      supabase.from('orders').select('*').order('created_at', { ascending: false })
+      dbClient.from('books').select('*').order('created_at', { ascending: false }),
+      dbClient.from('contacts').select('*').order('created_at', { ascending: false }),
+      dbClient.from('orders').select('*').order('created_at', { ascending: false })
     ]);
 
     booksData = books.data || [];
@@ -488,10 +488,10 @@ async function saveBook() {
     let result;
     if (id) {
       // Update
-      result = await supabase.from('books').update(bookPayload).eq('id', id);
+      result = await dbClient.from('books').update(bookPayload).eq('id', id);
     } else {
       // Insert
-      result = await supabase.from('books').insert([bookPayload]);
+      result = await dbClient.from('books').insert([bookPayload]);
     }
 
     if (result.error) throw result.error;
@@ -668,7 +668,7 @@ async function deleteBook(id) {
   if (!confirm(`Supprimer "${book.title}" ?`)) return;
   
   try {
-    const { error } = await supabase.from('books').delete().eq('id', id);
+    const { error } = await dbClient.from('books').delete().eq('id', id);
     if (error) throw error;
     
     await loadData();
@@ -822,7 +822,7 @@ async function viewMessage(id) {
   if (!m) return;
   
   try {
-    const { error } = await supabase.from('contacts').update({ read: true }).eq('id', id);
+    const { error } = await dbClient.from('contacts').update({ read: true }).eq('id', id);
     if (error) throw error;
     m.read = true;
   } catch (e) { console.error('Supabase viewMessage error:', e); m.read = true; }
@@ -845,7 +845,7 @@ async function toggleRead(id) {
   const newState = !m.read;
 
   try {
-    const { error } = await supabase.from('contacts').update({ read: newState }).eq('id', id);
+    const { error } = await dbClient.from('contacts').update({ read: newState }).eq('id', id);
     if (error) throw error;
     m.read = newState;
   } catch (e) { console.error('Supabase toggleRead error:', e); m.read = newState; }
@@ -859,7 +859,7 @@ async function deleteMessage(id) {
   if (!confirm('Supprimer ce message ?')) return;
   
   try {
-    const { error } = await supabase.from('contacts').delete().eq('id', id);
+    const { error } = await dbClient.from('contacts').delete().eq('id', id);
     if (error) throw error;
     contactsData = contactsData.filter(c => c.id !== id);
   } catch (e) { 
