@@ -23,3 +23,8 @@ tmp/
 dist/
 build/
 node_modules/
+
+# Documents & Office temp files
+*.docx
+*.pptx
+~$*
