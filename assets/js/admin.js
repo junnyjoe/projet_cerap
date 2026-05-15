@@ -1,7 +1,7 @@
 /* ══════════════════════════════════════════
    CERAP Éditions — Admin Dashboard JS
    ══════════════════════════════════════════ */
-const supabase = window.supabaseClient;
+let supabase = null;
 
 // ── STATE ──
 let booksData = [];
@@ -12,13 +12,35 @@ let revenueChart = null;
 let catChart = null;
 let salesLineChartInstance = null;
 
-function logout() {
+async function logout() {
+  if (supabase) await supabase.auth.signOut();
   localStorage.removeItem('cerap_admin_session');
   window.location.href = 'login.html';
 }
 
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', async () => {
+  supabase = window.supabaseClient;
+  
+  // Vérification session réelle via Supabase
+  if (supabase) {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) {
+      window.location.href = 'login.html';
+      return;
+    }
+  } else {
+    // Mode fallback local ou erreur chargement Supabase
+    const sessionStamp = localStorage.getItem('cerap_admin_session');
+    const eightHours = 8 * 60 * 60 * 1000;
+    
+    if (!sessionStamp || (Date.now() - parseInt(sessionStamp)) > eightHours) {
+      localStorage.removeItem('cerap_admin_session');
+      window.location.href = 'login.html';
+      return;
+    }
+  }
+
   await loadData();
   renderDashboard();
   initNav();
@@ -57,28 +79,34 @@ function closeModal(id) {
 async function loadData() {
   const statusEl = document.getElementById('backendStatus');
   try {
-    // Test connection with a simple query
-    const { data: bData, error: bError } = await supabase.from('books').select('*').limit(1);
-    if (bError) {
-      console.error('Supabase connection error:', bError);
-      throw bError;
-    }
+    if (!supabase) throw new Error('Supabase client not initialized');
 
-    // If test passes, fetch everything
+    // Test connection
+    const { data: bData, error: bError } = await supabase.from('books').select('id').limit(1);
+    if (bError) throw bError;
+
+    // Fetch everything
     const [books, contacts, orders] = await Promise.all([
       supabase.from('books').select('*').order('created_at', { ascending: false }),
       supabase.from('contacts').select('*').order('created_at', { ascending: false }),
       supabase.from('orders').select('*').order('created_at', { ascending: false })
     ]);
 
-    if (books.data) booksData = books.data;
-    if (contacts.data) contactsData = contacts.data;
+    booksData = books.data || [];
+    contactsData = contacts.data || [];
 
     if (orders.data && orders.data.length > 0) {
       salesData = processOrders(orders.data);
     } else {
+      // Si pas de commandes en DB, charger les stats de démo
       const sRes = await fetch('./data/sales.json');
       salesData = await sRes.json();
+    }
+
+    // Si la DB est vide (nouveau projet), on charge quand même les livres de démo pour l'UI
+    if (booksData.length === 0) {
+        const bRes = await fetch('./data/books.json');
+        booksData = await bRes.json();
     }
 
     if (statusEl) {
@@ -87,19 +115,23 @@ async function loadData() {
     }
 
   } catch (e) {
-    console.error('Switching to Local Mode. Reason:', e.message || e);
-    const [bRes, sRes, cRes] = await Promise.all([
-      fetch('./data/books.json'),
-      fetch('./data/sales.json'),
-      fetch('./data/contacts.json')
-    ]);
-    booksData = await bRes.json();
-    salesData = await sRes.json();
-    contactsData = await cRes.json();
+    console.warn('Switching to Local Mode. Reason:', e.message || e);
+    try {
+      const [bRes, sRes, cRes] = await Promise.all([
+        fetch('./data/books.json'),
+        fetch('./data/sales.json'),
+        fetch('./data/contacts.json')
+      ]);
+      booksData = await bRes.json();
+      salesData = await sRes.json();
+      contactsData = await cRes.json();
+    } catch (fetchErr) {
+      console.error('CRITICAL: Local fallback failed:', fetchErr);
+    }
 
     if (statusEl) {
       statusEl.className = 'backend-status status-offline';
-      statusEl.querySelector('.status-text').textContent = 'Mode Local (' + (e.message || 'Erreur') + ')';
+      statusEl.querySelector('.status-text').textContent = 'Mode Local (' + (e.message || 'Offline') + ')';
     }
   }
 }
@@ -189,6 +221,10 @@ function navigateTo(page) {
   const link = document.querySelector(`.sidebar-link[data-page="${page}"]`);
   if (target) target.classList.add('active');
   if (link) link.classList.add('active');
+
+  // Reset global search input when navigating
+  const searchInput = document.getElementById('globalSearchInput');
+  if (searchInput) searchInput.value = '';
 
   // Update topbar title
   const titles = { dashboard: 'Tableau de bord', books: 'Gestion des livres', sales: 'Analyses & Statistiques', messages: 'Messages reçus' };
@@ -353,10 +389,15 @@ function renderCategoryChart() {
 }
 
 // ── RECENT ORDERS TABLE ──
-function renderRecentOrders() {
+function renderRecentOrders(filtered) {
   const tbody = document.getElementById('recentOrdersBody');
   if (!tbody) return;
-  const orders = salesData.recentOrders || [];
+  const orders = filtered || salesData.recentOrders || [];
+
+  if (orders.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 20px;">Aucune commande trouvée.</td></tr>';
+    return;
+  }
 
   tbody.innerHTML = orders.map(o => `
     <tr>
@@ -370,26 +411,40 @@ function renderRecentOrders() {
   `).join('');
 }
 
-// ── DASHBOARD TOP SELLERS ──
-function renderDashboardTopSellers() {
-  const el = document.getElementById('dashTopSellers');
-  if (!el) return;
-  const sorted = [...booksData].sort((a, b) => b.sold - a.sold).slice(0, 5);
+window.filterOrders = function() {
+  const dateF = document.getElementById('orderDateFilter')?.value || 'all';
+  const statusF = document.getElementById('orderStatusFilter')?.value || 'all';
+  const textF = (document.getElementById('orderTextFilter')?.value || '').toLowerCase();
 
-  el.innerHTML = sorted.map((b, i) => `
-    <div class="top-seller-item">
-      <div class="top-rank ${i === 0 ? 'gold' : ''}">${i + 1}</div>
-      <div class="top-seller-info">
-        <div class="top-seller-title">${b.title}</div>
-        <div class="top-seller-meta">${b.catLabel}</div>
-      </div>
-      <div class="top-seller-stat">
-        <div class="top-seller-sold">${b.sold} vdus</div>
-        <div class="top-seller-revenue">${Utils.formatCurrency(b.sold * b.price)}</div>
-      </div>
-    </div>
-  `).join('');
-}
+  let orders = salesData.recentOrders || [];
+
+  if (dateF === 'today') {
+    const today = new Date().toISOString().split('T')[0];
+    orders = orders.filter(o => o.date.startsWith(today));
+  } else if (dateF === 'month') {
+    const now = new Date();
+    const thisMonth = now.getMonth();
+    const thisYear = now.getFullYear();
+    orders = orders.filter(o => {
+      const d = new Date(o.date);
+      return d.getMonth() === thisMonth && d.getFullYear() === thisYear;
+    });
+  }
+
+  if (statusF !== 'all') {
+    orders = orders.filter(o => o.status === statusF);
+  }
+
+  if (textF) {
+    orders = orders.filter(o => 
+      o.id.toLowerCase().includes(textF) || 
+      o.client.toLowerCase().includes(textF)
+    );
+  }
+
+  renderRecentOrders(orders);
+};
+
 /* ── COVER IMAGE HANDLING ── */
 function handleCoverChange(event) {
   const file = event.target.files[0];
@@ -496,37 +551,69 @@ function editBook(id) {
 function renderBooks(filter = '') {
   const tbody = document.getElementById('booksTableBody');
   if (!tbody) return;
-  let filtered = booksData;
-  if (filter) {
-    const q = filter.toLowerCase();
-    filtered = booksData.filter(b => b.title.toLowerCase().includes(q) || b.category.toLowerCase().includes(q) || b.author.toLowerCase().includes(q));
-  }
-  tbody.innerHTML = filtered.map(b => `
+
+  // Skeleton loader
+  tbody.innerHTML = Array(4).fill('').map(() => `
     <tr>
-      <td>
-        <div class="table-book-cell">
-          <div class="table-book-cover" style="background:${b.cover && b.cover.startsWith('data:image') ? 'transparent' : 'linear-gradient(135deg,#002147,#002147cc)'};">
-            ${b.cover && b.cover.startsWith('data:image') ? `<img src="${b.cover}" alt="Cover" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"/>` : b.cover}
-          </div>
-          <div>
-            <div class="table-book-title">${b.title}</div>
-            <div class="table-book-author">${b.author}</div>
-          </div>
-        </div>
-      </td>
-      <td>${b.category}</td>
-      <td><strong>${b.price.toLocaleString('fr-FR')} F</strong></td>
-      <td>${b.stock}</td>
-      <td>${b.sold}</td>
-      <td><span class="status-badge ${b.status}">${b.status.replace('_', ' ')}</span></td>
-      <td>
-        <div class="table-action-btns">
-          <button class="table-action-btn" onclick="editBook(${b.id})" title="Modifier">✏️</button>
-          <button class="table-action-btn danger" onclick="deleteBook(${b.id})" title="Supprimer">🗑️</button>
-        </div>
-      </td>
+      <td><div style="display:flex;gap:12px;align-items:center;"><div class="skeleton" style="width:40px;height:56px;border-radius:6px;flex-shrink:0;"></div><div><div class="skeleton" style="width:130px;height:13px;margin-bottom:6px;border-radius:4px;"></div><div class="skeleton" style="width:80px;height:11px;border-radius:4px;"></div></div></div></td>
+      <td><div class="skeleton" style="width:70px;height:13px;border-radius:4px;"></div></td>
+      <td><div class="skeleton" style="width:60px;height:13px;border-radius:4px;"></div></td>
+      <td><div class="skeleton" style="width:25px;height:13px;border-radius:4px;"></div></td>
+      <td><div class="skeleton" style="width:25px;height:13px;border-radius:4px;"></div></td>
+      <td><div class="skeleton" style="width:80px;height:22px;border-radius:100px;"></div></td>
+      <td><div class="skeleton" style="width:70px;height:30px;border-radius:8px;"></div></td>
     </tr>
   `).join('');
+
+  setTimeout(() => {
+    let filtered = booksData;
+    if (filter) {
+      const q = filter.toLowerCase();
+      filtered = booksData.filter(b => b.title.toLowerCase().includes(q) || b.category.toLowerCase().includes(q) || b.author.toLowerCase().includes(q));
+    }
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="7" style="text-align:center; padding: 60px 20px;">
+            <div style="color: var(--warm-gray); display:flex; flex-direction:column; align-items:center; gap:12px;">
+              <i class="ti ti-search-off" style="font-size: 2.5rem; opacity: 0.4;"></i>
+              <strong style="font-size:1rem; color: var(--ink);">Aucun livre trouvé</strong>
+              <span style="font-size:13px;">Essayez un autre terme ou <a href="#" onclick="openModal('bookModal'); return false;" style="color:var(--gold);">ajoutez un livre</a>.</span>
+            </div>
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    tbody.innerHTML = filtered.map(b => `
+      <tr>
+        <td>
+          <div class="table-book-cell">
+            <div class="table-book-cover" style="background:${b.cover && b.cover.startsWith('data:image') ? 'transparent' : 'linear-gradient(135deg,#002147,#002147cc)'};">
+              ${b.cover && b.cover.startsWith('data:image') ? `<img src="${b.cover}" alt="Cover" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"/>` : b.cover}
+            </div>
+            <div>
+              <div class="table-book-title">${b.title}</div>
+              <div class="table-book-author">${b.author}</div>
+            </div>
+          </div>
+        </td>
+        <td>${b.category}</td>
+        <td><strong>${b.price.toLocaleString('fr-FR')} F</strong></td>
+        <td>${b.stock}</td>
+        <td>${b.sold}</td>
+        <td><span class="status-badge ${b.status}">${b.status.replace('_', ' ')}</span></td>
+        <td>
+          <div class="table-action-btns">
+            <button class="table-action-btn" onclick="editBook(${b.id})" title="Modifier" aria-label="Modifier ${b.title}"><i class="ti ti-pencil"></i></button>
+            <button class="table-action-btn danger" onclick="deleteBook(${b.id})" title="Supprimer" aria-label="Supprimer ${b.title}"><i class="ti ti-trash"></i></button>
+          </div>
+        </td>
+      </tr>
+    `).join('');
+  }, 200);
 }
 
 /* Ensure top sellers use image if available */
@@ -543,7 +630,7 @@ function renderDashboardTopSellers() {
       </div>
       <div class="top-seller-stat">
         <div class="top-seller-sold">${b.sold} ventes</div>
-        <div class="top-seller-revenue">${(b.sold * b.price).toLocaleString('fr-FR')} F</div>
+        <div class="top-seller-revenue">${Utils.formatCurrency(b.sold * b.price)}</div>
       </div>
     </div>
   `).join('');

@@ -3,7 +3,9 @@
 <head>
   <script>
     // Security check - MUST BE FIRST
-    if (!localStorage.getItem('cerap_admin_session')) {
+    const s = localStorage.getItem('cerap_admin_session');
+    const MAX = 8 * 60 * 60 * 1000; // 8h
+    if (!s || Date.now() - parseInt(s) > MAX) {
       window.location.href = 'login.html';
     }
   </script>
@@ -17,6 +19,7 @@
   <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="icon" type="image/png" href="./assets/images/logo-uja.png" />
   <link rel="stylesheet" href="./assets/css/admin.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 </head>
 <body>
@@ -39,23 +42,23 @@
       <nav class="sidebar-nav">
         <div class="sidebar-section-label">Principal</div>
         <a class="sidebar-link active" data-page="dashboard" href="#">
-          <span class="icon">📊</span> Tableau de bord
+          <span class="icon"><i class="ti ti-chart-bar"></i></span> Tableau de bord
         </a>
         <a class="sidebar-link" data-page="books" href="#">
-          <span class="icon">📚</span> Livres
+          <span class="icon"><i class="ti ti-book"></i></span> Livres
         </a>
         <a class="sidebar-link" data-page="sales" href="#">
-          <span class="icon">📈</span> Statistiques
+          <span class="icon"><i class="ti ti-trending-up"></i></span> Statistiques
         </a>
         <div class="sidebar-section-label">Communication</div>
         <a class="sidebar-link" data-page="messages" href="#">
-          <span class="icon">📩</span> Messages
+          <span class="icon"><i class="ti ti-mail"></i></span> Messages
           <span class="badge" id="sidebarMsgBadge">3</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <a href="#" onclick="logout(); return false;">🚪 Déconnexion</a>
+        <a href="#" onclick="logout(); return false;"><i class="ti ti-logout"></i> Déconnexion</a>
       </div>
     </aside>
 
@@ -87,25 +90,25 @@
           <!-- Stat cards -->
           <div class="stats-grid">
             <div class="stat-card">
-              <div class="stat-icon">📚</div>
+              <div class="stat-icon"><i class="ti ti-book"></i></div>
               <div class="stat-label">Total livres</div>
               <div class="stat-value" id="statBooks">0</div>
               <div class="stat-change up">↑ Catalogue actif</div>
             </div>
             <div class="stat-card gold">
-              <div class="stat-icon">🛒</div>
+              <div class="stat-icon"><i class="ti ti-shopping-cart"></i></div>
               <div class="stat-label">Total ventes</div>
               <div class="stat-value" id="statSales">0</div>
               <div class="stat-change up">↑ +12% ce mois</div>
             </div>
             <div class="stat-card green">
-              <div class="stat-icon">💰</div>
+              <div class="stat-icon"><i class="ti ti-coin"></i></div>
               <div class="stat-label">Chiffre d'affaires</div>
               <div class="stat-value"><span id="statRevenue">0</span> <small style="font-size:0.5em">F</small></div>
               <div class="stat-change up">↑ +8.5%</div>
             </div>
             <div class="stat-card terra">
-              <div class="stat-icon">📩</div>
+              <div class="stat-icon"><i class="ti ti-mail"></i></div>
               <div class="stat-label">Messages reçus</div>
               <div class="stat-value" id="statContacts">0</div>
               <div class="stat-change down"><span id="statUnread">0</span> non lus</div>
@@ -115,17 +118,17 @@
           <!-- Mini stats row -->
           <div class="stats-grid" style="grid-template-columns: repeat(3,1fr); margin-bottom:32px;">
             <div class="stat-card">
-              <div class="stat-icon">📅</div>
+              <div class="stat-icon"><i class="ti ti-calendar"></i></div>
               <div class="stat-label">Commandes du jour</div>
               <div class="stat-value" id="statToday">0</div>
             </div>
             <div class="stat-card gold">
-              <div class="stat-icon">📆</div>
+              <div class="stat-icon"><i class="ti ti-calendar-event"></i></div>
               <div class="stat-label">Commandes du mois</div>
               <div class="stat-value" id="statMonth">0</div>
             </div>
             <div class="stat-card green">
-              <div class="stat-icon">🧾</div>
+              <div class="stat-icon"><i class="ti ti-receipt"></i></div>
               <div class="stat-label">Panier moyen</div>
               <div class="stat-value"><span id="statAvgCart">0</span> <small style="font-size:0.5em">F</small></div>
             </div>
@@ -154,8 +157,22 @@
           <!-- Recent orders + Top sellers -->
           <div class="charts-row">
             <div class="table-card">
-              <div class="table-card-header">
+              <div class="table-card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
                 <h3>Commandes récentes</h3>
+                <div class="table-actions" style="display: flex; gap: 10px;">
+                  <select class="table-search" id="orderDateFilter" onchange="filterOrders()" style="width: auto; padding-right: 30px;">
+                    <option value="all">Toutes les dates</option>
+                    <option value="today">Aujourd'hui</option>
+                    <option value="month">Ce mois-ci</option>
+                  </select>
+                  <select class="table-search" id="orderStatusFilter" onchange="filterOrders()" style="width: auto; padding-right: 30px;">
+                    <option value="all">Tous les statuts</option>
+                    <option value="en_cours">En cours</option>
+                    <option value="livree">Livrée</option>
+                    <option value="annulee">Annulée</option>
+                  </select>
+                  <input type="search" class="table-search" id="orderTextFilter" placeholder="Rechercher…" oninput="filterOrders()" style="width: 150px;" />
+                </div>
               </div>
               <table class="admin-table">
                 <thead>
@@ -173,7 +190,7 @@
             </div>
             <div class="chart-card">
               <div class="chart-card-header">
-                <h3>🏆 Meilleures ventes</h3>
+                <h3><i class="ti ti-trophy" style="margin-right:6px"></i> Meilleures ventes</h3>
               </div>
               <div class="top-sellers-list" id="dashTopSellers"></div>
             </div>
@@ -217,22 +234,22 @@
         <div class="admin-page" id="page-sales">
           <div class="stats-grid">
             <div class="stat-card green">
-              <div class="stat-icon">💰</div>
+              <div class="stat-icon"><i class="ti ti-coin"></i></div>
               <div class="stat-label">Revenus totaux</div>
               <div class="stat-value" id="salesRevenue" style="font-size:1.4rem">0</div>
             </div>
             <div class="stat-card">
-              <div class="stat-icon">📦</div>
+              <div class="stat-icon"><i class="ti ti-package"></i></div>
               <div class="stat-label">Commandes totales</div>
               <div class="stat-value" id="salesOrders">0</div>
             </div>
             <div class="stat-card gold">
-              <div class="stat-icon">🧾</div>
+              <div class="stat-icon"><i class="ti ti-receipt"></i></div>
               <div class="stat-label">Panier moyen</div>
               <div class="stat-value" id="salesAvg" style="font-size:1.4rem">0</div>
             </div>
             <div class="stat-card terra">
-              <div class="stat-icon">📖</div>
+              <div class="stat-icon"><i class="ti ti-book-2"></i></div>
               <div class="stat-label">Articles vendus</div>
               <div class="stat-value" id="salesItems">0</div>
             </div>
@@ -244,7 +261,7 @@
               <div style="height:340px"><canvas id="salesLineChart"></canvas></div>
             </div>
             <div class="chart-card">
-              <div class="chart-card-header"><h3>🏆 Classement des ventes</h3></div>
+              <div class="chart-card-header"><h3><i class="ti ti-trophy" style="margin-right:6px"></i> Classement des ventes</h3></div>
               <div style="overflow-x:auto">
                 <table class="admin-table">
                   <thead>
@@ -269,7 +286,7 @@
         <div class="admin-page" id="page-messages">
           <div class="table-card">
             <div class="table-card-header">
-              <h3>📩 Messages reçus <span class="status-badge non_lu" id="msgUnreadCount">0</span></h3>
+              <h3><i class="ti ti-inbox" style="margin-right:6px"></i> Messages reçus <span class="status-badge non_lu" id="msgUnreadCount">0</span></h3>
               <div class="table-actions">
                 <input type="search" class="table-search" placeholder="Rechercher…" oninput="renderMessages(this.value)" />
               </div>
@@ -397,9 +414,10 @@
   </div>
 
   <!-- SUPABASE -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-  <script src="./assets/js/supabase-config.js"></script>
-  <script src="./assets/js/utils.js"></script>
-  <script src="./assets/js/admin.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
+  <script src="./assets/js/supabase-config.js" defer></script>
+  <script src="./assets/js/utils.js" defer></script>
+  <script src="./assets/js/admin.js" defer></script>
+
 </body>
 </html>

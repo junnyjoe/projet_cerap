@@ -154,18 +154,30 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="./assets/js/supabase-config.js"></script>
   <script>
-    document.getElementById('loginForm').addEventListener('submit', (e) => {
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const user = document.getElementById('username').value;
+      const email = document.getElementById('username').value; // Using email as username
       const pass = document.getElementById('password').value;
+      const errorEl = document.getElementById('errorMsg');
 
-      // Simulation de sécurité
-      if (user === 'admin' && pass === 'cerap2026') {
-        localStorage.setItem('cerap_admin_session', Date.now());
-        window.location.href = 'admin.html';
+      if (!window.supabaseClient) {
+          alert("Erreur de configuration Supabase.");
+          return;
+      }
+
+      const { data, error } = await window.supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: pass
+      });
+
+      if (error) {
+        errorEl.textContent = error.message;
+        errorEl.style.display = 'block';
       } else {
-        document.getElementById('errorMsg').style.display = 'block';
+        window.location.href = 'admin.html';
       }
     });
   </script>

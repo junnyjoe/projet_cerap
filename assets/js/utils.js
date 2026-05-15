@@ -93,7 +93,7 @@ const Utils = {
   },
 
   /**
-   * Affiche une notification toast temporaire
+   * Affiche une notification toast temporaire avec un design premium
    * @param {string} message - Message à afficher
    */
   showToast: function(message) {
@@ -107,7 +107,9 @@ const Utils = {
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.innerHTML = `
-      <div class="toast-icon">✓</div>
+      <div class="toast-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
       <div class="toast-message">${message}</div>
     `;
 
@@ -117,10 +119,11 @@ const Utils = {
     void toast.offsetWidth;
     toast.classList.add('show');
 
+    // Auto-remove
     setTimeout(() => {
       toast.classList.remove('show');
       setTimeout(() => toast.remove(), 400);
-    }, 3000);
+    }, 4000);
   }
 };
 

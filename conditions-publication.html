@@ -1,192 +1,131 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CERAP Éditions — Conditions de Publication</title>
-  <meta name="description" content="Découvrez le processus éditorial et les conditions de publication des Éditions du CERAP." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conditions de Publication — CERAP Éditions</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
     <link rel="icon" type="image/png" href="./assets/images/logo-uja.png" />
-  <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
-  <nav>
-    <div class="nav-inner">
-      <a class="nav-logo" href="./index.html">
-        <div class="nav-logo-mark"><img src="./assets/images/logo-uja.png" alt="Logo UJA"></div>
-        <div class="nav-logo-text">
-          <strong>CERAP Éditions</strong>
-          <span>Abidjan · Côte d'Ivoire</span>
-        </div>
-      </a>
-      <ul class="nav-links">
-        <li><a href="./index.html">Accueil</a></li>
-        <li><a href="./librairie.html">Librairie</a></li>
-        <li><a href="./ligne-editoriale.html">Ligne Éditoriale</a></li>
-        <li><a href="./conditions-publication.html" class="active">Conditions</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-        <li><a href="./librairie.html" class="nav-cta">Commander →</a></li>
-      </ul>
-      <button class="nav-menu-btn" data-js="mobile-menu-toggle" aria-label="Menu" aria-controls="mobileNav" aria-expanded="false" type="button">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/>
-        </svg>
-      </button>
+    <div class="site-bg">
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
     </div>
-  </nav>
 
-  <div class="mobile-nav" id="mobileNav">
-    <a href="./index.html">Accueil</a>
-    <a href="./librairie.html">Librairie</a>
-    <a href="./ligne-editoriale.html">Ligne Éditoriale</a>
-    <a href="./conditions-publication.html">Conditions</a>
-    <a href="./contact.html">Contact</a>
-  </div>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-inner">
+            <a class="nav-logo" href="./index.html">
+                <div class="nav-logo-mark"><img src="./assets/images/logo-uja.png" alt="Logo UJA"></div>
+                <div class="nav-logo-text">
+                    <strong>CERAP Éditions</strong>
+                    <span>Abidjan · Côte d'Ivoire</span>
+                </div>
+            </a>
 
-  <section class="section-navy" style="padding: 100px 2rem 120px;">
-    <div class="section-inner" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center;">
-      <div>
-        <span class="section-kicker" style="color: var(--gold-light);">POUR LES AUTEURS</span>
-        <h1 style="font-family: 'EB Garamond', serif; font-size: 3.5rem; color: white; line-height: 1.1; margin-bottom: 1.5rem;">Conditions de <em>Publication</em></h1>
-        <p style="font-size: 1.1rem; opacity: 0.8; line-height: 1.6; margin-bottom: 2.5rem; max-width: 600px;">
-          Les Éditions du CERAP accompagnent chaque auteur dans un processus rigoureux et transparent, de la soumission du manuscrit à la diffusion internationale de l'ouvrage.
-        </p>
-        <div style="display: flex; gap: 1.5rem;">
-          <a href="#process" class="btn-primary" style="background: var(--gold); border: none;">Découvrir les étapes</a>
-          <a href="./contact.html" class="btn-secondary" style="border-color: rgba(255,255,255,0.3); color: white;">Soumettre un manuscrit</a>
+            <ul class="nav-links">
+                <li><a href="./index.html">Accueil</a></li>
+                <li><a href="./librairie.html">Boutique</a></li>
+                <li><a href="./revue-debats.html">Revue Débats</a></li>
+                <li><a href="./ligne-editoriale.html">Ligne Éditoriale</a></li>
+                <li><a href="./conditions-publication.html" class="active">Conditions</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="nav-cart-btn" onclick="window.toggleCart()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="nav-menu-btn" data-js="mobile-menu-toggle">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/></svg>
+                </button>
+            </div>
         </div>
-      </div>
-      <div style="position: relative;">
-        <div style="background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1);">
-          <div style="font-size: 2rem; margin-bottom: 20px;">📜</div>
-          <h3 style="font-family: 'EB Garamond', serif; font-size: 1.5rem; color: white; margin-bottom: 15px;">Engagement d'Excellence</h3>
-          <p style="font-size: 13px; opacity: 0.7; margin-bottom: 20px; line-height: 1.6;">Nous privilégions les travaux originaux qui apportent une contribution significative à la recherche scientifique et au débat d'idées en Afrique.</p>
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 12px; color: var(--gold-light);">
-            <li style="margin-bottom: 8px;">• Double évaluation par les pairs</li>
-            <li style="margin-bottom: 8px;">• Accompagnement éditorial personnalisé</li>
-            <li>• Diffusion internationale</li>
-          </ul>
-        </div>
-      </div>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="./index.html">Accueil</a>
+        <a href="./librairie.html">Boutique</a>
+        <a href="./ligne-editoriale.html">Ligne Éditoriale</a>
+        <a href="./conditions-publication.html">Conditions</a>
+        <a href="./contact.html">Contact</a>
     </div>
-  </section>
 
-  <section class="section-white" style="padding: 0;">
-    <div class="section-inner">
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: -80px; position: relative; z-index: 10;">
-        <div style="background: white; padding: 30px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
-          <div style="color: var(--gold); font-size: 24px; margin-bottom: 15px;">🔒</div>
-          <h4 style="font-size: 14px; color: var(--navy); font-weight: 700; margin-bottom: 10px;">Rigueur Scientifique</h4>
-          <p style="font-size: 12px; color: var(--muted); line-height: 1.6;">Double évaluation anonyme pour garantir l'excellence académique.</p>
+    <main class="section-inner" style="margin-top: 100px; margin-bottom: 100px;">
+        <div style="max-width: 900px; margin: 0 auto;" class="js-reveal">
+            <div class="breadcrumb" style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 24px;">
+                <a href="./index.html" style="color: #64748b; text-decoration: none; transition: color 0.2s;">Accueil</a>
+                <span style="margin: 0 10px; color: #cbd5e1;">/</span>
+                <span>Conditions de publication</span>
+            </div>
+            <h1 style="font-family: 'EB Garamond', serif; font-size: 3.5rem; margin-bottom: 2rem; color: var(--navy);">Conditions de <em>Publication</em></h1>
+            
+            <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
+                <p style="margin-bottom: 1.5rem;">Pour être publié aux Éditions du CERAP, tout manuscrit doit répondre à des critères de qualité scientifique et de pertinence thématique.</p>
+                
+                <section style="margin-top: 50px;">
+                    <h2 style="font-family: 'EB Garamond', serif; color: var(--navy); font-size: 2rem; margin-bottom: 1.5rem;">1. Soumission du manuscrit</h2>
+                    <p>Le manuscrit doit être envoyé en version électronique (Word) à l'adresse <strong>editions@cerap-inades.org</strong> ou déposé physiquement au siège du CERAP à Cocody Mermoz.</p>
+                </section>
+
+                <section style="margin-top: 40px;">
+                    <h2 style="font-family: 'EB Garamond', serif; color: var(--navy); font-size: 2rem; margin-bottom: 1.5rem;">2. Évaluation</h2>
+                    <p>Chaque manuscrit est soumis au Comité de lecture. Les ouvrages universitaires font l'objet d'une double évaluation aveugle par des experts du domaine.</p>
+                </section>
+
+                <section style="margin-top: 40px;">
+                    <h2 style="font-family: 'EB Garamond', serif; color: var(--navy); font-size: 2rem; margin-bottom: 1.5rem;">3. Formatage</h2>
+                    <p>Les auteurs sont priés de respecter les normes typographiques en vigueur (Police Garamond 12, interligne 1.5, notes de bas de page).</p>
+                </section>
+            </div>
+
+            <div style="margin-top: 80px; padding: 50px; background: var(--cream); border-radius: 24px; border: 1px solid rgba(198,146,47,0.1);">
+                <h3 style="margin-bottom: 1rem; color: var(--navy); font-family: 'EB Garamond', serif; font-size: 1.8rem;">Besoin de plus d'informations ?</h3>
+                <p style="margin-bottom: 2rem; color: #64748b;">Notre équipe éditoriale est à votre disposition pour vous accompagner dans votre projet de publication.</p>
+                <a href="./contact.html" class="btn-primary">Nous contacter</a>
+            </div>
         </div>
-        <div style="background: white; padding: 30px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
-          <div style="margin-bottom: 15px;"><img src="./assets/images/logo-uja.png" alt="UJA" style="width: 32px; height: 32px; object-fit: contain;"></div>
-          <h4 style="font-size: 14px; color: var(--navy); font-weight: 700; margin-bottom: 10px;">Rayonnement</h4>
-          <p style="font-size: 12px; color: var(--muted); line-height: 1.6;">Diffusion sur les plateformes internationales (Cairn, Amazon, etc.).</p>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo"><strong>CERAP Éditions</strong></div>
+                    <p>Maison d'édition universitaire de l'Université Jésuite d'Afrique.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CERAP Éditions. Tous droits réservés.</p>
+            </div>
         </div>
-        <div style="background: white; padding: 30px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
-          <div style="color: var(--gold); font-size: 24px; margin-bottom: 15px;">🎨</div>
-          <h4 style="font-size: 14px; color: var(--navy); font-weight: 700; margin-bottom: 10px;">Design Éditorial</h4>
-          <p style="font-size: 12px; color: var(--muted); line-height: 1.6;">Conception graphique et mise en page de haute qualité.</p>
+    </footer>
+
+    <!-- Cart Panel -->
+    <div id="cartPanel" class="cart-panel">
+        <div class="cart-header">
+            <h3>Mon Panier</h3>
+            <button class="close-cart" onclick="window.toggleCart(false)">&times;</button>
         </div>
-        <div style="background: white; padding: 30px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
-          <div style="color: var(--gold); font-size: 24px; margin-bottom: 15px;">🤝</div>
-          <h4 style="font-size: 14px; color: var(--navy); font-weight: 700; margin-bottom: 10px;">Accompagnement</h4>
-          <p style="font-size: 12px; color: var(--muted); line-height: 1.6;">Un suivi personnalisé à chaque étape de la fabrication.</p>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">Total : <span id="cartTotal">0 F</span></div>
+            <button class="btn-primary" style="width: 100%; margin-top: 20px;" onclick="window.checkout()">Commander</button>
         </div>
-      </div>
     </div>
-  </section>
 
-  <section class="section-white js-reveal" data-reveal id="process" style="padding-top: 60px;">
-    <div class="section-inner">
-      <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
-        <span class="section-kicker">ÉTAPES CLÉS</span>
-        <h2 class="section-title">Le parcours de votre œuvre</h2>
-      </div>
-
-      <div class="conditions-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
-        <div class="collection-card" style="align-items: flex-start; text-align: left; padding: 40px; border: 1px solid rgba(0,0,0,0.04);">
-          <div style="font-weight: 800; color: var(--gold); margin-bottom: 1.5rem; font-size: 1.5rem; opacity: 0.3;">01</div>
-          <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--navy);">Objet du contrat</h3>
-          <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Définition précise des droits et obligations, incluant la cession exclusive des droits de reproduction dans le respect des normes OHADA et internationales.</p>
-        </div>
-        <div class="collection-card" style="align-items: flex-start; text-align: left; padding: 40px; border: 1px solid rgba(0,0,0,0.04);">
-          <div style="font-weight: 800; color: var(--gold); margin-bottom: 1.5rem; font-size: 1.5rem; opacity: 0.3;">02</div>
-          <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--navy);">Traitement éditorial</h3>
-          <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Évaluation anonyme par le comité scientifique. En cas de validation, nous établissons ensemble un calendrier de production rigoureux.</p>
-        </div>
-        <div class="collection-card" style="align-items: flex-start; text-align: left; padding: 40px; border: 1px solid rgba(0,0,0,0.04);">
-          <div style="font-weight: 800; color: var(--gold); margin-bottom: 1.5rem; font-size: 1.5rem; opacity: 0.3;">03</div>
-          <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--navy);">Fabrication & Design</h3>
-          <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Mise en page professionnelle et conception graphique de la couverture par nos experts. Chaque étape est soumise à votre validation (BAT).</p>
-        </div>
-        <div class="collection-card" style="align-items: flex-start; text-align: left; padding: 40px; border: 1px solid rgba(0,0,0,0.04);">
-          <div style="font-weight: 800; color: var(--gold); margin-bottom: 1.5rem; font-size: 1.5rem; opacity: 0.3;">04</div>
-          <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--navy);">Commercialisation</h3>
-          <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Promotion et distribution multicanale. Votre ouvrage rejoint notre catalogue en ligne et notre réseau de librairies partenaires en Afrique et Europe.</p>
-        </div>
-        <div class="collection-card" style="align-items: flex-start; text-align: left; padding: 40px; border: 1px solid rgba(0,0,0,0.04);">
-          <div style="font-weight: 800; color: var(--gold); margin-bottom: 1.5rem; font-size: 1.5rem; opacity: 0.3;">05</div>
-          <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--navy);">Gestion des Frais</h3>
-          <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Partage transparent des coûts de production. Nous fournissons un devis complet et détaillé avant tout engagement ferme.</p>
-        </div>
-        <div class="collection-card" style="align-items: flex-start; text-align: left; padding: 40px; border: 1px solid rgba(0,0,0,0.04);">
-          <div style="font-weight: 800; color: var(--gold); margin-bottom: 1.5rem; font-size: 1.5rem; opacity: 0.3;">06</div>
-          <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--navy);">Reddition & Droits</h3>
-          <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Suivi annuel des ventes et versement des droits d'auteur. Nous assurons une gestion rigoureuse et transparente de vos exemplaires.</p>
-        </div>
-      </div>
-    </div>
-      <div style="margin-top: 5rem; padding-top: 4rem; border-top: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; align-items: center; text-align: center;">
-        <h2 style="font-family: 'EB Garamond', serif; font-size: 2.2rem; color: var(--navy); margin-bottom: 1rem;">Prêt à rejoindre l'excellence ?</h2>
-        <p style="max-width: 600px; margin-bottom: 2.5rem; color: var(--muted); font-size: 15px; line-height: 1.6;">Donnez à votre recherche le rayonnement qu'elle mérite. Notre équipe est à votre disposition.</p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-          <a href="./contact.html" class="btn-primary">Soumettre un manuscrit →</a>
-          <a href="./ligne-editoriale.html" class="btn-secondary" style="color: var(--navy);">Nos domaines</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-      <footer>
-    <div class="footer-inner">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <div class="footer-logo">
-            <div class="footer-logo-mark"><img src="./assets/images/logo-uja.png" alt="Logo UJA"></div>
-            <strong>CERAP Éditions</strong>
-          </div>
-          <p>Maison d'édition universitaire de l'Université Jésuite d'Afrique. Excellence, Recherche et Action.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="./index.html">Accueil</a></li>
-            <li><a href="./librairie.html">Librairie</a></li>
-            <li><a href="./ligne-editoriale.html">Ligne Éditoriale</a></li>
-            <li><a href="./contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li>Cocody, Mermoz, Abidjan</li>
-            <li>editions@cerap-inades.org</li>
-            <li>(+225) 27 22 40 47 20</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 CERAP Éditions. Tous droits réservés.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-  <script src="./assets/js/supabase-config.js"></script>
-  <script src="./assets/js/utils.js"></script>
-  <script src="./assets/js/script.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
+    <script src="https://checkout.cinetpay.com/sdk/v2.1/cinetpay.js" defer></script>
+    <script src="./assets/js/supabase-config.js" defer></script>
+    <script src="./assets/js/utils.js" defer></script>
+    <script src="./assets/js/script.js" defer></script>
 </body>
 </html>

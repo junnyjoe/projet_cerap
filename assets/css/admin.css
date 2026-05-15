@@ -541,14 +541,17 @@ h1, h2, h3, h4, h5 {
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
-.status-badge.disponible { background: #e8f5ec; color: var(--green); }
-.status-badge.stock_faible { background: #fff3e0; color: #e65100; }
-.status-badge.rupture { background: #fde8e9; color: var(--terracotta); }
-.status-badge.livré { background: #e8f5ec; color: var(--green); }
-.status-badge.en_cours { background: #e3f2fd; color: #1565c0; }
-.status-badge.annulé { background: #fde8e9; color: var(--terracotta); }
-.status-badge.lu { background: var(--light-gray); color: var(--warm-gray); }
-.status-badge.non_lu { background: var(--gold-bg); color: var(--gold); }
+/* Status badges — WCAG AA contrast (min 4.5:1) */
+.status-badge.disponible { background: #dcf0e2; color: #155724; } /* ratio ~7.5:1 */
+.status-badge.stock_faible { background: #fff3e0; color: #8b4000; } /* ratio ~5.8:1 */
+.status-badge.rupture { background: #fde8e9; color: #7b1d1d; } /* ratio ~6.2:1 */
+.status-badge.livree { background: #dcf0e2; color: #155724; } /* ratio ~7.5:1 */
+.status-badge.livré { background: #dcf0e2; color: #155724; }
+.status-badge.en_cours { background: #e3f2fd; color: #0c3a6e; } /* ratio ~7.1:1 */
+.status-badge.annulee { background: #fde8e9; color: #7b1d1d; } /* ratio ~6.2:1 */
+.status-badge.annulé { background: #fde8e9; color: #7b1d1d; }
+.status-badge.lu { background: #f1f5f9; color: #475569; } /* ratio ~4.6:1 */
+.status-badge.non_lu { background: #fef3c7; color: #78350f; } /* ratio ~6.9:1 */
 
 .table-action-btns { display: flex; gap: 6px; }
 .table-action-btn {
@@ -755,4 +758,17 @@ h1, h2, h3, h4, h5 {
   .form-grid { grid-template-columns: 1fr; }
   .admin-table { font-size: 12px; }
   .admin-table th, .admin-table td { padding: 10px 12px; }
+}
+
+/* ── SKELETON LOADER ── */
+@keyframes skeleton-shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 800px 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+  border-radius: 4px;
 }
